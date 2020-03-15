@@ -1,0 +1,9 @@
+
+// Directory Dependencies
+node_modules/
+
+// Next Build Output
+.next
+
+// Secrets
+.env
