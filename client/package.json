@@ -4,9 +4,11 @@
   "description": "Spotify Web App Refactor Using NextJS, Express, PassportJS, and TypeScript",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "develop": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "dev": "npm run format & npm run develop"
   },
   "dependencies": {
     "@types/node": "^13.9.1",
@@ -24,7 +26,11 @@
     "typescript": "^3.8.3"
   },
   "main": "index.tsx",
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.19.0",
+    "prettier": "^1.19.1"
+  },
   "author": "Christopher Obando <chrisjobando@gmail.com>",
   "license": "MIT"
 }

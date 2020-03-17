@@ -1,7 +1,7 @@
-import React from "react";
-import App from "next/app";
-import Head from "next/head";
-import classes from "./style.module.scss";
+import React from 'react';
+import App from 'next/app';
+import Head from 'next/head';
+import classes from './style.module.scss';
 
 class MyApp extends App {
   render() {

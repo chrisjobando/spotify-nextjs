@@ -1,13 +1,13 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import { setCookie } from "nookies";
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { setCookie } from 'nookies';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
     if (ctx.query.token) {
-      setCookie(ctx, "authorization", ctx.query.token, {
+      setCookie(ctx, 'authorization', ctx.query.token, {
         maxAge: 30 * 24 * 60 * 60,
-        path: "/"
+        path: '/',
       });
     }
 
