@@ -1,0 +1,30 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "description": "Spotify Web App Refactor Using NextJS, Express, PassportJS, and TypeScript",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@types/node": "^13.9.1",
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
+    "@zeit/next-sass": "^1.0.1",
+    "@zeit/next-typescript": "^1.1.1",
+    "isomorphic-fetch": "^2.2.1",
+    "next": "9.3.0",
+    "node-sass": "^4.13.1",
+    "nookies": "^2.1.1",
+    "react": "16.13.0",
+    "react-dom": "16.13.0",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
+    "typescript": "^3.8.3"
+  },
+  "main": "index.tsx",
+  "devDependencies": {},
+  "author": "Christopher Obando <chrisjobando@gmail.com>",
+  "license": "MIT"
+}

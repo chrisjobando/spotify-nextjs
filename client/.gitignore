@@ -4,6 +4,3 @@ node_modules/
 
 // Next Build Output
 .next
-
-// Secrets
-.env
