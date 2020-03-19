@@ -7,7 +7,7 @@
     "develop": "next dev",
     "build": "next build",
     "start": "next start",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "format": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\"",
     "dev": "npm run format & npm run develop"
   },
   "dependencies": {

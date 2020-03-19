@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 // Styling
 import classes from './recentTrack.module.scss';
 

@@ -1,14 +1,30 @@
+import React, { useState } from 'react';
 import fetch from 'isomorphic-fetch';
 import { parseCookies } from 'nookies';
 
 // Components
 import Login from '~/components/Login/Login';
 import Home from '~/components/Home/Home';
+import MiniPlayer from '~/components/Player/MiniPlayer';
 
-// Styling
-import classes from './style.module.scss';
+const Index = props => {
+  const { authorization } = props;
+  const [playerState, setPlayerState] = useState(1);
 
-const Index = props => <div>{!props.authorization ? <Login /> : <Home />}</div>;
+  return (
+    <div>
+      {!authorization ? <Login /> : <Home />}
+      {(() => {
+        switch (playerState) {
+          case 1:
+            return <MiniPlayer />;
+          default:
+            return null;
+        }
+      })()}
+    </div>
+  );
+};
 
 async function getUser(authorization) {
   const res = await fetch('http://localhost:3001/user');

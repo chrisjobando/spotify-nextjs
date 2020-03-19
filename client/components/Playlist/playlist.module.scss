@@ -1,0 +1,21 @@
+.PlaylistCard {
+  display: inline-block;
+  width: 80px;
+  height: 106px;
+  border-right: 15px solid transparent;
+
+  .PlaylistPic {
+    background: #c4c4c4;
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+  }
+
+  .PlaylistName {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 0;
+    margin-top: 8px;
+    text-align: center;
+  }
+}

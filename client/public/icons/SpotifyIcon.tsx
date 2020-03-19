@@ -23,8 +23,8 @@ const SpotifyIcon = props => {
           y2="96"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#09DCB2" />
-          <stop offset="1" stop-color="#77E073" />
+          <stop stopColor="#09DCB2" />
+          <stop offset="1" stopColor="#77E073" />
         </linearGradient>
       </defs>
     </svg>

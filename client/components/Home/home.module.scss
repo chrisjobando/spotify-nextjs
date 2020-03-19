@@ -1,11 +1,12 @@
+@import '../../public/colors.module.scss';
+
 .Home {
   display: flex;
   flex-direction: column;
-  margin: 30px 0 0 30px;
 
   .MenuIcon {
     width: 22px;
-    margin-bottom: 28px;
+    margin: 30px;
   }
 
   .Header {
@@ -13,13 +14,33 @@
     font-size: 18px;
     line-height: 27px;
     margin: 0;
+    margin-left: 30px;
     margin-bottom: 8px;
   }
 
-  .RecentTrackWheel {
+  .HeaderLink,
+  .HeaderLink2 {
+    cursor: pointer;
+    align-self: flex-start;
+
+    &:hover {
+      color: $green;
+    }
+  }
+
+  .HeaderLink2 {
+    margin-bottom: 15px;
+  }
+
+  .RecentTrackWheel,
+  .PlaylistWheel {
     display: flex;
-    height: 120px;
-    min-width: 375px;
     overflow-x: auto;
+    margin-bottom: 24px;
+    padding: 0 30px;
+
+    div:last-child {
+      border-right: 30px solid transparent;
+    }
   }
 }
