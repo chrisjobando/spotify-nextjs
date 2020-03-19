@@ -1,12 +1,8 @@
-// Colors
-$blue-gradient: linear-gradient(180deg, #051041 0%, #020821 100%);
-$green-gradient: linear-gradient(180deg, #09dcb2 0%, #77e073 100%);
-$off-white: #f7f7fb;
-$green: #24cf5f;
+@import '../public/colors.module.scss';
 
 body {
-  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 html,
@@ -19,7 +15,6 @@ body,
   position: relative;
   background: $blue-gradient;
   color: $off-white;
-  overflow-x: hidden;
   overflow-y: auto;
 }
 
@@ -29,9 +24,7 @@ body,
   display: flex;
   flex-direction: column;
 
-  .Content {
-    width: 100%;
-    height: 100%;
-    padding: 16px;
+  a {
+    text-decoration: none;
   }
 }

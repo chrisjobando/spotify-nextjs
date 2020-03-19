@@ -1,0 +1,29 @@
+.RecentTrack {
+  display: inline-block;
+  width: 80px;
+  height: 120px;
+  margin-right: 15px;
+
+  .TrackPic {
+    background: #c4c4c4;
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+  }
+
+  .TrackName,
+  .TrackArtist {
+    margin: 0;
+    font-size: 10px;
+    line-height: 15px;
+    text-align: center;
+  }
+
+  .TrackName {
+    margin-top: 8px;
+  }
+
+  .TrackArtist {
+    font-weight: 300;
+  }
+}

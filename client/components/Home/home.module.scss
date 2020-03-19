@@ -1,0 +1,25 @@
+.Home {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0 0 30px;
+
+  .MenuIcon {
+    width: 22px;
+    margin-bottom: 28px;
+  }
+
+  .Header {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  .RecentTrackWheel {
+    display: flex;
+    height: 120px;
+    min-width: 375px;
+    overflow-x: auto;
+  }
+}

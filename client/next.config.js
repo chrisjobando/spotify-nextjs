@@ -1,5 +1,7 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const withSass = require('@zeit/next-sass');
+const withCSS = require('@zeit/next-css');
+
 const withTsconfigPaths = (nextConfig = {}) => ({
   ...nextConfig,
   ...{
@@ -25,7 +27,9 @@ const withTsconfigPaths = (nextConfig = {}) => ({
 });
 
 module.exports = withTsconfigPaths(
-  withSass({
-    cssModules: true,
-  })
+  withCSS(
+    withSass({
+      cssModules: true,
+    })
+  )
 );

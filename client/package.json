@@ -11,25 +11,31 @@
     "dev": "npm run format & npm run develop"
   },
   "dependencies": {
-    "@types/node": "^13.9.1",
-    "@types/react": "^16.9.23",
-    "@types/react-dom": "^16.9.5",
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-brands-svg-icons": "^5.12.1",
+    "@fortawesome/free-regular-svg-icons": "^5.12.1",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.9",
     "@zeit/next-sass": "^1.0.1",
-    "@zeit/next-typescript": "^1.1.1",
     "isomorphic-fetch": "^2.2.1",
     "next": "9.3.0",
     "node-sass": "^4.13.1",
     "nookies": "^2.1.1",
     "react": "16.13.0",
-    "react-dom": "16.13.0",
-    "tsconfig-paths-webpack-plugin": "^3.2.0",
-    "typescript": "^3.8.3"
+    "react-dom": "16.13.0"
   },
   "main": "index.tsx",
   "devDependencies": {
+    "@types/node": "^13.9.1",
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-typescript": "^1.1.1",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
+    "typescript": "^3.8.3"
   },
   "author": "Christopher Obando <chrisjobando@gmail.com>",
   "license": "MIT"

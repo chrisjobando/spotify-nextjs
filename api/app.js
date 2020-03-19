@@ -2,11 +2,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const dotEnv = require("dotenv");
+dotEnv.config();
 require("./db/mongoose");
 
 const app = express();
-
-dotEnv.config();
 
 // Parse json encoded in the request body
 app.use(bodyParser.json({ limit: "50mb" }));
