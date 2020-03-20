@@ -11,21 +11,25 @@ import NavMenu from './NavMenu';
 import classes from './navbar.module.scss';
 
 const NavBar = () => {
-  const [isOpen, toggle] = useState(false);
+  const [isOpen, setOpen] = useState(false);
+  const toggle = () => {
+    setOpen(!isOpen);
+  };
+
   return (
     <div className={classes.NavBar}>
       {isOpen ? (
         <>
           <FontAwesomeIcon
-            onClick={() => toggle(false)}
+            onClick={toggle}
             icon={faTimes}
             className={classes.MenuIcon}
           />
-          <NavMenu />
+          <NavMenu onClick={toggle} />
         </>
       ) : (
         <FontAwesomeIcon
-          onClick={() => toggle(true)}
+          onClick={toggle}
           icon={faBars}
           className={classes.MenuIcon}
         />

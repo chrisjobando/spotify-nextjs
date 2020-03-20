@@ -16,6 +16,10 @@ body,
   background: $blue-gradient;
   color: $off-white;
   overflow-y: auto;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .App {
@@ -24,8 +28,4 @@ body,
   display: flex;
   flex-direction: column;
   padding: 82px 0;
-
-  a {
-    text-decoration: none;
-  }
 }

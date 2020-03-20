@@ -13,7 +13,6 @@ import classes from './home.module.scss';
 
 const Home = () => (
   <div className={classes.Home}>
-    <NavBar />
     <h1 className={classes.Header}>recently played.</h1>
     <div className={classes.RecentTrackWheel}>
       <RecentTrack />

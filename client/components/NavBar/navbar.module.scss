@@ -29,7 +29,7 @@
   .NavLinks {
     display: flex;
     flex-direction: column;
-    margin-top: 30%;
+    margin: auto 0;
     text-align: center;
     font-weight: 500;
     font-size: 32px;
@@ -37,16 +37,19 @@
     text-decoration: none;
     color: $off-white;
 
-    a {
+    .Link {
       margin-bottom: 60px;
-      cursor: pointer;
 
-      &:visited {
-        color: $off-white;
-      }
+      a {
+        cursor: pointer;
 
-      &:hover {
-        color: $green;
+        &:visited {
+          color: $off-white;
+        }
+
+        &:hover {
+          color: $green;
+        }
       }
 
       &:last-child {
