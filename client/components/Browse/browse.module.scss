@@ -1,0 +1,162 @@
+@import '../../public/colors.module.scss';
+@import '../../public/fonts.module.scss';
+
+.BrowseContent {
+  margin: 0 30px;
+
+  .BrowseBar {
+    display: flex;
+    align-items: center;
+
+    .BrowseIcon {
+      height: 18px;
+    }
+
+    .SearchBar {
+      margin-left: 12px;
+      font-family: $font;
+      background: transparent;
+      color: $off-white;
+      border: none;
+      border-bottom: 2px solid $off-white;
+      width: 80%;
+      max-width: 500px;
+    }
+  }
+
+  .BrowseResults {
+    margin-top: 20px;
+
+    .ResultsHeader {
+      font-size: 18px;
+      line-height: 27px;
+      margin: 18px 0;
+      margin-bottom: 10px;
+      font-weight: normal;
+    }
+
+    .Song,
+    .Artist,
+    .Album,
+    .Playlist {
+      margin-bottom: 8px;
+    }
+
+    .Song {
+      margin-left: 10px;
+
+      .SongTitle,
+      .SongArtist {
+        margin: 0;
+        font-weight: 200;
+      }
+
+      .SongTitle {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-size: 14px;
+        line-height: 21px;
+      }
+
+      .SongArtist {
+        font-size: 10px;
+        line-height: 15px;
+      }
+    }
+
+    .Artist {
+      display: flex;
+      .ArtistPic {
+        background: #c4c4c4;
+        border-radius: 100px;
+        height: 40px;
+        min-width: 40px;
+        margin-right: 10px;
+      }
+
+      .ArtistName {
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 21px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+
+    .Album {
+      display: flex;
+
+      .AlbumPic {
+        background: #c4c4c4;
+        border-radius: 5px;
+        height: 40px;
+        min-width: 40px;
+        margin-right: 10px;
+      }
+
+      .AlbumInfo {
+        display: flex;
+        flex-direction: column;
+        width: 82%;
+
+        .AlbumName,
+        .AlbumYear {
+          font-weight: 300;
+          margin: 0;
+        }
+
+        .AlbumName {
+          font-size: 14px;
+          line-height: 21px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+
+        .AlbumYear {
+          font-size: 10px;
+          line-height: 15px;
+        }
+      }
+    }
+
+    .Playlist {
+      display: flex;
+
+      .PlaylistPic {
+        background: #c4c4c4;
+        border-radius: 5px;
+        height: 40px;
+        min-width: 40px;
+        margin-right: 10px;
+      }
+
+      .PlaylistInfo {
+        display: flex;
+        flex-direction: column;
+        width: 82%;
+
+        .PlaylistName,
+        .NumTracks {
+          font-weight: 300;
+          margin: 0;
+        }
+
+        .PlaylistName {
+          font-size: 14px;
+          line-height: 21px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+
+        .NumTracks {
+          font-size: 10px;
+          line-height: 15px;
+        }
+      }
+    }
+  }
+}

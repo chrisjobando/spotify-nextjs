@@ -6,6 +6,7 @@
   bottom: 0;
   width: 100%;
   background: $green;
+  color: $dark-blue;
   height: 70px;
   box-sizing: border-box;
   padding: 15px 20px;
@@ -25,23 +26,17 @@
   .SongInfo {
     display: flex;
     flex-direction: column;
-    color: $dark-blue;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
     .SongName,
     .SongArtist {
       margin: 0;
       font-size: 12px;
       line-height: 18px;
-    }
-
-    .SongArtist {
-      font-weight: 300;
+      font-weight: normal;
     }
   }
 
   .Toggle {
-    color: $dark-blue;
     margin: 0 auto;
     height: 18px;
     cursor: pointer;
@@ -49,7 +44,6 @@
 
   .Controls {
     display: flex;
-    color: $dark-blue;
 
     .Skip {
       width: 16px;
@@ -82,7 +76,6 @@
   z-index: 2;
 
   .Toggle {
-    color: $dark-blue;
     margin: 0 auto;
     margin-bottom: 10px;
     height: 25px;
@@ -126,12 +119,12 @@
     margin: 0;
     font-size: 22px;
     line-height: 33px;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   .SongArtist {
     font-weight: 300;
     margin-bottom: 15px;
+    font-weight: 200;
   }
 
   .Controls {
