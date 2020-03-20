@@ -9,7 +9,7 @@ import { MiniPlayer, BigPlayer } from '~/components/Player/Player';
 
 const Index = props => {
   const { authorization } = props;
-  const [playerState, setPlayerState] = useState(2);
+  const [playerState, setPlayerState] = useState(0);
 
   return (
     <div>
