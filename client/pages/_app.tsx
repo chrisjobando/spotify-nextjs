@@ -13,7 +13,7 @@ import classes from './style.module.scss';
 
 class MyApp extends App {
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, router } = this.props;
 
     return (
       <>
@@ -23,7 +23,7 @@ class MyApp extends App {
         <div className={classes.App}>
           <Component {...pageProps} />
         </div>
-        <NavBar />
+        {!router.asPath.includes('/login') && <NavBar />}
       </>
     );
   }

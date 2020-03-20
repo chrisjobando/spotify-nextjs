@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Router from 'next/router';
 import fetch from 'isomorphic-fetch';
 import { parseCookies } from 'nookies';
 
@@ -10,6 +11,11 @@ import { MiniPlayer, BigPlayer } from '~/components/Player/Player';
 const Index = props => {
   const { authorization } = props;
   const [playerState, setPlayerState] = useState(0);
+
+  useEffect(() => {
+    if (authorization) return;
+    Router.replace('/', '/login', { shallow: true });
+  });
 
   return (
     <div>
