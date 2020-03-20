@@ -5,11 +5,11 @@ import { parseCookies } from 'nookies';
 // Components
 import Login from '~/components/Login/Login';
 import Home from '~/components/Home/Home';
-import MiniPlayer from '~/components/Player/MiniPlayer';
+import { MiniPlayer, BigPlayer } from '~/components/Player/Player';
 
 const Index = props => {
   const { authorization } = props;
-  const [playerState, setPlayerState] = useState(1);
+  const [playerState, setPlayerState] = useState(2);
 
   return (
     <div>
@@ -18,6 +18,8 @@ const Index = props => {
         switch (playerState) {
           case 1:
             return <MiniPlayer />;
+          case 2:
+            return <BigPlayer />;
           default:
             return null;
         }

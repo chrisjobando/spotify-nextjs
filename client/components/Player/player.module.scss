@@ -1,7 +1,7 @@
 @import '../../public/colors.module.scss';
 
 .MiniPlayer {
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -47,11 +47,27 @@
 
     .Skip {
       width: 16px;
+      cursor: pointer;
     }
 
     .Play {
       width: 24px;
       margin: 0 18px;
+      cursor: pointer;
     }
   }
+}
+
+.BigPlayer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: $green;
+  height: calc(100% - 82px);
+  box-sizing: border-box;
+  padding: 42px 36px;
+  border-radius: 15px 15px 0px 0px;
+  display: flex;
+  flex-direction: column;
 }

@@ -1,20 +1,19 @@
 import React from 'react';
 import Link from 'next/link';
 
+// Header Component
+import NavBar from '../NavBar/NavBar';
+
 // Card Components
 import RecentTrack from '../RecentlyPlayed/RecentTrack';
 import PlaylistCard from '../Playlist/PlaylistCard';
-
-// Icons
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 // Styling
 import classes from './home.module.scss';
 
 const Home = () => (
   <div className={classes.Home}>
-    <FontAwesomeIcon icon={faBars} className={classes.MenuIcon} />
+    <NavBar />
     <h1 className={classes.Header}>recently played.</h1>
     <div className={classes.RecentTrackWheel}>
       <RecentTrack />
