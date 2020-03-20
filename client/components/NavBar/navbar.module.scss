@@ -14,3 +14,36 @@
     cursor: pointer;
   }
 }
+
+.NavMenu {
+  background: $blue-gradient;
+  height: 100vh;
+  margin-top: -10px;
+  display: flex;
+  justify-content: center;
+  z-index: 999;
+
+  .NavLinks {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    text-align: center;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 48px;
+    text-decoration: none;
+    color: $off-white;
+
+    a {
+      margin-bottom: 60px;
+
+      &:visited {
+        color: $off-white;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

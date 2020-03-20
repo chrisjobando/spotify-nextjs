@@ -17,9 +17,9 @@ const Index = props => {
       {(() => {
         switch (playerState) {
           case 1:
-            return <MiniPlayer />;
+            return <MiniPlayer onClick={() => setPlayerState(2)} />;
           case 2:
-            return <BigPlayer />;
+            return <BigPlayer onClick={() => setPlayerState(1)} />;
           default:
             return null;
         }
