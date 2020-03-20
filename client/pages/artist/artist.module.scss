@@ -4,6 +4,7 @@
 
   .ArtistHead {
     margin: 0 auto;
+    margin-bottom: 18px;
 
     .ArtistPic {
       width: 132px;
@@ -19,7 +20,38 @@
   }
 
   .ArtistHeader {
+    margin: 0 30px;
     font-size: 18px;
     line-height: 27px;
+    margin-bottom: 10px;
+  }
+
+  .Song {
+    margin: 0 40px;
+    margin-bottom: 8px;
+
+    .SongTitle {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    .SongArtist {
+      font-size: 10px;
+      line-height: 15px;
+    }
+  }
+
+  .PlaylistWheel {
+    display: flex;
+    overflow-x: auto;
+    margin-bottom: 24px;
+    padding: 0 30px;
+
+    div:last-child {
+      border-right: 30px solid transparent;
+    }
   }
 }
