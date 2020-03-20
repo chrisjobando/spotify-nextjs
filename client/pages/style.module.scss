@@ -17,6 +17,13 @@ body,
   color: $off-white;
   overflow-y: auto;
 
+  p,
+  h1,
+  h2 {
+    margin: 0;
+    font-weight: normal;
+  }
+
   a {
     text-decoration: none;
   }

@@ -29,10 +29,8 @@
 
     .SongName,
     .SongArtist {
-      margin: 0;
       font-size: 12px;
       line-height: 18px;
-      font-weight: normal;
     }
   }
 
@@ -93,7 +91,6 @@
     }
 
     .UriName {
-      margin: 0;
       font-size: 18px;
       line-height: 27px;
       text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -116,15 +113,12 @@
 
   .SongName,
   .SongArtist {
-    margin: 0;
     font-size: 22px;
     line-height: 33px;
   }
 
   .SongArtist {
-    font-weight: 300;
     margin-bottom: 15px;
-    font-weight: 200;
   }
 
   .Controls {

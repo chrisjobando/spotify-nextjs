@@ -1,0 +1,25 @@
+.ArtistPage {
+  display: flex;
+  flex-direction: column;
+
+  .ArtistHead {
+    margin: 0 auto;
+
+    .ArtistPic {
+      width: 132px;
+      height: 132px;
+      background: #c4c4c4;
+      border-radius: 100px;
+      margin-bottom: 10px;
+    }
+    .ArtistName {
+      font-size: 22px;
+      line-height: 33px;
+    }
+  }
+
+  .ArtistHeader {
+    font-size: 18px;
+    line-height: 27px;
+  }
+}
