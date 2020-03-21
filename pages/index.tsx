@@ -1,25 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import Router from 'next/router';
-import fetch from 'isomorphic-fetch';
 import { parseCookies } from 'nookies';
 
+// API
+import { getUser } from '../client/actions/api';
+
 // Components
-import Login from '~/client/components/Login/Login';
 import Home from '~/client/components/Home/Home';
 import { MiniPlayer, BigPlayer } from '~/client/components/Player/Player';
 
 const Index = props => {
-  const { authorization } = props;
+  const { authorization, token } = props;
   const [playerState, setPlayerState] = useState(0);
+  let authorized = null;
 
   useEffect(() => {
-    if (authorization) return;
-    Router.replace('/', '/login', { shallow: true });
-  }, [authorization]);
+    if (authorized) return;
+    Router.push('/login');
+  }, [authorized]);
+
+  useEffect(() => {
+    authorized = getUser(authorization || token);
+  }, []);
 
   return (
     <div>
-      {!authorization ? <Login /> : <Home />}
+      {authorized && <Home />}
       {(() => {
         switch (playerState) {
           case 1:
@@ -34,19 +40,11 @@ const Index = props => {
   );
 };
 
-async function getUser(authorization) {
-  const res = await fetch('http://localhost:3000/user');
-
-  if (res.status === 200) return { authorization, user: res.data };
-  else return { authorization };
-}
-
 Index.getInitialProps = ctx => {
   const { authorization } = parseCookies(ctx);
   const { token } = ctx.query;
 
-  const props = getUser(authorization || token);
-  return props;
+  return { authorization, token };
 };
 
 export default Index;

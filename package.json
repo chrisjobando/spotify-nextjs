@@ -4,7 +4,7 @@
   "description": "Spotify Web App Refactor Using NextJS, Express, PassportJS, and TypeScript",
   "private": true,
   "scripts": {
-    "develop": "npm run build && node server/index.js",
+    "develop": "next",
     "build": "next build",
     "start": "next start",
     "format": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\"",
@@ -17,7 +17,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "@fortawesome/react-fontawesome": "^0.1.9",
     "@zeit/next-sass": "^1.0.1",
-    "express": "^4.17.1",
     "isomorphic-fetch": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.5",
