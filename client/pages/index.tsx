@@ -35,7 +35,7 @@ const Index = props => {
 };
 
 async function getUser(authorization) {
-  const res = await fetch('http://localhost:3001/user');
+  const res = await fetch('http://localhost:3000/user');
 
   if (res.status === 200) return { authorization, user: res.data };
   else return { authorization };

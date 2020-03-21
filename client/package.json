@@ -4,7 +4,7 @@
   "description": "Spotify Web App Refactor Using NextJS, Express, PassportJS, and TypeScript",
   "private": true,
   "scripts": {
-    "develop": "next",
+    "develop": "node server/index.js",
     "build": "next build",
     "start": "next start",
     "format": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\"",

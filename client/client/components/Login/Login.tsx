@@ -11,7 +11,7 @@ const spotifyIconProps = {
 const Login = () => (
   <div className={classes.Login}>
     <SpotifyIcon {...spotifyIconProps} />
-    <a href="http://localhost:3001/auth/spotify">
+    <a href="http://localhost:3000/auth/spotify">
       <div className={classes.Button}>sign in.</div>
     </a>
   </div>

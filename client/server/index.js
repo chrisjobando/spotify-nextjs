@@ -10,7 +10,7 @@ passport.serializeUser(function(user, done) {
   done(null, user);
 });
 
-const app = nextjs({ dev });
+const app = nextjs({ dir: '.', dev: process.env.NODE_ENV === 'development' });
 
 app
   .prepare()
@@ -35,10 +35,15 @@ app
     server.use('/auth', require('./routes/auth'));
     server.use('/user', require('./routes/user'));
 
+    // All other routes: render next app.
+    server.get('*', (req, res) => {
+      app.getRequestHandler()(req, res);
+    });
+
     // Start server
-    server.listen(3001, err => {
+    server.listen(3000, err => {
       if (err) throw err;
-      console.log('> Server listening on http://localhost:3001');
+      console.log('> Server listening on http://localhost:3000');
     });
   })
   .catch(ex => {

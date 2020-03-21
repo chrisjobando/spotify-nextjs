@@ -1,15 +1,12 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
-export default async () => {
-  if (mongoose.connections[0].readyState) return;
+const setUpConnection = () => {
+  mongoose.connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+};
 
-  await mongoose
-    .connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
-    .catch(e => {
-      console.error('Error connecting to database.');
-      throw e;
-    });
+module.exports = {
+  setUpConnection: setUpConnection,
 };

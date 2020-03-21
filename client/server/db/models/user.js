@@ -1,7 +1,6 @@
-const mongoose = require('../mongoose.js');
+const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema;
-const userSchema = new Schema({
+const userSchema = mongoose.Schema({
   oAuthId: { type: Number, required: true },
   oAuthData: { type: Object, required: true },
 });
