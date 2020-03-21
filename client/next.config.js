@@ -1,6 +1,13 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const withSass = require('@zeit/next-sass');
 const withCSS = require('@zeit/next-css');
+const dotEnv = require('dotenv');
+
+const prod = process.env.NODE_ENV === 'production';
+
+if (!prod) {
+  dotEnv.config();
+}
 
 const withTsconfigPaths = (nextConfig = {}) => ({
   ...nextConfig,
@@ -30,6 +37,10 @@ module.exports = withTsconfigPaths(
   withCSS(
     withSass({
       cssModules: true,
+      env: {
+        MONGO_URL: process.env.MONGO_URL,
+        JWT_SECRET: process.env.JWT_SECRET,
+      },
     })
   )
 );

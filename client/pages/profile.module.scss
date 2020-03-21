@@ -1,13 +1,13 @@
-.ArtistPage {
+.ProfilePage {
   margin: 0 30px;
   display: flex;
   flex-direction: column;
 
-  .ArtistHead {
+  .ProfileHead {
     margin: 0 auto;
     margin-bottom: 18px;
 
-    .ArtistPic {
+    .ProfilePic {
       margin: 0 auto;
       width: 132px;
       height: 132px;
@@ -15,37 +15,20 @@
       border-radius: 100px;
       margin-bottom: 10px;
     }
-    .ArtistName {
+
+    .ProfileName {
       font-size: 22px;
       line-height: 33px;
     }
   }
 
-  .ArtistHeader {
+  .ProfileHeader {
     font-size: 18px;
     line-height: 27px;
     margin-bottom: 10px;
   }
 
-  .Song {
-    margin: 0 10px;
-    margin-bottom: 8px;
-
-    .SongTitle {
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      font-size: 14px;
-      line-height: 21px;
-    }
-
-    .SongArtist {
-      font-size: 10px;
-      line-height: 15px;
-    }
-  }
-
-  .AlbumDeck {
+  .PlaylistDeck {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

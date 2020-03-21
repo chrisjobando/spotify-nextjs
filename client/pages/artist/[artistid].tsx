@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 
 // Card Components
-import PlaylistCard from '~/components/Playlist/PlaylistCard';
+import AlbumCard from '~/client/components/Album/AlbumCard';
 
 //Styling
 import classes from './artist.module.scss';
@@ -36,17 +36,17 @@ const ArtistPage = () => {
       <Song title="Come Fly With Me" artist="Frank Sinatra" />
       <Song title="Frank Sinatra" artist="Cake" />
       <h1 className={classes.ArtistHeader}>albums.</h1>
-      <div className={classes.PlaylistWheel}>
-        <PlaylistCard />
-        <PlaylistCard />
-        <PlaylistCard />
-        <PlaylistCard />
-        <PlaylistCard />
-        <PlaylistCard />
-        <PlaylistCard />
-        <PlaylistCard />
-        <PlaylistCard />
-        <PlaylistCard />
+      <div className={classes.AlbumDeck}>
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
       </div>
     </div>
   );

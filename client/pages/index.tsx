@@ -4,9 +4,9 @@ import fetch from 'isomorphic-fetch';
 import { parseCookies } from 'nookies';
 
 // Components
-import Login from '~/components/Login/Login';
-import Home from '~/components/Home/Home';
-import { MiniPlayer, BigPlayer } from '~/components/Player/Player';
+import Login from '~/client/components/Login/Login';
+import Home from '~/client/components/Home/Home';
+import { MiniPlayer, BigPlayer } from '~/client/components/Player/Player';
 
 const Index = props => {
   const { authorization } = props;

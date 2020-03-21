@@ -3,7 +3,7 @@ import App from 'next/app';
 import Head from 'next/head';
 
 // NavBar
-import NavBar from '~/components/NavBar/NavBar';
+import NavBar from '~/client/components/NavBar/NavBar';
 
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';

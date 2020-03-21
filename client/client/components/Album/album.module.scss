@@ -1,0 +1,23 @@
+.AlbumCard {
+  display: inline-block;
+  width: 80px;
+  height: 106px;
+  border-right: 15px solid transparent;
+
+  .AlbumPic {
+    background: #c4c4c4;
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+  }
+
+  .AlbumName {
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 8px;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
