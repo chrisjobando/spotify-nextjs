@@ -15,7 +15,7 @@ const Index = props => {
   useEffect(() => {
     if (authorization) return;
     Router.replace('/', '/login', { shallow: true });
-  });
+  }, [authorization]);
 
   return (
     <div>
