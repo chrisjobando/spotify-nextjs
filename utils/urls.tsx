@@ -1,6 +1,7 @@
 export default {
-  baseUrl: 'http://localhost:3000',
+  baseUrl: process.env.BASE_URL,
   dbUrl: process.env.MONGO_URL,
+  redirectUri: process.env.BASE_URL + '/callback',
   pages: {
     index: '/',
     browse: '/browse',
@@ -13,7 +14,7 @@ export default {
     playlist: playlistId => `${playlistId}`,
   },
   api: {
-    authSpotify: () => '/api/auth/spotify',
-    user: () => '/api/user',
+    auth: () => `/api/auth`,
+    user: () => `/api/user`,
   },
 };

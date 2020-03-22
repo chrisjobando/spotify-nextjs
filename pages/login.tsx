@@ -12,7 +12,7 @@ const spotifyIconProps = {
 };
 
 const Login = () => {
-  const handleLogin = () => auth;
+  const handleLogin = () => auth();
 
   return (
     <div className={classes.Login}>

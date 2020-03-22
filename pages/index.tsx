@@ -15,27 +15,27 @@ const Index = props => {
   let authorized = null;
 
   useEffect(() => {
+    authorized = getUser(authorization || token);
+  }, []);
+
+  useEffect(() => {
     if (authorized) return;
     Router.push('/login');
   }, [authorized]);
 
-  useEffect(() => {
-    authorized = getUser(authorization || token);
-  }, []);
-
   return (
     <div>
-      {authorized && <Home />}
-      {(() => {
-        switch (playerState) {
-          case 1:
-            return <MiniPlayer onClick={() => setPlayerState(2)} />;
-          case 2:
-            return <BigPlayer onClick={() => setPlayerState(1)} />;
-          default:
-            return null;
-        }
-      })()}
+      {authorized && <Home /> &&
+        (() => {
+          switch (playerState) {
+            case 1:
+              return <MiniPlayer onClick={() => setPlayerState(2)} />;
+            case 2:
+              return <BigPlayer onClick={() => setPlayerState(1)} />;
+            default:
+              return null;
+          }
+        })()}
     </div>
   );
 };
