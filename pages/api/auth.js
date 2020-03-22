@@ -12,8 +12,7 @@ const spotifyApi = new SpotifyWebApi({
 const handler = (req, res) => {
   const scopesArray = ['user-read-private'];
   const authorizeUrl = spotifyApi.createAuthorizeURL(scopesArray);
-  console.log(authorizeUrl);
-  res.send(authorizeUrl);
+  res.send({ url: authorizeUrl });
 };
 
 export default handler;

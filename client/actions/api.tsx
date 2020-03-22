@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch';
+import Router from 'next/router';
 import urls from '../../utils/urls';
 
 export const getUser = authorization => {
@@ -27,14 +28,7 @@ export const getUser = authorization => {
 };
 
 export const auth = () => {
-  fetch('http://localhost:3000' + urls.api.auth(), {
-    method: 'post',
-    mode: 'same-origin',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }).then(() => {
-    console.log('Test');
-  });
+  fetch('http://localhost:3000' + urls.api.auth())
+    .then(res => res.json())
+    .then(res => (window.location.href = res.url));
 };

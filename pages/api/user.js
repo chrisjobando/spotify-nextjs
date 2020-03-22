@@ -3,8 +3,7 @@ import { findOrCreate } from '../../server/mongodb/actions/User';
 const handler = (req, res) =>
   findOrCreate(req.body.authorization)
     .then(authorization => {
-      res.setHeader('Set-Cookie', `authorization=${authorization}`);
-
+      console.log('auth: ' + authorization);
       res.status(200).json({
         success: true,
         payload: authorization,

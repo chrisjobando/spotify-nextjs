@@ -1,7 +1,7 @@
 export default {
   baseUrl: process.env.BASE_URL,
   dbUrl: process.env.MONGO_URL,
-  redirectUri: process.env.BASE_URL + '/callback',
+  redirectUri: 'http://localhost:3000/login',
   pages: {
     index: '/',
     browse: '/browse',

@@ -5,13 +5,12 @@ import mongoDB from '../index';
 export async function findOrCreate(oAuthData) {
   await mongoDB();
 
-  return User.findOne({ oAuthId: oAuthData.id })
+  return User.findOne({ oAuthData: oAuthData })
     .then(user => {
       if (user) {
         return Promise.resolve(user);
       } else {
         return User.create({
-          oAuthId: oAuthData.id,
           oAuthData: oAuthData,
         });
       }
@@ -19,7 +18,6 @@ export async function findOrCreate(oAuthData) {
     .then(user =>
       jwt.sign(
         {
-          oAuthId: user.oAuthId,
           oAuthData: user.oAuthData,
         },
         process.env.JWT_KEY,
@@ -30,8 +28,8 @@ export async function findOrCreate(oAuthData) {
     );
 }
 
-export async function findById(id) {
+export async function findById(oAuthData) {
   await mongoDB();
 
-  return User.findOne({ oAuthId: id });
+  return User.findOne({ oAuthData: oAuthData });
 }
