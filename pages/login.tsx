@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import Router from 'next/router';
 import { setCookie } from 'nookies';
 
 // API Call
