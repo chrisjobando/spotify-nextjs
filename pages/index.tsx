@@ -10,22 +10,27 @@ import Home from '~/client/components/Home/Home';
 import { MiniPlayer, BigPlayer } from '~/client/components/Player/Player';
 
 const Index = props => {
-  const { authorization, token } = props;
+  const { authorization } = props;
   const [playerState, setPlayerState] = useState(0);
-  let authorized = null;
+  const [authorized, setAuthorized] = useState('');
 
   useEffect(() => {
-    authorized = getUser(authorization || token);
+    const getAuth = async () => {
+      const result = await getUser(authorization);
+      if (result == null) Router.push('/login');
+      else setAuthorized(result.oAuthData);
+    };
+    getAuth();
+    // Apparently Webpack doesn't allow you to push to "/"
+    // so I am "cheating" and pushing to index,
+    // then cleaning up the url here
+    Router.replace('/index', '/');
   }, []);
-
-  useEffect(() => {
-    if (authorized) return;
-    Router.push('/login');
-  }, [authorized]);
 
   return (
     <div>
-      {authorized && <Home /> &&
+      {authorized !== '' && <Home />}
+      {authorized !== '' &&
         (() => {
           switch (playerState) {
             case 1:
@@ -42,9 +47,8 @@ const Index = props => {
 
 Index.getInitialProps = ctx => {
   const { authorization } = parseCookies(ctx);
-  const { token } = ctx.query;
 
-  return { authorization, token };
+  return { authorization };
 };
 
 export default Index;

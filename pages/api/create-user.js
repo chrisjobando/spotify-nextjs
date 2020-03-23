@@ -1,12 +1,11 @@
-import { findOrCreate } from '../../server/mongodb/actions/User';
+import { createId } from '../../server/mongodb/actions/User';
 
 const handler = (req, res) =>
-  findOrCreate(req.body.authorization)
-    .then(authorization => {
-      console.log('auth: ' + authorization);
+  createId(req.body.tokens)
+    .then(user => {
       res.status(200).json({
         success: true,
-        payload: authorization,
+        authorization: user._id,
       });
     })
     .catch(err =>

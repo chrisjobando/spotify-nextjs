@@ -1,6 +1,7 @@
 export default {
   baseUrl: process.env.BASE_URL,
   dbUrl: process.env.MONGO_URL,
+  tokenUrl: 'https://accounts.spotify.com/api/token',
   redirectUri: 'http://localhost:3000/login',
   pages: {
     index: '/',
@@ -15,6 +16,7 @@ export default {
   },
   api: {
     auth: () => `/api/auth`,
-    user: () => `/api/user`,
+    findUser: () => `/api/find-user`,
+    createUser: () => `/api/create-user`,
   },
 };
