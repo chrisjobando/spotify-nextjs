@@ -77,18 +77,10 @@ const BrowseResults = () => (
     />
     <h1 className={classes.ResultsHeader}>playlists.</h1>
     <Playlist playlistName="drivey" numTracks={12} />
-    <div className={classes.PlaylistWheel}>
-      <PlaylistCard />
-      <PlaylistCard />
-      <PlaylistCard />
-      <PlaylistCard />
-      <PlaylistCard />
-      <PlaylistCard />
-      <PlaylistCard />
-      <PlaylistCard />
-      <PlaylistCard />
-      <PlaylistCard />
-    </div>
+    <Playlist playlistName="drivey" numTracks={12} />
+    <Playlist playlistName="drivey" numTracks={12} />
+    <Playlist playlistName="drivey" numTracks={12} />
+    <Playlist playlistName="drivey" numTracks={12} />
   </div>
 );
 

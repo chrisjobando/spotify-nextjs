@@ -55,6 +55,7 @@
       .SongArtist {
         font-size: 10px;
         line-height: 15px;
+        font-weight: lighter;
       }
     }
 
@@ -69,7 +70,6 @@
       }
 
       .ArtistName {
-        font-weight: 300;
         font-size: 14px;
         line-height: 21px;
         white-space: nowrap;
@@ -94,11 +94,6 @@
         flex-direction: column;
         width: 82%;
 
-        .AlbumName,
-        .AlbumYear {
-          font-weight: 300;
-        }
-
         .AlbumName {
           font-size: 14px;
           line-height: 21px;
@@ -110,6 +105,7 @@
         .AlbumYear {
           font-size: 10px;
           line-height: 15px;
+          font-weight: lighter;
         }
       }
     }
@@ -130,11 +126,6 @@
         flex-direction: column;
         width: 82%;
 
-        .PlaylistName,
-        .NumTracks {
-          font-weight: 300;
-        }
-
         .PlaylistName {
           font-size: 14px;
           line-height: 21px;
@@ -146,6 +137,7 @@
         .NumTracks {
           font-size: 10px;
           line-height: 15px;
+          font-weight: lighter;
         }
       }
     }
