@@ -32,6 +32,7 @@ export const createUser = async code => {
 
   return fetch(urls.api.createUser(), {
     method: 'post',
+    mode: 'same-origin',
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
@@ -60,6 +61,7 @@ export const createUser = async code => {
 export const getUser = authorization => {
   return fetch(urls.api.findUser(), {
     method: 'post',
+    mode: 'same-origin',
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
