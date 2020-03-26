@@ -1,13 +1,19 @@
 {
   "version": 2,
   "env": {
-    "MONGODB": "@mongodb",
-    "JWTSECRET": "@jwtsecret"
+    "MONGO_URL": "@mongo_url",
+    "JWT_SECRET": "@jwt_secret",
+    "SPOTIFY_CLIENT_ID": "@spotify_client_id",
+    "SPOTIFY_CLIENT_SECRET": "@spotify_client_secret",
+    "BASE_URL": "@base_url"
   },
   "build": {
     "env": {
-      "MONGODB": "@mongodb",
-      "JWTSECRET": "@jwtsecret"
+      "MONGO_URL": "@mongo_url",
+      "JWT_SECRET": "@jwt_secret",
+      "SPOTIFY_CLIENT_ID": "@spotify_client_id",
+      "SPOTIFY_CLIENT_SECRET": "@spotify_client_secret",
+      "BASE_URL": "@base_url"
     }
   }
 }
