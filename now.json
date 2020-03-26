@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "env": {
     "MONGO_URL": "@mongo_url",
     "JWT_SECRET": "@jwt_secret",
