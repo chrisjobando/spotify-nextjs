@@ -1,8 +1,12 @@
+const prod = process.env.NODE_ENV === 'production';
+
 export default {
-  baseUrl: process.env.BASE_URL,
+  baseUrl: prod ? 'https://obando-spotify.now.sh' : 'http://localhost:3000',
   dbUrl: process.env.MONGO_URL,
   tokenUrl: 'https://accounts.spotify.com/api/token',
-  redirectUri: 'http://localhost:3000/login',
+  redirectUri: prod
+    ? 'https://obando-spotify.now.sh/login'
+    : 'http://localhost:3000/login',
   pages: {
     index: '/',
     browse: '/browse',

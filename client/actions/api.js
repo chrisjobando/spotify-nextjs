@@ -2,6 +2,8 @@ import fetch from 'isomorphic-unfetch';
 import querystring from 'querystring';
 import urls from '../../utils/urls';
 
+const prod = process.env.NODE_ENV === 'production';
+
 export const createUser = async code => {
   const tokens = await fetch(urls.tokenUrl, {
     method: 'post',
@@ -48,7 +50,9 @@ export const createUser = async code => {
       } else if (!json.success) {
         throw new Error(json.message);
       }
-      window.location.href = 'http://localhost:3000';
+      window.location.href = prod
+        ? 'https://obando-spotify.now.sh'
+        : 'http://localhost:3000';
       return json.authorization;
     });
 };
