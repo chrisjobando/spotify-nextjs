@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 
 // Card Components
-import AlbumCard from '~/client/components/Album/AlbumCard';
+import AlbumCard from '../../client/components/Album/AlbumCard';
 
 //Styling
 import classes from './artist.module.scss';

@@ -1,9 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 
-// Header Component
-import NavBar from '../NavBar/NavBar';
-
 // Card Components
 import RecentTrack from '../RecentlyPlayed/RecentTrack';
 import PlaylistCard from '../Playlist/PlaylistCard';

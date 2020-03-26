@@ -1,9 +1,5 @@
-@import '../public/colors.module.scss';
-@import '../public/fonts.module.scss';
-
-body {
-  font-family: $font;
-}
+@import '../public/colors.scss';
+@import '../public/fonts.scss';
 
 html,
 body,
@@ -16,6 +12,7 @@ body,
   background: $blue-gradient;
   color: $off-white;
   overflow-y: auto;
+  font-family: $font;
 
   p,
   h1,

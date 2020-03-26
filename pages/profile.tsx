@@ -1,5 +1,5 @@
 // Card Components
-import PlaylistCard from '~/client/components/Playlist/PlaylistCard';
+import PlaylistCard from '../client/components/Playlist/PlaylistCard';
 
 //Styling
 import classes from './profile.module.scss';

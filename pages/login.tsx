@@ -5,7 +5,7 @@ import { setCookie } from 'nookies';
 import { auth, createUser } from '../client/actions/api';
 
 // Spotify Icon
-import SpotifyIcon from '~/public/icons/SpotifyIcon';
+import SpotifyIcon from '../public/icons/SpotifyIcon';
 
 // Styling
 import classes from './login.module.scss';

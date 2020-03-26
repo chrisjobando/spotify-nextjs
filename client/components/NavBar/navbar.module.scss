@@ -1,4 +1,4 @@
-@import '../../../public/colors.module.scss';
+@import '../../../public/colors.scss';
 
 .NavBar {
   position: fixed;
@@ -40,7 +40,7 @@
     .Link {
       margin-bottom: 60px;
 
-      a {
+      span {
         cursor: pointer;
 
         &:visited {

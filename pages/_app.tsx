@@ -3,18 +3,17 @@ import App from 'next/app';
 import Head from 'next/head';
 
 // NavBar
-import NavBar from '~/client/components/NavBar/NavBar';
+import NavBar from '../client/components/NavBar/NavBar';
 
 // Media Player
-import { MiniPlayer, BigPlayer } from '~/client/components/Player/Player';
+import { MiniPlayer, BigPlayer } from '../client/components/Player/Player';
 
 // FontAwesome Config
-import { config } from '@fortawesome/fontawesome-svg-core';
-import '@fortawesome/fontawesome-svg-core/styles.css';
-config.autoAddCss = false;
+import '@fortawesome/react-fontawesome';
+import '@fortawesome/free-solid-svg-icons';
 
 // Styling
-import classes from './style.module.scss';
+import '../public/style.scss';
 
 function MyComponent({ children }) {
   const [playerState, setPlayerState] = useState(0);
@@ -45,7 +44,7 @@ class MyApp extends App {
         <Head>
           <title>spotify app.</title>
         </Head>
-        <div className={classes.App}>
+        <div className="App">
           <Component {...pageProps} />
         </div>
         {!router.asPath.includes('/login') && <NavBar />}

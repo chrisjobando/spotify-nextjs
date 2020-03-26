@@ -6,7 +6,7 @@ import { parseCookies } from 'nookies';
 import { getUser } from '../client/actions/api';
 
 // Components
-import Home from '~/client/components/Home/Home';
+import Home from '../client/components/Home/Home';
 
 const Index = props => {
   const { authorization } = props;

@@ -7,13 +7,19 @@ const NavMenu = ({ onClick }) => (
   <div className={classes.NavMenu}>
     <div className={classes.NavLinks}>
       <div onClick={onClick} className={classes.Link}>
-        <Link href="/">home.</Link>
+        <Link href="/">
+          <span>home.</span>
+        </Link>
       </div>
       <div onClick={onClick} className={classes.Link}>
-        <Link href="/browse">browse.</Link>
+        <Link href="/browse">
+          <span>browse.</span>
+        </Link>
       </div>
       <div onClick={onClick} className={classes.Link}>
-        <Link href="/stats">stats.</Link>
+        <Link href="/stats">
+          <span>stats.</span>
+        </Link>
       </div>
     </div>
   </div>
