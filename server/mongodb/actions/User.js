@@ -1,4 +1,4 @@
-import User from '../models/user';
+import User from '../models/User';
 import mongoDB from '../index';
 
 export async function createId(tokens) {
