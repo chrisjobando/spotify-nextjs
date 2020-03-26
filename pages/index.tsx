@@ -7,11 +7,9 @@ import { getUser } from '../client/actions/api';
 
 // Components
 import Home from '~/client/components/Home/Home';
-import { MiniPlayer, BigPlayer } from '~/client/components/Player/Player';
 
 const Index = props => {
   const { authorization } = props;
-  const [playerState, setPlayerState] = useState(0);
   const [authorized, setAuthorized] = useState('');
 
   useEffect(() => {
@@ -27,22 +25,7 @@ const Index = props => {
     Router.replace('/index', '/');
   }, []);
 
-  return (
-    <div>
-      {authorized !== '' && <Home />}
-      {authorized !== '' &&
-        (() => {
-          switch (playerState) {
-            case 1:
-              return <MiniPlayer onClick={() => setPlayerState(2)} />;
-            case 2:
-              return <BigPlayer onClick={() => setPlayerState(1)} />;
-            default:
-              return null;
-          }
-        })()}
-    </div>
-  );
+  return <div>{authorized !== '' && <Home />}</div>;
 };
 
 Index.getInitialProps = ctx => {
