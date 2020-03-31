@@ -6,7 +6,7 @@ import Head from 'next/head';
 import NavBar from '../client/components/NavBar/NavBar';
 
 // Media Player
-import { MiniPlayer, BigPlayer } from '../client/components/Player/Player';
+import { MiniPlayer, BigPlayer } from '../client/components/Player';
 
 // FontAwesome Config
 import '@fortawesome/react-fontawesome';
@@ -47,7 +47,7 @@ class MyApp extends App {
         <div className="App">
           <Component {...pageProps} />
         </div>
-        {!router.asPath.includes('/login') && <NavBar />}
+        {['/app'].some(route => router.asPath.includes(route)) && <NavBar />}
       </MyComponent>
     );
   }

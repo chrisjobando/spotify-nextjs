@@ -1,5 +1,5 @@
 // Page Component
-import BrowsePage from '../client/components/Browse/BrowsePage';
+import BrowsePage from '../../client/components/Browse';
 
 const Browse = () => (
   <div>

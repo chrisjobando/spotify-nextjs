@@ -5,9 +5,6 @@ import { parseCookies } from 'nookies';
 // API
 import { getUser } from '../client/actions/api';
 
-// Components
-import Home from '../client/components/Home/Home';
-
 const Index = props => {
   const { authorization } = props;
   const [authorized, setAuthorized] = useState('');
@@ -22,10 +19,10 @@ const Index = props => {
     // Apparently Webpack doesn't allow you to push to "/"
     // so I am "cheating" and pushing to index,
     // then cleaning up the url here
-    Router.replace('/index', '/');
+    Router.push('/app');
   }, []);
 
-  return <div>{authorized !== '' && <Home />}</div>;
+  return <div></div>;
 };
 
 Index.getInitialProps = ctx => {

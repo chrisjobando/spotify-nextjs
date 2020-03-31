@@ -1,10 +1,10 @@
 // Card Components
-import PlaylistCard from '../client/components/Playlist/PlaylistCard';
+import PlaylistCard from '../Playlist/PlaylistCard';
 
 //Styling
 import classes from './profile.module.scss';
 
-const ProfilePage = () => {
+const Profile = () => {
   return (
     <div className={classes.ProfilePage}>
       <div className={classes.ProfileHead}>
@@ -28,4 +28,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default Profile;
