@@ -5,11 +5,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 82px;
-  background-image: $blue-gradient;
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: auto 1000px;
+  z-index: 999;
 
   .MenuIcon {
     height: 22px;
@@ -19,12 +15,11 @@
 }
 
 .NavMenu {
-  background: $blue-gradient;
   height: 100vh;
-  margin-top: -90px;
+  margin-top: -87px;
+  background: $dark-blue;
   display: flex;
   justify-content: center;
-  z-index: 999;
 
   .NavLinks {
     display: flex;

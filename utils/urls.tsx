@@ -26,5 +26,6 @@ export default {
     auth: () => `/api/auth`,
     findUser: () => `/api/find-user`,
     createUser: () => `/api/create-user`,
+    updateUser: () => `/api/update-user`,
   },
 };

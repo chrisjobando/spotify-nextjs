@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import PlayerContext from '../PlayerContext';
 
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -20,7 +21,7 @@ import {
 // Styling
 import classes from './player.module.scss';
 
-export const MiniPlayer = ({ onClick }) => {
+const MiniPlayer = ({ onClick }) => {
   const [isPlay, setPlay] = useState(false);
 
   return (
@@ -56,7 +57,7 @@ export const MiniPlayer = ({ onClick }) => {
   );
 };
 
-export const BigPlayer = ({ onClick }) => {
+const BigPlayer = ({ onClick }) => {
   const [isPlay, setPlay] = useState(false);
 
   return (
@@ -106,5 +107,24 @@ export const BigPlayer = ({ onClick }) => {
         </div>
       </div>
     </div>
+  );
+};
+
+export default () => {
+  const { playerState, setPlayerState } = useContext(PlayerContext);
+
+  return (
+    <>
+      {(() => {
+        switch (playerState) {
+          case 1:
+            return <MiniPlayer onClick={() => setPlayerState(2)} />;
+          case 2:
+            return <BigPlayer onClick={() => setPlayerState(1)} />;
+          default:
+            return <div />;
+        }
+      })()}
+    </>
   );
 };

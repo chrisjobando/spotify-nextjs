@@ -4,8 +4,8 @@ import urls from '../../utils/urls';
 
 const prod = process.env.NODE_ENV === 'production';
 
-export const createUser = async code => {
-  const tokens = await fetch(urls.tokenUrl, {
+const getTokens = code => {
+  return fetch(urls.tokenUrl, {
     method: 'post',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -27,8 +27,34 @@ export const createUser = async code => {
     .then(json => {
       return json;
     });
+};
 
-  const { access_token, refresh_token } = tokens;
+const refreshTokens = token => {
+  return fetch(urls.tokenUrl, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization:
+        'Basic ' +
+        new Buffer(
+          process.env.SPOTIFY_CLIENT_ID +
+            ':' +
+            process.env.SPOTIFY_CLIENT_SECRET
+        ).toString('base64'),
+    },
+    body: querystring.stringify({
+      refresh_token: token,
+      grant_type: 'refresh_token',
+    }),
+  })
+    .then(response => response.json())
+    .then(json => {
+      return json.access_token;
+    });
+};
+
+export const createUser = async code => {
+  const { access_token, refresh_token } = await getTokens(code);
 
   return fetch(urls.api.createUser(), {
     method: 'post',
@@ -58,8 +84,8 @@ export const createUser = async code => {
     });
 };
 
-export const getUser = authorization => {
-  return fetch(urls.api.findUser(), {
+export const getUser = async authorization => {
+  const { id, refresh } = await fetch(urls.api.findUser(), {
     method: 'post',
     mode: 'same-origin',
     credentials: 'include',
@@ -77,8 +103,31 @@ export const getUser = authorization => {
       } else if (!json.success) {
         console.log('User must sign in');
       }
+      return { id: json.authorization, refresh: json.refresh };
+    });
 
-      return json.authorization;
+  const access = await refreshTokens(refresh);
+
+  return fetch(urls.api.updateUser(), {
+    method: 'post',
+    mode: 'same-origin',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      authorization,
+      access,
+    }),
+  })
+    .then(response => response.json())
+    .then(json => {
+      if (json == null) {
+        throw new Error('Could not connect to API...');
+      } else if (!json.success) {
+        console.log('User not updated');
+      }
+      return json;
     });
 };
 
@@ -87,3 +136,5 @@ export const auth = () => {
     .then(res => res.json())
     .then(res => (window.location.href = res.url));
 };
+
+export const getPlayback = () => {};

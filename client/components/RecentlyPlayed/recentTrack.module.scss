@@ -13,6 +13,7 @@
 
   .TrackName,
   .TrackArtist {
+    margin-bottom: 0;
     font-size: 10px;
     line-height: 15px;
     text-align: center;
@@ -26,6 +27,7 @@
   }
 
   .TrackArtist {
+    margin-top: 0;
     font-weight: lighter;
   }
 }

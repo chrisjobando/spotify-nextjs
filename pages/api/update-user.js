@@ -1,12 +1,10 @@
-import { createId } from '../../server/mongodb/actions/User';
+import { updateToken } from '../../server/mongodb/actions/User';
 
 const handler = (req, res) =>
-  createId(req.body.tokens)
+  updateToken(req.body.authorization, req.body.access)
     .then(user => {
       res.status(200).json({
         success: true,
-        authorization: user._id,
-        access: user.access,
       });
     })
     .catch(err =>

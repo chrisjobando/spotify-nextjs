@@ -2,10 +2,11 @@ import { findById } from '../../server/mongodb/actions/User';
 
 const handler = (req, res) =>
   findById(req.body.authorization)
-    .then(authorization => {
+    .then(user => {
       res.status(200).json({
         success: true,
-        authorization: authorization,
+        authorization: user._id,
+        refresh: user.refresh,
       });
     })
     .catch(err =>

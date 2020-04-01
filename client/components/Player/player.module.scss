@@ -12,7 +12,7 @@
   padding: 15px 20px;
   border-radius: 15px 15px 0px 0px;
   display: flex;
-  z-index: 2;
+  z-index: 5;
 
   .AlbumPic {
     width: 40px;
@@ -31,6 +31,7 @@
     .SongArtist {
       font-size: 12px;
       line-height: 18px;
+      margin: 0;
     }
 
     .SongArtist {
@@ -45,6 +46,7 @@
   }
 
   .Controls {
+    margin: auto 0;
     display: flex;
 
     .Skip {
@@ -75,7 +77,7 @@
   flex-direction: column;
   text-align: center;
   color: $dark-blue;
-  z-index: 2;
+  z-index: 5;
 
   .Toggle {
     margin: 0 auto;
@@ -95,6 +97,7 @@
     }
 
     .UriName {
+      margin: 0;
       font-size: 18px;
       line-height: 27px;
       text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -119,24 +122,27 @@
   .SongArtist {
     font-size: 22px;
     line-height: 33px;
+    margin: 0;
   }
 
   .SongArtist {
-    margin-bottom: 15px;
     font-weight: lighter;
   }
 
   .Controls {
+    margin-top: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
 
     .Skip {
       height: 25px;
+      width: 25px;
     }
 
     .Play {
       width: 70px;
+      height: 70px;
       margin: 0 30px;
     }
   }
