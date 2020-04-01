@@ -4,6 +4,7 @@ export default {
   baseUrl: prod ? 'https://obando-spotify.now.sh' : 'http://localhost:3000',
   dbUrl: process.env.MONGO_URL,
   tokenUrl: 'https://accounts.spotify.com/api/token',
+  apiUrlL: 'https://api.spotify.com/v1',
   redirectUri: prod
     ? 'https://obando-spotify.now.sh/login'
     : 'http://localhost:3000/login',
