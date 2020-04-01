@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 // import PlayerContext from '../../client/components/PlayerContext';
 
 // API Call
-import { getCurrentPlayback } from '../../client/actions/spotify';
+// import { getCurrentPlayback } from '../../client/actions/spotify';
 
 // Components
 import Home from '../../client/components/Home';

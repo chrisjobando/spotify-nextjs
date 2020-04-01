@@ -1,4 +1,4 @@
-import { spotifyApi } from '../../server/spotifyWrapper';
+import spotifyApi from '../../server/spotifyWrapper';
 
 const handler = (req, res) => {
   const scopesArray = ['user-read-private'];
