@@ -5,6 +5,7 @@ const handler = (req, res) =>
     .then(user => {
       res.status(200).json({
         success: true,
+        user,
       });
     })
     .catch(err =>

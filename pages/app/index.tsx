@@ -1,27 +1,41 @@
 import React, { useEffect, useContext } from 'react';
-// import PlayerContext from '../../client/components/PlayerContext';
+import { parseCookies } from 'nookies';
 
-// API Call
-// import { getCurrentPlayback } from '../../client/actions/spotify';
+// Modify Player Context
+import PlayerContext from '../../client/components/PlayerContext';
+
+// API Calls
+import { getUser } from '../../client/actions/api';
+import { getCurrentPlayback } from '../../client/actions/spotify';
 
 // Components
 import Home from '../../client/components/Home';
 
-const App = () => {
-  // const { setPlayerState } = useContext(PlayerContext);
+const App = props => {
+  const { authorization } = props;
+  const { setPlayerState, setPlayerInfo } = useContext(PlayerContext);
 
   useEffect(() => {
-    // setPlayerState(1);
-    // const getPlayback = async () => {
-    //   const playback = await getCurrentPlayback(token);
-    // };
+    const getPlayerData = () => {
+      const user = getUser(authorization).then(res =>
+        getCurrentPlayback(res.user.access).then(res => {
+          if (res) {
+            setPlayerState(1);
+            setPlayerInfo(res);
+          }
+        })
+      );
+    };
 
-    // getPlayback();
-
-    console.log('loaded');
+    getPlayerData();
   }, []);
 
   return <Home />;
+};
+
+App.getInitialProps = ctx => {
+  const { authorization } = parseCookies(ctx);
+  return { authorization };
 };
 
 export default App;

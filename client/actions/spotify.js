@@ -2,8 +2,8 @@ import fetch from 'isomorphic-unfetch';
 import urls from '../../utils/urls';
 
 export const getCurrentPlayback = token => {
-  return fetch(urls.apiUrl + '/me/player', {
-    method: 'post',
+  return fetch(urls.apiUrl + '/me/player/currently-playing', {
+    method: 'get',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       Authorization: 'Bearer ' + token,

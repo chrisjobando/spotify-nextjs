@@ -20,10 +20,15 @@ import '../public/style.scss';
 class MyApp extends App {
   state = {
     playerState: 0,
+    playerInfo: null,
   };
 
   setPlayerState = (playerState: number) => {
     this.setState({ playerState });
+  };
+
+  setPlayerInfo = (playerInfo: object | null) => {
+    this.setState({ playerInfo });
   };
 
   render() {
@@ -37,6 +42,8 @@ class MyApp extends App {
           value={{
             playerState: this.state.playerState,
             setPlayerState: this.setPlayerState,
+            playerInfo: this.state.playerInfo,
+            setPlayerInfo: this.setPlayerInfo,
           }}
         >
           <div className="App">

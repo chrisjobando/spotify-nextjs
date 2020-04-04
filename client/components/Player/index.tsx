@@ -1,5 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import PlayerContext from '../PlayerContext';
+
+// Interfaces
+import { SongObject } from '../SpotifyObjectInterfaces';
 
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,16 +24,34 @@ import {
 // Styling
 import classes from './player.module.scss';
 
-const MiniPlayer = ({ onClick }) => {
-  const [isPlay, setPlay] = useState(false);
+const MiniPlayer = props => {
+  const { onClick, info } = props;
+  const [isPlay, setPlay] = useState<boolean>(false);
+  const [songData, setSongData] = useState<SongObject | null>(null);
+
+  useEffect(() => {
+    if (info) {
+      setPlay(info.is_playing);
+      setSongData(info.item);
+    }
+  }, [info]);
 
   return (
     <div className={classes.MiniPlayer}>
-      <div className={classes.AlbumPic} />
-      <div className={classes.SongInfo}>
-        <h1 className={classes.SongName}>Sticky</h1>
-        <h2 className={classes.SongArtist}>Ravyn Lenae</h2>
-      </div>
+      {songData ? (
+        <>
+          <img
+            className={classes.AlbumPic}
+            src={songData.album.images[0].url}
+          />
+          <div className={classes.SongInfo}>
+            <h1 className={classes.SongName}>{songData.name}</h1>
+            <h2 className={classes.SongArtist}>{songData.artists[0].name}</h2>
+          </div>
+        </>
+      ) : (
+        <div />
+      )}
       <FontAwesomeIcon
         onClick={onClick}
         icon={faChevronUp}
@@ -41,13 +62,13 @@ const MiniPlayer = ({ onClick }) => {
         {isPlay ? (
           <FontAwesomeIcon
             onClick={() => setPlay(false)}
-            icon={faPlay}
+            icon={faPause}
             className={classes.Play}
           />
         ) : (
           <FontAwesomeIcon
             onClick={() => setPlay(true)}
-            icon={faPause}
+            icon={faPlay}
             className={classes.Play}
           />
         )}
@@ -57,8 +78,17 @@ const MiniPlayer = ({ onClick }) => {
   );
 };
 
-const BigPlayer = ({ onClick }) => {
-  const [isPlay, setPlay] = useState(false);
+const BigPlayer = props => {
+  const { onClick, info } = props;
+  const [isPlay, setPlay] = useState<boolean>(false);
+  const [songData, setSongData] = useState<SongObject | null>(null);
+
+  useEffect(() => {
+    if (info) {
+      setPlay(info.is_playing);
+      setSongData(info.item);
+    }
+  }, [info]);
 
   return (
     <div className={classes.BigPlayer}>
@@ -73,11 +103,20 @@ const BigPlayer = ({ onClick }) => {
         <FontAwesomeIcon icon={faPlus} className={classes.Update} />
       </div>
       <div className={classes.PlayerContent}>
-        <div className={classes.AlbumPic} />
-        <div className="SongInfo">
-          <h1 className={classes.SongName}>ABQ</h1>
-          <h2 className={classes.SongArtist}>The Marias</h2>
-        </div>
+        {songData ? (
+          <>
+            <img
+              className={classes.AlbumPic}
+              src={songData.album.images[0].url}
+            />
+            <div className={classes.SongInfo}>
+              <h1 className={classes.SongName}>{songData.name}</h1>
+              <h2 className={classes.SongArtist}>{songData.artists[0].name}</h2>
+            </div>
+          </>
+        ) : (
+          <div />
+        )}
         <div className={classes.Controls}>
           <FontAwesomeIcon
             icon={faRandom}
@@ -88,13 +127,13 @@ const BigPlayer = ({ onClick }) => {
           {isPlay ? (
             <FontAwesomeIcon
               onClick={() => setPlay(false)}
-              icon={faPlayCircle}
+              icon={faPauseCircle}
               className={classes.Play}
             />
           ) : (
             <FontAwesomeIcon
               onClick={() => setPlay(true)}
-              icon={faPauseCircle}
+              icon={faPlayCircle}
               className={classes.Play}
             />
           )}
@@ -111,16 +150,20 @@ const BigPlayer = ({ onClick }) => {
 };
 
 export default () => {
-  const { playerState, setPlayerState } = useContext(PlayerContext);
+  const { playerState, setPlayerState, playerInfo } = useContext(PlayerContext);
 
   return (
     <>
       {(() => {
         switch (playerState) {
           case 1:
-            return <MiniPlayer onClick={() => setPlayerState(2)} />;
+            return (
+              <MiniPlayer onClick={() => setPlayerState(2)} info={playerInfo} />
+            );
           case 2:
-            return <BigPlayer onClick={() => setPlayerState(1)} />;
+            return (
+              <BigPlayer onClick={() => setPlayerState(1)} info={playerInfo} />
+            );
           default:
             return <div />;
         }
