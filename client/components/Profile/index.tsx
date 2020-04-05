@@ -12,8 +12,7 @@ const Profile = () => {
         <h1 className={classes.ProfileName}>Chris Obando</h1>
       </div>
       <h1 className={classes.ProfileHeader}>playlists.</h1>
-      <div className={classes.PlaylistDeck}>
-      </div>
+      <div className={classes.PlaylistDeck}></div>
     </div>
   );
 };

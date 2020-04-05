@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 import urls from '../../utils/urls';
 
-export default () => {
-  // if (mongoose.connections[0].readyState) return;
+export default async () => {
+  if (mongoose.connections[0].readyState) return;
 
-  return mongoose
+  await mongoose
     .connect(urls.dbUrl, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
