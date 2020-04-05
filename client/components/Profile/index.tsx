@@ -34,7 +34,7 @@ const Profile = () => {
         )}
         <h1 className={classes.ProfileName}>{userInfo.display_name}</h1>
       </div>
-      <h1 className={classes.ProfileHeader}>playlists.</h1>
+      <h1 className={classes.ProfileHeader}>Playlists.</h1>
       <div className={classes.PlaylistDeck}>
         {playlists.map(item => (
           <PlaylistCard key={item.id} playlist={item} />

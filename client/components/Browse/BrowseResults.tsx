@@ -52,17 +52,17 @@ const Playlist = props => {
 
 const BrowseResults = () => (
   <div className={classes.BrowseResults}>
-    <h1 className={classes.ResultsHeader}>songs.</h1>
+    <h1 className={classes.ResultsHeader}>Songs</h1>
     <Song title="Fly Me To The Moon (In Other Words)" artist="Frank Sinatra" />
     <Song title="That's Life" artist="Frank Sinatra" />
     <Song title="My Way" artist="Frank Sinatra" />
     <Song title="Come Fly With Me" artist="Frank Sinatra" />
     <Song title="Frank Sinatra" artist="Cake" />
-    <h1 className={classes.ResultsHeader}>artists.</h1>
+    <h1 className={classes.ResultsHeader}>Artists</h1>
     <Artist artistName="Frank Sinatra" />
     <Artist artistName="Frank Sinatra Jr." />
     <Artist artistName="Frank Sinatra and Tommy Dorsey" />
-    <h1 className={classes.ResultsHeader}>albums.</h1>
+    <h1 className={classes.ResultsHeader}>Albums</h1>
     <Album
       albumName="Frank Sinatra: The Complete Collection"
       albumYear="1996"
@@ -75,7 +75,7 @@ const BrowseResults = () => (
       albumName="Frank Sinatra: The Complete Collection"
       albumYear="1996"
     />
-    <h1 className={classes.ResultsHeader}>playlists.</h1>
+    <h1 className={classes.ResultsHeader}>Playlists</h1>
     <Playlist playlistName="drivey" numTracks={12} />
     <Playlist playlistName="drivey" numTracks={12} />
     <Playlist playlistName="drivey" numTracks={12} />
