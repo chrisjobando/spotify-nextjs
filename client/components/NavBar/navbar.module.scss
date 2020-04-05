@@ -1,4 +1,4 @@
-@import '../../../public/colors.scss';
+@import '../../../public/colors';
 
 .NavBar {
   position: fixed;
@@ -17,7 +17,7 @@
 .NavMenu {
   height: 100vh;
   margin-top: -87px;
-  background: $dark-blue;
+  background: $background;
   display: flex;
   justify-content: center;
 
@@ -30,7 +30,7 @@
     font-size: 32px;
     line-height: 48px;
     text-decoration: none;
-    color: $off-white;
+    color: $text;
 
     .Link {
       margin-bottom: 60px;
@@ -39,11 +39,11 @@
         cursor: pointer;
 
         &:visited {
-          color: $off-white;
+          color: $text;
         }
 
         &:hover {
-          color: $green;
+          color: $text;
         }
       }
 

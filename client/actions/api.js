@@ -85,7 +85,7 @@ export const createUser = async code => {
 };
 
 export const getUser = async authorization => {
-  const { id, refresh } = await fetch(urls.api.findUser(), {
+  const { refresh } = await fetch(urls.api.findUser(), {
     method: 'post',
     mode: 'same-origin',
     credentials: 'include',
@@ -101,14 +101,14 @@ export const getUser = async authorization => {
       if (json == null) {
         throw new Error('Could not connect to API...');
       } else if (!json.success) {
-        console.log('User must sign in');
+        return {};
       }
-      return { id: json.authorization, refresh: json.refresh };
+      return { refresh: json.refresh };
     });
 
   const access = await refreshTokens(refresh);
 
-  return fetch(urls.api.updateUser(), {
+  return await fetch(urls.api.updateUser(), {
     method: 'post',
     mode: 'same-origin',
     credentials: 'include',
@@ -124,9 +124,8 @@ export const getUser = async authorization => {
     .then(json => {
       if (json == null) {
         throw new Error('Could not connect to API...');
-      } else if (!json.success) {
-        console.log('User not updated');
       }
+      
       return json;
     });
 };
@@ -136,5 +135,3 @@ export const auth = () => {
     .then(res => res.json())
     .then(res => (window.location.href = res.url));
 };
-
-export const getPlayback = () => {};

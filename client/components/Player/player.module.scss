@@ -1,53 +1,66 @@
-@import '../../../public/colors.scss';
+@import '../../../public/colors';
 
 .MiniPlayer {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  background: $green;
-  color: $dark-blue;
-  height: 70px;
+  background: $text;
+  color: $background;
+  height: 72px;
   box-sizing: border-box;
-  padding: 15px 20px;
   border-radius: 15px 15px 0px 0px;
+  padding: 15px 20px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 5;
 
-  .AlbumPic {
-    width: 40px;
-    height: 40px;
-    background: #c4c4c4;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    margin-right: 10px;
-  }
-
-  .SongInfo {
+  .PlayerFront {
     display: flex;
-    flex-direction: column;
+    width: 42.5%;
 
-    .SongName,
-    .SongArtist {
-      font-size: 12px;
-      line-height: 18px;
-      margin: 0;
+    .AlbumPic {
+      width: 40px;
+      height: 40px;
+      background: #c4c4c4;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 5px;
+      margin-right: 10px;
     }
 
-    .SongArtist {
-      font-weight: lighter;
+    .SongInfo {
+      white-space: nowrap;
+      min-width: 0;
+
+      .SongName,
+      .SongArtist {
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        font-size: 12px;
+        line-height: 18px;
+        margin: 0;
+      }
+
+      .SongArtist {
+        font-weight: lighter;
+      }
     }
   }
 
   .Toggle {
-    margin: 0 auto;
+    width: 5%;
     height: 18px;
+    margin: 0 auto auto auto;
     cursor: pointer;
   }
 
   .Controls {
-    margin: auto 0;
+    width: 42.5%;
     display: flex;
+    align-items: center;
+    justify-content: flex-end;
 
     .Skip {
       width: 16px;
@@ -67,16 +80,15 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  background: $green;
   height: calc(100% - 82px);
   box-sizing: border-box;
-  padding: 42px 36px;
-  padding-top: 16px;
+  padding: 16px 36px;
   border-radius: 15px 15px 0px 0px;
   display: flex;
   flex-direction: column;
+  background: $text;
+  color: $background;
   text-align: center;
-  color: $dark-blue;
   z-index: 5;
 
   .Toggle {
@@ -89,8 +101,8 @@
   .TopControls {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 30px;
+    justify-content: space-around;
+    margin-bottom: 20px;
 
     .Update {
       height: 25px;
@@ -105,7 +117,7 @@
   }
 
   .PlayerContent {
-    margin: auto 0;
+    margin-bottom: auto;
   }
 
   .AlbumPic {
@@ -123,6 +135,9 @@
     font-size: 22px;
     line-height: 33px;
     margin: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   .SongArtist {

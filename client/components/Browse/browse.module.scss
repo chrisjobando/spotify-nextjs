@@ -1,5 +1,5 @@
-@import '../../../public/colors.scss';
-@import '../../../public/fonts.scss';
+@import '../../../public/colors';
+@import '../../../public/fonts';
 
 .BrowseContent {
   margin: 0 30px;
@@ -16,9 +16,9 @@
       margin-left: 12px;
       font-family: $font;
       background: transparent;
-      color: $off-white;
+      color: $text;
       border: none;
-      border-bottom: 2px solid $off-white;
+      border-bottom: 2px solid $text;
       width: 80%;
       max-width: 500px;
     }

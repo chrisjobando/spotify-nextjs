@@ -2,9 +2,11 @@ import { createContext } from 'react';
 
 interface AppContextInterface {
   playerState: number;
-  playerInfo: object | null;
+  playerInfo: any | null;
+  spotifyAccess: string;
   setPlayerState: (playerState: number) => void;
-  setPlayerInfo: (playerInfo: object | null) => void;
+  setPlayerInfo: (playerInfo: any | null) => void;
+  setSpotifyAccess: (spotifyAccess: string) => void;
 }
 
 const PlayerContext = createContext<AppContextInterface | null>(null);

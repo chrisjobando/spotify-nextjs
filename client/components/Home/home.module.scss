@@ -1,4 +1,4 @@
-@import '../../../public/colors.scss';
+@import '../../../public/colors';
 
 .Home {
   display: flex;
@@ -19,7 +19,7 @@
     align-self: flex-start;
 
     &:hover {
-      color: $green;
+      color: $text;
     }
   }
 

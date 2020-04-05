@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import Link from 'next/link';
 
 // Card Components
@@ -8,50 +8,62 @@ import PlaylistCard from '../Playlist/PlaylistCard';
 // Styling
 import classes from './home.module.scss';
 
-const Home = () => (
-  <div className={classes.Home}>
-    <h1 className={classes.Header}>recently played.</h1>
-    <div className={classes.RecentTrackWheel}>
-      <RecentTrack />
-      <RecentTrack />
-      <RecentTrack />
-      <RecentTrack />
-      <RecentTrack />
-      <RecentTrack />
-      <RecentTrack />
-      <RecentTrack />
-      <RecentTrack />
-      <RecentTrack />
+// Global Context
+import PlayerContext from '../PlayerContext';
+
+// API Calls
+import { recentlyPlayed, userPlaylists } from '../../actions/spotify';
+
+const Home = () => {
+  const { spotifyAccess } = useContext(PlayerContext);
+  const [recents, setRecents] = useState([]);
+  const [playlists, setPlaylists] = useState([]);
+
+  useEffect(() => {
+    recentlyPlayed(spotifyAccess).then(res => {
+      if (res) {
+        setRecents(res);
+      }
+    });
+
+    userPlaylists(spotifyAccess).then(res => {
+      if (res) {
+        setPlaylists(res);
+      }
+    });
+  }, []);
+
+  return (
+    <div className={classes.Home}>
+      <h1 className={classes.Header}>Recently Played</h1>
+      <div className={classes.RecentTrackWheel}>
+        {recents.map(item => (
+          <RecentTrack key={item.played_at} track={item.track} />
+        ))}
+      </div>
+      <Link href="/profile">
+        <p className={`${classes.Header} ${classes.HeaderLink}`}>Playlists</p>
+      </Link>
+      <div className={classes.PlaylistWheel}>
+        {playlists.map(item => (
+          <PlaylistCard key={item.played_at} playlist={item} />
+        ))}
+      </div>
+      <Link href="/toptracks">
+        <p className={`${classes.Header} ${classes.HeaderLink2}`}>
+          Top Tracks >
+        </p>
+      </Link>
+      <Link href="/topartists">
+        <p className={`${classes.Header} ${classes.HeaderLink2}`}>
+          Top Artists >
+        </p>
+      </Link>
+      <Link href="/suggested">
+        <p className={`${classes.Header} ${classes.HeaderLink}`}>Suggested ></p>
+      </Link>
     </div>
-    <Link href="/profile">
-      <p className={`${classes.Header} ${classes.HeaderLink}`}>playlists. ></p>
-    </Link>
-    <div className={classes.PlaylistWheel}>
-      <PlaylistCard />
-      <PlaylistCard />
-      <PlaylistCard />
-      <PlaylistCard />
-      <PlaylistCard />
-      <PlaylistCard />
-      <PlaylistCard />
-      <PlaylistCard />
-      <PlaylistCard />
-      <PlaylistCard />
-    </div>
-    <Link href="/toptracks">
-      <p className={`${classes.Header} ${classes.HeaderLink2}`}>
-        top tracks. >
-      </p>
-    </Link>
-    <Link href="/topartists">
-      <p className={`${classes.Header} ${classes.HeaderLink2}`}>
-        top artists. >
-      </p>
-    </Link>
-    <Link href="/suggested">
-      <p className={`${classes.Header} ${classes.HeaderLink}`}>suggested. ></p>
-    </Link>
-  </div>
-);
+  );
+};
 
 export default Home;

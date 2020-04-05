@@ -1,5 +1,5 @@
-@import '../public/colors.scss';
-@import '../public/fonts.scss';
+@import '../public/colors';
+@import '../public/fonts';
 
 html,
 body,
@@ -8,8 +8,8 @@ body,
   margin: 0;
   padding: 0;
   position: relative;
-  background: $dark-blue;
-  color: $off-white;
+  background: $background;
+  color: $text;
   overflow-y: auto;
   font-family: $font;
 

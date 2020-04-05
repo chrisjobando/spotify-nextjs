@@ -36,7 +36,7 @@ const Login = props => {
     <div className={classes.Login}>
       <SpotifyIcon {...spotifyIconProps} />
       <div className={classes.Button} onClick={handleLogin}>
-        sign in.
+        Sign In
       </div>
     </div>
   );

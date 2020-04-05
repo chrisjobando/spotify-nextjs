@@ -19,15 +19,20 @@ import '../public/style.scss';
 
 class MyApp extends App {
   state = {
+    spotifyAccess: '',
     playerState: 0,
     playerInfo: null,
+  };
+
+  setSpotifyAccess = (spotifyAccess: string) => {
+    this.setState({ spotifyAccess });
   };
 
   setPlayerState = (playerState: number) => {
     this.setState({ playerState });
   };
 
-  setPlayerInfo = (playerInfo: object | null) => {
+  setPlayerInfo = (playerInfo: any | null) => {
     this.setState({ playerInfo });
   };
 
@@ -40,6 +45,8 @@ class MyApp extends App {
         </Head>
         <PlayerContext.Provider
           value={{
+            spotifyAccess: this.state.spotifyAccess,
+            setSpotifyAccess: this.setSpotifyAccess,
             playerState: this.state.playerState,
             setPlayerState: this.setPlayerState,
             playerInfo: this.state.playerInfo,

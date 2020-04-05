@@ -5,7 +5,6 @@ const handler = (req, res) =>
     .then(user => {
       res.status(200).json({
         success: true,
-        authorization: user._id,
         refresh: user.refresh,
       });
     })
