@@ -1,6 +1,11 @@
 @import '../../../public/colors';
 
 .NavBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 30px;
   position: fixed;
   top: 0;
   left: 0;
@@ -9,17 +14,21 @@
 
   .MenuIcon {
     height: 22px;
-    margin: 30px;
     cursor: pointer;
   }
 }
 
 .NavMenu {
   height: 100vh;
-  margin-top: -87px;
+  width: 100%;
   background: $background;
   display: flex;
   justify-content: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 998;
 
   .NavLinks {
     display: flex;

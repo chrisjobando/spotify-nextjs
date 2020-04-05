@@ -9,13 +9,13 @@ import PlaylistCard from '../Playlist/PlaylistCard';
 import classes from './home.module.scss';
 
 // Global Context
-import PlayerContext from '../PlayerContext';
+import SpotifyContext from '../SpotifyContext';
 
 // API Calls
 import { recentlyPlayed, userPlaylists } from '../../actions/spotify';
 
 const Home = () => {
-  const { spotifyAccess } = useContext(PlayerContext);
+  const { spotifyAccess } = useContext(SpotifyContext);
   const [recents, setRecents] = useState([]);
   const [playlists, setPlaylists] = useState([]);
 
@@ -38,7 +38,7 @@ const Home = () => {
       <h1 className={classes.Header}>Recently Played</h1>
       <div className={classes.RecentTrackWheel}>
         {recents.map(item => (
-          <RecentTrack key={item.played_at} track={item.track} />
+          <RecentTrack key={item.id} track={item.track} />
         ))}
       </div>
       <Link href="/profile">
@@ -46,7 +46,7 @@ const Home = () => {
       </Link>
       <div className={classes.PlaylistWheel}>
         {playlists.map(item => (
-          <PlaylistCard key={item.played_at} playlist={item} />
+          <PlaylistCard key={item.id} playlist={item} />
         ))}
       </div>
       <Link href="/toptracks">

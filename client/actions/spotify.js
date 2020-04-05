@@ -1,6 +1,20 @@
 import fetch from 'isomorphic-unfetch';
 import urls from '../../utils/urls';
 
+export const getUserProfile = token => {
+  return fetch(urls.apiUrl + '/me/', {
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: 'Bearer ' + token,
+    },
+  })
+    .then(response => response.json())
+    .then(json => {
+      return json;
+    });
+};
+
 export const getCurrentPlayback = token => {
   return fetch(urls.apiUrl + '/me/player/', {
     method: 'get',

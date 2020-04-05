@@ -2,7 +2,7 @@ import React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
 
-import PlayerContext from '../client/components/PlayerContext';
+import SpotifyContext from '../client/components/SpotifyContext';
 
 // NavBar
 import NavBar from '../client/components/NavBar/NavBar';
@@ -22,6 +22,7 @@ class MyApp extends App {
     spotifyAccess: '',
     playerState: 0,
     playerInfo: null,
+    userInfo: null,
   };
 
   setSpotifyAccess = (spotifyAccess: string) => {
@@ -36,14 +37,18 @@ class MyApp extends App {
     this.setState({ playerInfo });
   };
 
+  setUserInfo = (userInfo: any | null) => {
+    this.setState({ userInfo });
+  };
+
   render() {
     const { Component, pageProps, router } = this.props;
     return (
       <>
         <Head>
-          <title>spotify app.</title>
+          <title>Spotify App</title>
         </Head>
-        <PlayerContext.Provider
+        <SpotifyContext.Provider
           value={{
             spotifyAccess: this.state.spotifyAccess,
             setSpotifyAccess: this.setSpotifyAccess,
@@ -51,6 +56,8 @@ class MyApp extends App {
             setPlayerState: this.setPlayerState,
             playerInfo: this.state.playerInfo,
             setPlayerInfo: this.setPlayerInfo,
+            userInfo: this.state.userInfo,
+            setUserInfo: this.setUserInfo,
           }}
         >
           <div className="App">
@@ -58,7 +65,7 @@ class MyApp extends App {
           </div>
           {['/app'].some(route => router.asPath.includes(route)) && <NavBar />}
           <Player />
-        </PlayerContext.Provider>
+        </SpotifyContext.Provider>
       </>
     );
   }

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Router from 'next/router';
-import PlayerContext from '../PlayerContext';
+import SpotifyContext from '../SpotifyContext';
 
 // Interfaces
 import { SongObject } from '../SpotifyObjectInterfaces';
@@ -18,7 +18,7 @@ export default () => {
     spotifyAccess,
     playerState,
     setPlayerState,
-  } = useContext(PlayerContext);
+  } = useContext(SpotifyContext);
 
   useEffect(() => {
     if (spotifyAccess === '') {

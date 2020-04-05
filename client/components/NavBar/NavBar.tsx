@@ -14,24 +14,27 @@ const NavBar = () => {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <div className={classes.NavBar}>
-      {isOpen ? (
-        <>
+    <>
+      <div className={classes.NavBar}>
+        {isOpen ? (
+          <>
+            <FontAwesomeIcon
+              onClick={() => setOpen(!isOpen)}
+              icon={faTimes}
+              className={classes.MenuIcon}
+            />
+          </>
+        ) : (
           <FontAwesomeIcon
             onClick={() => setOpen(!isOpen)}
-            icon={faTimes}
+            icon={faBars}
             className={classes.MenuIcon}
           />
-          <NavMenu onClick={() => setOpen(!isOpen)} />
-        </>
-      ) : (
-        <FontAwesomeIcon
-          onClick={() => setOpen(!isOpen)}
-          icon={faBars}
-          className={classes.MenuIcon}
-        />
-      )}
-    </div>
+        )}
+        <p>Sign Out</p>
+      </div>
+      {isOpen && <NavMenu onClick={() => setOpen(!isOpen)} />}
+    </>
   );
 };
 

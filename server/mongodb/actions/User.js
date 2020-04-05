@@ -3,7 +3,7 @@ import mongoDB from '../index';
 
 export async function createId(tokens) {
   await mongoDB();
-  
+
   return User.create({
     refresh: tokens.refresh_token,
     access: tokens.access_token,

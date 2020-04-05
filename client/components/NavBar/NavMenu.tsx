@@ -21,6 +21,11 @@ const NavMenu = ({ onClick }) => {
           </Link>
         </div>
         <div onClick={onClick} className={classes.Link}>
+          <Link href="/app/profile">
+            <span>Profile</span>
+          </Link>
+        </div>
+        <div onClick={onClick} className={classes.Link}>
           <Link href="/app/browse">
             <span>Browse</span>
           </Link>

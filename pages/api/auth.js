@@ -3,6 +3,7 @@ import spotifyApi from '../../server/spotifyWrapper';
 const handler = (req, res) => {
   const scopesArray = [
     'user-read-private',
+    'user-read-email',
     'user-read-currently-playing',
     'user-read-recently-played',
     'user-read-playback-state',
