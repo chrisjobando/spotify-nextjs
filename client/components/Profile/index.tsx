@@ -13,16 +13,6 @@ const Profile = () => {
       </div>
       <h1 className={classes.ProfileHeader}>playlists.</h1>
       <div className={classes.PlaylistDeck}>
-        <PlaylistCard />
-        <PlaylistCard />
-        <PlaylistCard />
-        <PlaylistCard />
-        <PlaylistCard />
-        <PlaylistCard />
-        <PlaylistCard />
-        <PlaylistCard />
-        <PlaylistCard />
-        <PlaylistCard />
       </div>
     </div>
   );

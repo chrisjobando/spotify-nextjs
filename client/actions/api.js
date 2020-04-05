@@ -125,7 +125,7 @@ export const getUser = async authorization => {
       if (json == null) {
         throw new Error('Could not connect to API...');
       }
-      
+
       return json;
     });
 };
