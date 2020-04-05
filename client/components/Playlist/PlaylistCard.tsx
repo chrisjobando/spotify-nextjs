@@ -6,7 +6,7 @@ const PlaylistCard = props => {
 
   return (
     <div className={classes.PlaylistCard}>
-      {playlist.images[0] ? (
+      {playlist && playlist.images[0] ? (
         <img className={classes.PlaylistPic} src={playlist.images[0].url} />
       ) : (
         <div className={classes.PlaylistPic} />

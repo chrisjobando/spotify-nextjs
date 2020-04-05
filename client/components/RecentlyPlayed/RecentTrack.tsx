@@ -5,7 +5,7 @@ const RecentTrack = props => {
   const { track } = props;
   return (
     <div className={classes.RecentTrack}>
-      {track.album.images[0] ? (
+      {track && track.album && track.album.images[0] ? (
         <img className={classes.TrackPic} src={track.album.images[0].url} />
       ) : (
         <div className={classes.TrackPic} />
