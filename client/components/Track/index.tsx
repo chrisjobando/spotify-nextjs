@@ -1,10 +1,10 @@
 // Styling
-import classes from './recentTrack.module.scss';
+import classes from './track.module.scss';
 
-const RecentTrack = props => {
+const Track = props => {
   const { track } = props;
   return (
-    <div className={classes.RecentTrack}>
+    <div className={classes.Track}>
       {track && track.album && track.album.images[0] ? (
         <img className={classes.TrackPic} src={track.album.images[0].url} />
       ) : (
@@ -16,4 +16,4 @@ const RecentTrack = props => {
   );
 };
 
-export default RecentTrack;
+export default Track;

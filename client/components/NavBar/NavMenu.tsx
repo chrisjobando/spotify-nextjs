@@ -32,12 +32,11 @@ const NavMenu = ({ onClick }) => {
         </Link>
       </div>
       <div onClick={onClick} className="Link">
-        <Link href="/app/browse">
+        <Link href="/">
           <span
             onClick={() => {
               destroyCookie(null, 'authorization');
               setPlayerState(0);
-              Router.push('/');
             }}
           >
             Sign Out

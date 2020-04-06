@@ -7,12 +7,7 @@ import AppContext from '../client/components/AppContext';
 
 // API
 import { getUser } from '../client/actions/api';
-import {
-  getCurrentPlayback,
-  getUserProfile,
-  getTopTracks,
-  getTopArtists,
-} from '../client/actions/spotify';
+import { getCurrentPlayback, getUserProfile } from '../client/actions/spotify';
 
 const Index = props => {
   const { authorization } = props;
@@ -21,12 +16,6 @@ const Index = props => {
     setPlayerInfo,
     setSpotifyAccess,
     setUserInfo,
-    setTopTracks,
-    setTopTracks2,
-    setTopTracks3,
-    setTopArtists,
-    setTopArtists2,
-    setTopArtists3,
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -48,42 +37,6 @@ const Index = props => {
         getUserProfile(res.user.access).then(res => {
           if (res) {
             setUserInfo(res);
-          }
-        });
-
-        getTopTracks(res.user.access, 'short_term').then(res => {
-          if (res) {
-            setTopTracks(res);
-          }
-        });
-
-        getTopTracks(res.user.access, 'medium_term').then(res => {
-          if (res) {
-            setTopTracks2(res);
-          }
-        });
-
-        getTopTracks(res.user.access, 'long_term').then(res => {
-          if (res) {
-            setTopTracks3(res);
-          }
-        });
-
-        getTopArtists(res.user.access, 'short_term').then(res => {
-          if (res) {
-            setTopArtists(res);
-          }
-        });
-
-        getTopArtists(res.user.access, 'medium_term').then(res => {
-          if (res) {
-            setTopArtists2(res);
-          }
-        });
-
-        getTopArtists(res.user.access, 'long_term').then(res => {
-          if (res) {
-            setTopArtists3(res);
           }
         });
 

@@ -170,13 +170,14 @@ export const getRecFromTracks = async (token, tracks) => {
   )
     .then(response => response.json())
     .then(json => {
-      return json.items;
+      return json.tracks;
     });
 };
 
 export const getRecFromArtists = async (token, artists) => {
   return await fetch(
-    urls.apiUrl + `/recommendations?limit=50&seed_artists=${artists}`,
+    urls.apiUrl +
+      `/recommendations?limit=50&max_popularity=50&seed_artists=${artists}`,
     {
       method: 'get',
       headers: {
@@ -187,6 +188,20 @@ export const getRecFromArtists = async (token, artists) => {
   )
     .then(response => response.json())
     .then(json => {
-      return json.items;
+      return json.tracks;
+    });
+};
+
+export const getArtist = async (token, id) => {
+  return await fetch(urls.apiUrl + `/artists/${id}`, {
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: 'Bearer ' + token,
+    },
+  })
+    .then(response => response.json())
+    .then(json => {
+      return json;
     });
 };
