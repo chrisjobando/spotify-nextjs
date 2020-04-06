@@ -10,8 +10,8 @@ const RecentTrack = props => {
       ) : (
         <div className={classes.TrackPic} />
       )}
-      <p className={classes.TrackName}>{track.name}</p>
-      <p className={classes.TrackArtist}>{track.artists[0].name}</p>
+      <h5 className={classes.TrackName}>{track.name}</h5>
+      <h5 className={classes.TrackArtist}>{track.artists[0].name}</h5>
     </div>
   );
 };

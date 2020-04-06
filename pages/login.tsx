@@ -8,11 +8,7 @@ import { auth, createUser } from '../client/actions/api';
 import SpotifyIcon from '../public/icons/SpotifyIcon';
 
 // Styling
-import classes from './login.module.scss';
-
-const spotifyIconProps = {
-  spotifyLogoStyle: classes.Logo,
-};
+import classes from '../public/styles/pages/login.module.scss';
 
 const Login = props => {
   const { query } = props;
@@ -34,10 +30,10 @@ const Login = props => {
 
   return (
     <div className={classes.Login}>
-      <SpotifyIcon {...spotifyIconProps} />
-      <div className={classes.Button} onClick={handleLogin}>
-        Sign In
-      </div>
+      <SpotifyIcon />
+      <button type="button" className={classes.Button} onClick={handleLogin}>
+        <h2>Sign In</h2>
+      </button>
     </div>
   );
 };

@@ -1,21 +1,20 @@
 import React, { useEffect, useContext, useState } from 'react';
-import Link from 'next/link';
 
 // Card Components
-import RecentTrack from '../RecentlyPlayed/RecentTrack';
-import PlaylistCard from '../Playlist/PlaylistCard';
+import RecentTrack from '../RecentTrack';
+import PlaylistCard from '../PlaylistCard';
 
 // Styling
 import classes from './home.module.scss';
 
 // Global Context
-import SpotifyContext from '../SpotifyContext';
+import AppContext from '../AppContext';
 
 // API Calls
 import { recentlyPlayed, userPlaylists } from '../../actions/spotify';
 
 const Home = () => {
-  const { spotifyAccess } = useContext(SpotifyContext);
+  const { spotifyAccess } = useContext(AppContext);
   const [recents, setRecents] = useState([]);
   const [playlists, setPlaylists] = useState([]);
 
@@ -35,33 +34,28 @@ const Home = () => {
 
   return (
     <div className={classes.Home}>
-      <h1 className={classes.Header}>Recently Played</h1>
-      <div className={classes.RecentTrackWheel}>
+      <h1 className={classes.Header} style={{ marginTop: '10px' }}>
+        Recently Played
+      </h1>
+      <div className={classes.CardWheel}>
         {recents.map(item => (
           <RecentTrack key={item.id} track={item.track} />
         ))}
       </div>
-      <Link href="/profile">
-        <p className={`${classes.Header} ${classes.HeaderLink}`}>Playlists</p>
-      </Link>
-      <div className={classes.PlaylistWheel}>
+
+      <h1 className={classes.Header}>Playlists</h1>
+      <div className={classes.CardWheel}>
         {playlists.map(item => (
           <PlaylistCard key={item.id} playlist={item} />
         ))}
       </div>
-      <Link href="/toptracks">
-        <p className={`${classes.Header} ${classes.HeaderLink2}`}>
-          Top Tracks >
-        </p>
-      </Link>
-      <Link href="/topartists">
-        <p className={`${classes.Header} ${classes.HeaderLink2}`}>
-          Top Artists >
-        </p>
-      </Link>
-      <Link href="/suggested">
-        <p className={`${classes.Header} ${classes.HeaderLink}`}>Suggested ></p>
-      </Link>
+
+      <h1 className={classes.Header}>Suggested Artists</h1>
+      <div className={classes.CardWheel}>
+        {playlists.map(item => (
+          <PlaylistCard key={item.id} playlist={item} />
+        ))}
+      </div>
     </div>
   );
 };

@@ -1,38 +1,19 @@
-@import '../../../public/colors';
-
 .Home {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
 
   .Header {
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 27px;
-    margin: 0 0 8px 30px;
+    margin-left: 30px;
+    margin-top: 40px;
   }
 
-  .HeaderLink,
-  .HeaderLink2 {
-    margin-top: 0;
-    cursor: pointer;
-    align-self: flex-start;
-
-    &:hover {
-      color: $text;
-    }
-  }
-
-  .HeaderLink2 {
-    margin-bottom: 20px;
-  }
-
-  .RecentTrackWheel,
-  .PlaylistWheel {
+  .CardWheel {
+    margin-top: 20px;
     display: flex;
     overflow-x: auto;
-    margin-bottom: 24px;
     padding: 0 30px;
+    height: 100%;
 
     div:last-child {
       border-right: 30px solid transparent;

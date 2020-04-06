@@ -4,10 +4,6 @@ import { useDebounce } from 'use-debounce';
 // Results Component
 import BrowseResults from './BrowseResults';
 
-// Icons
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-
 // Styling
 import classes from './browse.module.scss';
 
@@ -18,7 +14,6 @@ const BrowsePage = () => {
   return (
     <div className={classes.BrowseContent}>
       <div className={classes.BrowseBar}>
-        <FontAwesomeIcon icon={faSearch} className={classes.BrowseIcon} />
         <input
           placeholder="Search for a song, artist, or album"
           type="test"

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Router from 'next/router';
-import SpotifyContext from '../SpotifyContext';
+import AppContext from '../AppContext';
 
 // Interfaces
 import { SongObject } from '../SpotifyObjectInterfaces';
@@ -18,7 +18,7 @@ export default () => {
     spotifyAccess,
     playerState,
     setPlayerState,
-  } = useContext(SpotifyContext);
+  } = useContext(AppContext);
 
   useEffect(() => {
     if (spotifyAccess === '') {
@@ -35,7 +35,7 @@ export default () => {
 
   return (
     <>
-      {(() => {
+      {/* {(() => {
         switch (playerState) {
           case 1:
             return (
@@ -68,7 +68,7 @@ export default () => {
           default:
             return <div />;
         }
-      })()}
+      })()} */}
     </>
   );
 };

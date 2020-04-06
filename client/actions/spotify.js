@@ -122,3 +122,71 @@ export const userPlaylists = async token => {
       return json.items;
     });
 };
+
+export const getTopArtists = async (token, time) => {
+  return await fetch(
+    urls.apiUrl + `/me/top/artists?limit=50&time_range=${time}`,
+    {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Bearer ' + token,
+      },
+    }
+  )
+    .then(response => response.json())
+    .then(json => {
+      return json.items;
+    });
+};
+
+export const getTopTracks = async (token, time) => {
+  return await fetch(
+    urls.apiUrl + `/me/top/tracks?limit=50&time_range=${time}`,
+    {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Bearer ' + token,
+      },
+    }
+  )
+    .then(response => response.json())
+    .then(json => {
+      return json.items;
+    });
+};
+
+export const getRecFromTracks = async (token, tracks) => {
+  return await fetch(
+    urls.apiUrl + `/recommendations?limit=50&seed_tracks=${tracks}`,
+    {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Bearer ' + token,
+      },
+    }
+  )
+    .then(response => response.json())
+    .then(json => {
+      return json.items;
+    });
+};
+
+export const getRecFromArtists = async (token, artists) => {
+  return await fetch(
+    urls.apiUrl + `/recommendations?limit=50&seed_artists=${artists}`,
+    {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Bearer ' + token,
+      },
+    }
+  )
+    .then(response => response.json())
+    .then(json => {
+      return json.items;
+    });
+};

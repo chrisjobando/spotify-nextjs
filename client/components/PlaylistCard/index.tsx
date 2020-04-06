@@ -11,7 +11,8 @@ const PlaylistCard = props => {
       ) : (
         <div className={classes.PlaylistPic} />
       )}
-      <p className={classes.PlaylistName}>{playlist.name}</p>
+      <h5 className={classes.PlaylistName}>{playlist.name}</h5>
+      <h5 className={classes.TrackNumber}>{playlist.tracks.total} Tracks</h5>
     </div>
   );
 };
