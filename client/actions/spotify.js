@@ -67,6 +67,23 @@ export const playTrack = async token => {
     });
 };
 
+export const setPlaying = async (token, toPlay) => {
+  await fetch(urls.apiUrl + '/me/player/play', {
+    method: 'put',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: 'Bearer ' + token,
+    },
+    body: JSON.stringify({
+      uris: toPlay,
+    }),
+  })
+    .then(response => response.json())
+    .then(json => {
+      return json;
+    });
+};
+
 export const pauseTrack = async token => {
   await fetch(urls.apiUrl + '/me/player/pause', {
     method: 'put',
@@ -159,7 +176,8 @@ export const getTopTracks = async (token, time) => {
 
 export const getRecFromTracks = async (token, tracks) => {
   return await fetch(
-    urls.apiUrl + `/recommendations?limit=50&seed_tracks=${tracks}`,
+    urls.apiUrl +
+      `/recommendations?limit=25&max_popularity=50&seed_tracks=${tracks}`,
     {
       method: 'get',
       headers: {
@@ -177,7 +195,7 @@ export const getRecFromTracks = async (token, tracks) => {
 export const getRecFromArtists = async (token, artists) => {
   return await fetch(
     urls.apiUrl +
-      `/recommendations?limit=50&max_popularity=50&seed_artists=${artists}`,
+      `/recommendations?limit=75&max_popularity=50&seed_artists=${artists}`,
     {
       method: 'get',
       headers: {

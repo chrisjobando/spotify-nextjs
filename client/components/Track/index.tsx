@@ -1,8 +1,16 @@
+import React, { useContext } from 'react';
+import AppContext from '../AppContext';
+
+// API Calls
+import { setPlaying } from '../../actions/spotify';
+
 // Styling
 import classes from './track.module.scss';
 
 const Track = props => {
   const { track } = props;
+  const { spotifyAccess } = useContext(AppContext);
+
   return (
     <div className={classes.Track}>
       {track && track.album && track.album.images[0] ? (
@@ -10,7 +18,12 @@ const Track = props => {
       ) : (
         <div className={classes.TrackPic} />
       )}
-      <h5 className={classes.TrackName}>{track.name}</h5>
+      <h5
+        className={classes.TrackName}
+        onClick={() => setPlaying(spotifyAccess, [track.uri])}
+      >
+        {track.name}
+      </h5>
       <h5 className={classes.TrackArtist}>{track.artists[0].name}</h5>
     </div>
   );

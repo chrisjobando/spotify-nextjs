@@ -30,7 +30,12 @@ const Home = () => {
   const [playlists, setPlaylists] = useState([]);
   const [sugArtists, setSugArtists] = useState([]);
   const [sugTracks, setSugTracks] = useState([]);
-  const [loaded, setLoaded] = useState(false);
+
+  // useEffect(() => {
+  //   if (sugArtists !== []) {
+  //     console.log(sugArtists);
+  //   }
+  // });
 
   useEffect(() => {
     recentlyPlayed(spotifyAccess).then(res => {
@@ -61,16 +66,13 @@ const Home = () => {
               recArtistId.add(track.artists[0].id);
             });
 
-            let sugArtistList = [];
-
             recArtistId.forEach(id => {
               getArtist(spotifyAccess, id).then(res => {
                 if (res) {
-                  sugArtistList.push(res);
+                  setSugArtists(prevArr => [...prevArr, res]);
                 }
               });
             });
-            setSugArtists(sugArtistList);
           }
         });
       }
