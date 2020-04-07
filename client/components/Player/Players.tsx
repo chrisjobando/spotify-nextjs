@@ -41,6 +41,7 @@ export const MiniPlayer = props => {
       {songData ? (
         <div className={classes.PlayerFront}>
           <img
+            onClick={onClick}
             className={classes.AlbumPic}
             src={songData.album.images[0].url}
           />
@@ -52,11 +53,6 @@ export const MiniPlayer = props => {
       ) : (
         <div />
       )}
-      <FontAwesomeIcon
-        onClick={onClick}
-        icon={faChevronUp}
-        className={classes.Toggle}
-      />
       <div className={classes.Controls}>
         {isPlay ? (
           <FontAwesomeIcon

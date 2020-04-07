@@ -77,11 +77,7 @@ export const setPlaying = async (token, toPlay) => {
     body: JSON.stringify({
       uris: toPlay,
     }),
-  })
-    .then(response => response.json())
-    .then(json => {
-      return json;
-    });
+  });
 };
 
 export const pauseTrack = async token => {
