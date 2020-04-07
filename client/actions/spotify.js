@@ -80,6 +80,16 @@ export const setPlaying = async (token, toPlay) => {
   });
 };
 
+export const addToQueue = async (token, toQueue) => {
+  await fetch(urls.apiUrl + `/me/player/queue?uri=${toQueue}`, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: 'Bearer ' + token,
+    },
+  });
+};
+
 export const pauseTrack = async token => {
   await fetch(urls.apiUrl + '/me/player/pause', {
     method: 'put',

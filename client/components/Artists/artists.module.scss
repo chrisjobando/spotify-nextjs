@@ -2,7 +2,7 @@
 
 .ArtistCard {
   width: 120px;
-  height: 160px;
+  height: 175px;
   margin-right: 32px;
   display: flex;
   flex-direction: column;
@@ -22,8 +22,11 @@
     min-width: 0;
     margin: auto 0;
     font-weight: bold;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    /* autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: on */
     overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

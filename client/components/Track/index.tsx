@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import AppContext from '../AppContext';
 
 // API Calls
-import { setPlaying } from '../../actions/spotify';
+import { addToQueue } from '../../actions/spotify';
 
 // Styling
 import classes from './track.module.scss';
@@ -20,7 +20,7 @@ const Track = props => {
       )}
       <h5
         className={classes.TrackName}
-        onClick={() => setPlaying(spotifyAccess, [track.uri])}
+        onClick={() => addToQueue(spotifyAccess, [track.uri])}
       >
         {track.name}
       </h5>

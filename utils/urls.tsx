@@ -19,8 +19,8 @@ export default {
       toptracks: '/app/top-tracks',
       topartists: '/app/top-artists',
       suggested: '/app/suggested',
-      artist: artistId => `app/${artistId}`,
-      playlist: playlistId => `app/${playlistId}`,
+      artist: artistId => `app/artist/${artistId}`,
+      playlist: playlistId => `app/playlist/${playlistId}`,
     },
   },
   api: {
