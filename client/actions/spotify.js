@@ -219,3 +219,17 @@ export const getArtist = async (token, id) => {
       return json;
     });
 };
+
+export const getSeveralArtist = async (token, ids) => {
+  return await fetch(urls.apiUrl + `/artists?ids=${ids}`, {
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: 'Bearer ' + token,
+    },
+  })
+    .then(response => response.json())
+    .then(json => {
+      return json.artists;
+    });
+};

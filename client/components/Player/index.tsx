@@ -8,6 +8,9 @@ import { SongObject } from '../SpotifyObjectInterfaces';
 // Components
 import { MiniPlayer, BigPlayer } from './Players';
 
+// API Call
+import { getCurrentPlayback } from '../../actions/spotify';
+
 const Player = () => {
   const [isPlay, setPlay] = useState<boolean>(false);
   const [isShuffle, setShuffle] = useState<boolean | null>(null);
@@ -26,6 +29,21 @@ const Player = () => {
       Router.push('/');
     }
   }, []);
+
+  useEffect(() => {
+    if (spotifyAccess !== '') {
+      const checkPlayback = setInterval(() => {
+        getCurrentPlayback(spotifyAccess).then(res => {
+          if (res) {
+            setPlayerState(1);
+            setPlayerInfo(res);
+          }
+        });
+      }, 3000);
+
+      return () => clearInterval(checkPlayback);
+    }
+  });
 
   useEffect(() => {
     if (playerInfo) {

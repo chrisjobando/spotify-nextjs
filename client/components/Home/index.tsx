@@ -16,7 +16,7 @@ import {
   getTopArtists,
   getRecFromArtists,
   getRecFromTracks,
-  getArtist,
+  getSeveralArtist,
 } from '../../actions/spotify';
 
 // Styling
@@ -60,12 +60,11 @@ const Home = () => {
               recArtistId.add(track.artists[0].id);
             });
 
-            recArtistId.forEach(id => {
-              getArtist(spotifyAccess, id).then(res => {
-                if (res) {
-                  setSugArtists(prevArr => [...prevArr, res]);
-                }
-              });
+            artistIds = Array.from(recArtistId);
+            getSeveralArtist(spotifyAccess, artistIds).then(res => {
+              if (res) {
+                setSugArtists(res);
+              }
             });
           }
         });
