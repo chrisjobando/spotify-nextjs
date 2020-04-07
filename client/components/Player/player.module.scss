@@ -118,8 +118,12 @@
   }
 
   .PlayerContent {
+    display: flex;
+    flex-grow: 1;
+    margin-bottom: 300px;
+
     .AlbumPic {
-      margin-top: 20px;
+      margin: auto;
       width: 200px;
       height: 200px;
       background: $gray;

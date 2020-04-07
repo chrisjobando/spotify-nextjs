@@ -35,7 +35,9 @@ const Player = () => {
       const checkPlayback = setInterval(() => {
         getCurrentPlayback(spotifyAccess).then(res => {
           if (res) {
-            setPlayerState(1);
+            if (playerState === 0) {
+              setPlayerState(1);
+            }
             setPlayerInfo(res);
           }
         });

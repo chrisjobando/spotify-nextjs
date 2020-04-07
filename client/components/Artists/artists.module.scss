@@ -6,6 +6,7 @@
   margin-right: 32px;
   display: flex;
   flex-direction: column;
+  text-align: center;
 
   .ArtistPic {
     height: 120px;
@@ -18,7 +19,8 @@
   }
 
   .ArtistName {
-    margin: auto;
+    min-width: 0;
+    margin: auto 0;
     font-weight: bold;
     white-space: nowrap;
     text-overflow: ellipsis;
