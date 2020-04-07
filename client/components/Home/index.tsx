@@ -31,12 +31,6 @@ const Home = () => {
   const [sugArtists, setSugArtists] = useState([]);
   const [sugTracks, setSugTracks] = useState([]);
 
-  // useEffect(() => {
-  //   if (sugArtists !== []) {
-  //     console.log(sugArtists);
-  //   }
-  // });
-
   useEffect(() => {
     recentlyPlayed(spotifyAccess).then(res => {
       if (res) {
