@@ -1,7 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { destroyCookie } from 'nookies';
 import Link from 'next/link';
-import Router from 'next/router';
 
 // Global Context
 import AppContext from '../AppContext';

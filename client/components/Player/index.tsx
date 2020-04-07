@@ -8,14 +8,15 @@ import { SongObject } from '../SpotifyObjectInterfaces';
 // Components
 import { MiniPlayer, BigPlayer } from './Players';
 
-export default () => {
+const Player = () => {
   const [isPlay, setPlay] = useState<boolean>(false);
   const [isShuffle, setShuffle] = useState<boolean | null>(null);
   const [songData, setSongData] = useState<SongObject | null>(null);
+
   const {
-    setPlayerInfo,
-    playerInfo,
     spotifyAccess,
+    playerInfo,
+    setPlayerInfo,
     playerState,
     setPlayerState,
   } = useContext(AppContext);
@@ -35,7 +36,7 @@ export default () => {
 
   return (
     <>
-      {/* {(() => {
+      {(() => {
         switch (playerState) {
           case 1:
             return (
@@ -68,7 +69,9 @@ export default () => {
           default:
             return <div />;
         }
-      })()} */}
+      })()}
     </>
   );
 };
+
+export default Player;

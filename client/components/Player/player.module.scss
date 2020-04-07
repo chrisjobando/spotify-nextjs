@@ -1,0 +1,146 @@
+@import '../../../public/styles/colors';
+
+.MiniPlayer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: $purple;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px 15px 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 20px;
+
+  .PlayerFront {
+    display: flex;
+    align-items: center;
+
+    .AlbumPic {
+      height: 40px;
+      width: 40px;
+      background: $gray;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+        0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 100px;
+    }
+
+    .SongInfo {
+      margin-left: 10px;
+
+      .SongName {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .Toggle {
+    margin: 0 auto;
+  }
+
+  .Controls {
+    .Play {
+      width: 20px;
+      height: 20px;
+      margin-right: 16px;
+    }
+
+    .Skip {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.BigPlayer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+
+  .TopControls {
+    display: flex;
+    height: 80px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 30px;
+
+    .Toggle,
+    .Update {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .PlayerContent {
+    .AlbumPic {
+      margin-top: 20px;
+      width: 200px;
+      height: 200px;
+      background: $gray;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+        0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 100px;
+    }
+  }
+
+  .Bottom {
+    width: 100%;
+    height: 300px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: $purple;
+    border-radius: 15px 15px 0px 0px;
+    z-index: 11;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .SongInfo {
+      margin-top: 40px;
+
+      .SongName,
+      .SongArtist {
+        margin-bottom: 16px;
+      }
+    }
+
+    .Skip {
+      width: 32px;
+      height: 32px;
+    }
+
+    .Controls {
+      display: flex;
+      align-items: center;
+
+      .Play {
+        width: 70px;
+        height: 70px;
+        margin: 0 40px;
+      }
+    }
+
+    .Controls2 {
+      margin-top: 40px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      box-sizing: border-box;
+      padding: 0 30px;
+    }
+  }
+}
