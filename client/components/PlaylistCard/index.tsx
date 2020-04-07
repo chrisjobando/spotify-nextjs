@@ -14,7 +14,10 @@ const PlaylistCard = props => {
       ) : (
         <div className={classes.PlaylistPic} />
       )}
-      <Link href={`/app/playlist/${playlist.id}`}>
+      <Link
+        href="/app/playlist/[playlistid]"
+        as={`/app/playlist/${playlist.id}`}
+      >
         <h5 className={classes.PlaylistName}>{playlist.name}</h5>
       </Link>
       <h5 className={classes.TrackNumber}>{playlist.tracks.total} Tracks</h5>
