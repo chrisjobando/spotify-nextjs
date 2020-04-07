@@ -120,7 +120,9 @@
   .PlayerContent {
     display: flex;
     flex-grow: 1;
+    margin-top: -80px;
     margin-bottom: 300px;
+    z-index: 11;
 
     .AlbumPic {
       margin: auto;
