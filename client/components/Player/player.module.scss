@@ -168,10 +168,16 @@
 
     .SongInfo {
       margin-top: 40px;
+      max-width: 90%;
 
-      .SongName,
       .SongArtist {
         margin-bottom: 16px;
+      }
+
+      .SongName {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
 

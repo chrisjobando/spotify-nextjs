@@ -13,14 +13,9 @@ export default {
     login: '/login',
     app: {
       index: '/app',
-      browse: '/app/browse',
-      profile: '/app/profile',
       stats: '/app/stats',
-      toptracks: '/app/top-tracks',
-      topartists: '/app/top-artists',
-      suggested: '/app/suggested',
-      artist: artistId => `app/artist/${artistId}`,
-      playlist: playlistId => `app/playlist/${playlistId}`,
+      artist: artistId => `/app/artist/${artistId}`,
+      playlist: playlistId => `/app/playlist/${playlistId}`,
     },
   },
   api: {

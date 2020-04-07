@@ -22,7 +22,7 @@ const Track = props => {
         className={classes.TrackName}
         onClick={() => addToQueue(spotifyAccess, [track.uri])}
       >
-        {track.name}
+        <span>{track.name}</span>
       </h5>
       <h5 className={classes.TrackArtist}>{track.artists[0].name}</h5>
     </div>

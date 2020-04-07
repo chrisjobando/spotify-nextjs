@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+
 // Global Context
 import AppContext from '../../client/components/AppContext';
 
@@ -9,6 +10,7 @@ import { getTopTracks, getTopArtists } from '../../client/actions/spotify';
 import TrackCard from '../../client/components/Track';
 import ArtistCard from '../../client/components/Artists';
 
+// Page Styling
 import classes from '../../public/styles/pages/stats.module.scss';
 
 const Stats = () => {
@@ -21,10 +23,8 @@ const Stats = () => {
     topArtists2,
     topArtists3,
     setTopTracks,
-    setTopTracks2,
     setTopTracks3,
     setTopArtists,
-    setTopArtists2,
     setTopArtists3,
   } = useContext(AppContext);
 

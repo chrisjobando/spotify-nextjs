@@ -8,17 +8,17 @@ const PlaylistCard = props => {
   const { playlist } = props;
 
   return (
-    <Link href={`/app/playlist/${playlist.id}`}>
-      <div className={classes.PlaylistCard}>
-        {playlist && playlist.images[0] ? (
-          <img className={classes.PlaylistPic} src={playlist.images[0].url} />
-        ) : (
-          <div className={classes.PlaylistPic} />
-        )}
+    <div className={classes.PlaylistCard}>
+      {playlist && playlist.images[0] ? (
+        <img className={classes.PlaylistPic} src={playlist.images[0].url} />
+      ) : (
+        <div className={classes.PlaylistPic} />
+      )}
+      <Link href={`/app/playlist/${playlist.id}`}>
         <h5 className={classes.PlaylistName}>{playlist.name}</h5>
-        <h5 className={classes.TrackNumber}>{playlist.tracks.total} Tracks</h5>
-      </div>
-    </Link>
+      </Link>
+      <h5 className={classes.TrackNumber}>{playlist.tracks.total} Tracks</h5>
+    </div>
   );
 };
 

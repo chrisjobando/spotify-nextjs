@@ -24,5 +24,4 @@ interface AppContextInterface {
 }
 
 const AppContext = createContext<AppContextInterface | null>(null);
-
 export default AppContext;
