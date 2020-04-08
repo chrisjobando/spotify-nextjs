@@ -110,12 +110,18 @@ export const BigPlayer = props => {
       </div>
       <div className={classes.PlayerContent}>
         {songData ? (
-          <img
-            className={classes.AlbumPic}
-            src={songData.album.images[0].url}
-          />
+          <div className={classes.Album}>
+            <img
+              className={classes.AlbumPic}
+              src={songData.album.images[0].url}
+            />
+          </div>
         ) : (
-          <div />
+          <div className={classes.Album}>
+            <div className={classes.Cover}>
+              <div />
+            </div>
+          </div>
         )}
         <div className={classes.Bottom}>
           <div className={classes.SongInfo}>

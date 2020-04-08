@@ -69,9 +69,9 @@ const PlaylistPage = () => {
         )}
       </div>
       <div className={classes.Content}>
-        {playlistTracks.map(item => {
+        {/* {playlistTracks.map(item => {
           <MiniTrack key={item.track.id} track={item.track} />;
-        })}
+        })} */}
       </div>
       <div className={classes.BottomPadding} />
     </div>
