@@ -52,3 +52,26 @@
   background-color: $black;
   z-index: 110;
 }
+
+.NavBtn {
+  width: 100%;
+  display: flex;
+
+  @media (min-width: 700px) {
+    display: none;
+  }
+}
+
+.NavLinks {
+  display: flex;
+  width: 100%;
+
+  .Link2 {
+    cursor: pointer;
+    margin-right: 30px;
+  }
+
+  @media (max-width: 700px) {
+    display: none;
+  }
+}

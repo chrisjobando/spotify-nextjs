@@ -104,13 +104,13 @@ class MyApp extends App {
           }}
         >
           {['/app'].some(route => router.asPath.includes(route)) &&
-          ['/app/playlist', '/app/artist', '/app/album'].some(route =>
-            router.asPath.includes(route)
-          ) ? (
-            <NavBar2 />
-          ) : (
-            <NavBar />
-          )}
+            (['/app/playlist', '/app/artist', '/app/album'].some(route =>
+              router.asPath.includes(route)
+            ) ? (
+              <NavBar2 />
+            ) : (
+              <NavBar />
+            ))}
           <Component {...pageProps} />
           <Player />
         </AppContext.Provider>
