@@ -128,13 +128,17 @@
   .PlayerContent {
     display: flex;
     flex-grow: 1;
+    margin: 300px 30px;
     margin-top: -80px;
-    margin-bottom: 300px;
 
     .AlbumPic {
       margin: auto;
-      width: 315px;
-      height: 315px;
+      width: 100%;
+      max-width: 315px;
+      height: 100%;
+      max-height: 315px;
+      // width: 315px;
+      // height: 315px;
       background: $gray;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
         0px 4px 4px rgba(0, 0, 0, 0.25);
