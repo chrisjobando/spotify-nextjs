@@ -23,8 +23,8 @@
     min-width: 0;
     margin: auto 0;
     font-weight: bold;
+    display: -webkit-box;
     -webkit-line-clamp: 2;
-    /* autoprefixer: off */
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;

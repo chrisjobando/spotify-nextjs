@@ -32,11 +32,13 @@ const MiniTrack = props => {
   return (
     <div className={classes.MiniTrack}>
       {track && track.album && track.album.images[0] ? (
-        <img
-          className={classes.TrackPic}
-          src={track.album.images[0].url}
-          style={{ marginRight: '15px' }}
-        />
+        <Link href="/app/album/[albumid]" as={`/app/album/${track.album.id}`}>
+          <img
+            className={classes.TrackPic}
+            src={track.album.images[0].url}
+            style={{ marginRight: '15px' }}
+          />
+        </Link>
       ) : (
         <div />
       )}

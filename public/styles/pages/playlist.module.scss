@@ -18,6 +18,11 @@
         display: flex;
         z-index: 2;
 
+        .HeaderContent {
+            display: flex;
+            margin: auto;
+        }
+
         .PlaylistPic {
             min-width: 120px;
             height: 120px;

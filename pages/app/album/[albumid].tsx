@@ -44,35 +44,37 @@ const AlbumPage = () => {
   return (
     <div className={classes.AlbumPage}>
       <div className={classes.Header}>
-        {albumData && albumData.images[0] ? (
-          <img className={classes.AlbumPic} src={albumData.images[0].url} />
-        ) : (
-          <div className={classes.AlbumPic} />
-        )}
-        {albumData && (
-          <div className={classes.AlbumInfo}>
-            <h3 className={classes.AlbumName}>{albumData.name}</h3>
-            <Link
-              href="/app/artist/[artistid]"
-              as={`/app/artist/${albumData.artists[0].id}`}
-            >
-              <h5>{albumArtists}</h5>
-            </Link>
-            {albumData.tracks.items.length === 1 ? (
-              <h6>{albumData.tracks.items.length} Track</h6>
-            ) : (
-              <h5>{albumData.tracks.items.length} Tracks</h5>
-            )}
-            <h5>{parseInt(albumData.release_date)}</h5>
-            <FontAwesomeIcon
-              onClick={() => {
-                setPlaying(spotifyAccess, albumData.uri);
-              }}
-              icon={faPlay}
-              className={classes.Play}
-            />
-          </div>
-        )}
+        <div className={classes.HeaderContent}>
+          {albumData && albumData.images[0] ? (
+            <img className={classes.AlbumPic} src={albumData.images[0].url} />
+          ) : (
+            <div className={classes.AlbumPic} />
+          )}
+          {albumData && (
+            <div className={classes.AlbumInfo}>
+              <h3 className={classes.AlbumName}>{albumData.name}</h3>
+              <Link
+                href="/app/artist/[artistid]"
+                as={`/app/artist/${albumData.artists[0].id}`}
+              >
+                <h5 className={classes.AlbumArtist}>{albumArtists}</h5>
+              </Link>
+              {albumData.tracks.items.length === 1 ? (
+                <h6>{albumData.tracks.items.length} Track</h6>
+              ) : (
+                <h5>{albumData.tracks.items.length} Tracks</h5>
+              )}
+              <h5>{parseInt(albumData.release_date)}</h5>
+              <FontAwesomeIcon
+                onClick={() => {
+                  setPlaying(spotifyAccess, albumData.uri);
+                }}
+                icon={faPlay}
+                className={classes.Play}
+              />
+            </div>
+          )}
+        </div>
       </div>
       <div className={classes.Content}>
         {albumTracks &&

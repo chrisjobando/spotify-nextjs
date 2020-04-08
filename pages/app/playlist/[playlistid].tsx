@@ -92,39 +92,41 @@ const PlaylistPage = () => {
   return (
     <div className={classes.PlaylistPage}>
       <div className={classes.Header}>
-        {playlistData && playlistData.images[0] ? (
-          <img
-            className={classes.PlaylistPic}
-            src={playlistData.images[0].url}
-          />
-        ) : (
-          <div className={classes.PlaylistPic} />
-        )}
-        {playlistData && (
-          <div className={classes.PlaylistInfo}>
-            <h3 className={classes.PlaylistName}>{playlistData.name}</h3>
-
-            {playlistData.tracks.total === 1 ? (
-              <h5>{playlistData.tracks.total} Track</h5>
-            ) : (
-              <h5>{playlistData.tracks.total} Tracks</h5>
-            )}
-
-            {playlistData.followers.total === 1 ? (
-              <h5>{playlistData.followers.total} Follower</h5>
-            ) : (
-              <h5>{playlistData.followers.total} Followers</h5>
-            )}
-
-            <FontAwesomeIcon
-              onClick={() => {
-                setPlaying(spotifyAccess, playlistData.uri);
-              }}
-              icon={faPlay}
-              className={classes.Play}
+        <div className={classes.HeaderContent}>
+          {playlistData && playlistData.images[0] ? (
+            <img
+              className={classes.PlaylistPic}
+              src={playlistData.images[0].url}
             />
-          </div>
-        )}
+          ) : (
+            <div className={classes.PlaylistPic} />
+          )}
+          {playlistData && (
+            <div className={classes.PlaylistInfo}>
+              <h3 className={classes.PlaylistName}>{playlistData.name}</h3>
+
+              {playlistData.tracks.total === 1 ? (
+                <h5>{playlistData.tracks.total} Track</h5>
+              ) : (
+                <h5>{playlistData.tracks.total} Tracks</h5>
+              )}
+
+              {playlistData.followers.total === 1 ? (
+                <h5>{playlistData.followers.total} Follower</h5>
+              ) : (
+                <h5>{playlistData.followers.total} Followers</h5>
+              )}
+
+              <FontAwesomeIcon
+                onClick={() => {
+                  setPlaying(spotifyAccess, playlistData.uri);
+                }}
+                icon={faPlay}
+                className={classes.Play}
+              />
+            </div>
+          )}
+        </div>
       </div>
       <div className={classes.Content}>
         <input

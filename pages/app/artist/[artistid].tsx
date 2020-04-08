@@ -76,12 +76,12 @@ const ArtistPage = () => {
           {artistData && (
             <div className={classes.ArtistInfo}>
               <h1 className={classes.ArtistName}>{artistData.name}</h1>
-              <h5 className={classes.ArtistGenre}>
-                {artistData.genres.join(', ')}
-              </h5>
               <h5 className={classes.ArtistPopularity}>
                 <span style={{ fontWeight: 'bold' }}>Popularity: </span>
                 {artistData.popularity}%
+              </h5>
+              <h5 className={classes.ArtistGenre}>
+                {artistData.genres.join(', ')}
               </h5>
             </div>
           )}
