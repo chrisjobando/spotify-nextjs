@@ -5,7 +5,14 @@ import { useRouter } from 'next/router';
 import AppContext from '../../../client/components/AppContext';
 
 // API Call
-import { getPlaylist, setPlaying } from '../../../client/actions/spotify';
+import {
+  getPlaylist,
+  getPlaylistTracks,
+  setPlaying,
+} from '../../../client/actions/spotify';
+
+// Components
+import MiniTrack from 'client/components/Track/miniTrack';
 
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,11 +26,18 @@ const PlaylistPage = () => {
   const { playlistid } = router.query;
   const { spotifyAccess } = useContext(AppContext);
   const [playlistData, setPlaylist] = useState(null);
+  const [playlistTracks, setPlaylistTracks] = useState([]);
 
   useEffect(() => {
     getPlaylist(spotifyAccess, playlistid).then(res => {
       if (res) {
         setPlaylist(res);
+      }
+    });
+
+    getPlaylistTracks(spotifyAccess, playlistid).then(res => {
+      if (res) {
+        setPlaylistTracks(res.items);
       }
     });
   }, []);
@@ -54,6 +68,13 @@ const PlaylistPage = () => {
           </div>
         )}
       </div>
+      <div className={classes.Content}>
+        {playlistTracks !== [] &&
+          playlistTracks.map(item => {
+            <MiniTrack key={item.track.id} track={item.track} />;
+          })}
+      </div>
+      <div className={classes.BottomPadding} />
     </div>
   );
 };

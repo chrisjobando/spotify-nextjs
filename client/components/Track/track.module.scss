@@ -27,3 +27,28 @@
     overflow: hidden;
   }
 }
+
+.MiniTrack {
+  display: flex;
+  color: $white;
+
+  .TrackPic {
+    min-width: 60px;
+    height: 60px;
+    background: $gray;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25),
+      0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+
+  .TrackInfo {
+    margin-left: 15px;
+
+    .TrackName {
+      font-weight: bold;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+}

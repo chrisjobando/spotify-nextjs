@@ -160,6 +160,23 @@ export const getPlaylist = async (token, playlistId) => {
     });
 };
 
+export const getPlaylistTracks = async (token, playlistId) => {
+  return await fetch(
+    urls.apiUrl + `/playlists/${playlistId}/tracks?limit=100`,
+    {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Bearer ' + token,
+      },
+    }
+  )
+    .then(response => response.json())
+    .then(json => {
+      return json;
+    });
+};
+
 export const getTopArtists = async (token, time) => {
   return await fetch(
     urls.apiUrl + `/me/top/artists?limit=50&time_range=${time}`,

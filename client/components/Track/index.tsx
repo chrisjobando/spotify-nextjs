@@ -9,7 +9,7 @@ import classes from './track.module.scss';
 
 const Track = props => {
   const { track } = props;
-  const { spotifyAccess, setPlayerInfo } = useContext(AppContext);
+  const { spotifyAccess } = useContext(AppContext);
 
   return (
     <div className={classes.Track}>
