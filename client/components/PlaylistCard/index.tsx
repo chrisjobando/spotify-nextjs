@@ -10,16 +10,16 @@ const PlaylistCard = props => {
   return (
     <div className={classes.PlaylistCard}>
       {playlist && playlist.images[0] ? (
-        <img className={classes.PlaylistPic} src={playlist.images[0].url} />
+        <Link
+          href="/app/playlist/[playlistid]"
+          as={`/app/playlist/${playlist.id}`}
+        >
+          <img className={classes.PlaylistPic} src={playlist.images[0].url} />
+        </Link>
       ) : (
         <div className={classes.PlaylistPic} />
       )}
-      <Link
-        href="/app/playlist/[playlistid]"
-        as={`/app/playlist/${playlist.id}`}
-      >
-        <h5 className={classes.PlaylistName}>{playlist.name}</h5>
-      </Link>
+      <h5 className={classes.PlaylistName}>{playlist.name}</h5>
       <h5 className={classes.TrackNumber}>{playlist.tracks.total} Tracks</h5>
     </div>
   );

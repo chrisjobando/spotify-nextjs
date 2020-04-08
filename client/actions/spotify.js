@@ -75,7 +75,7 @@ export const setPlaying = async (token, toPlay) => {
       Authorization: 'Bearer ' + token,
     },
     body: JSON.stringify({
-      uris: toPlay,
+      context_uri: toPlay,
     }),
   });
 };
@@ -143,6 +143,20 @@ export const userPlaylists = async token => {
     .then(response => response.json())
     .then(json => {
       return json.items;
+    });
+};
+
+export const getPlaylist = async (token, playlistId) => {
+  return await fetch(urls.apiUrl + `/playlists/${playlistId}`, {
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: 'Bearer ' + token,
+    },
+  })
+    .then(response => response.json())
+    .then(json => {
+      return json;
     });
 };
 

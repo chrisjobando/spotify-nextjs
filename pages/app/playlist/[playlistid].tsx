@@ -1,8 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 // Global Context
 import AppContext from '../../../client/components/AppContext';
+
+// API Call
+import { getPlaylist, setPlaying } from '../../../client/actions/spotify';
+
+// Icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
 //Styling
 import classes from '../../../public/styles/pages/playlist.module.scss';
@@ -11,8 +18,44 @@ const PlaylistPage = () => {
   const router = useRouter();
   const { playlistid } = router.query;
   const { spotifyAccess } = useContext(AppContext);
+  const [playlistData, setPlaylist] = useState(null);
 
-  return <div className={classes.PlaylistPage}>{playlistid}</div>;
+  useEffect(() => {
+    getPlaylist(spotifyAccess, playlistid).then(res => {
+      if (res) {
+        setPlaylist(res);
+      }
+    });
+  }, []);
+
+  return (
+    <div className={classes.PlaylistPage}>
+      <div className={classes.Header}>
+        {playlistData && playlistData.images[0] ? (
+          <img
+            className={classes.PlaylistPic}
+            src={playlistData.images[0].url}
+          />
+        ) : (
+          <div className={classes.PlaylistPic} />
+        )}
+        {playlistData && (
+          <div className={classes.PlaylistInfo}>
+            <h3>{playlistData.name}</h3>
+            <h5>{playlistData.tracks.total} Tracks</h5>
+            <h5>{playlistData.followers.total} Followers</h5>
+            <FontAwesomeIcon
+              onClick={() => {
+                setPlaying(spotifyAccess, playlistData.uri);
+              }}
+              icon={faPlay}
+              className={classes.Play}
+            />
+          </div>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default PlaylistPage;

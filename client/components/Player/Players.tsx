@@ -7,13 +7,11 @@ import {
   faPause,
   faPlay,
   faForward,
-  faPlus,
   faHeart,
   faPlayCircle,
   faPauseCircle,
   faRandom,
   faSyncAlt,
-  faChevronUp,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 
