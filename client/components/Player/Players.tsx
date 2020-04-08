@@ -72,7 +72,7 @@ export const MiniPlayer = props => {
           />
         )}
         <FontAwesomeIcon
-          onClick={() => nextTrack(access).then(res => setPlayerInfo(res))}
+          onClick={() => nextTrack(access)}
           icon={faForward}
           className={classes.Skip}
         />
@@ -110,18 +110,12 @@ export const BigPlayer = props => {
       </div>
       <div className={classes.PlayerContent}>
         {songData ? (
-          <div className={classes.Album}>
-            <img
-              className={classes.AlbumPic}
-              src={songData.album.images[0].url}
-            />
-          </div>
+          <img
+            className={classes.AlbumPic}
+            src={songData.album.images[0].url}
+          />
         ) : (
-          <div className={classes.Album}>
-            <div className={classes.Cover}>
-              <div />
-            </div>
-          </div>
+          <div className={classes.AlbumPic} />
         )}
         <div className={classes.Bottom}>
           <div className={classes.SongInfo}>
@@ -130,9 +124,7 @@ export const BigPlayer = props => {
           </div>
           <div className={classes.Controls}>
             <FontAwesomeIcon
-              onClick={() =>
-                previousTrack(access).then(res => setPlayerInfo(res))
-              }
+              onClick={() => previousTrack(access)}
               icon={faBackward}
               className={classes.Skip}
             />
@@ -156,7 +148,7 @@ export const BigPlayer = props => {
               />
             )}
             <FontAwesomeIcon
-              onClick={() => nextTrack(access).then(res => setPlayerInfo(res))}
+              onClick={() => nextTrack(access)}
               icon={faForward}
               className={classes.Skip}
             />

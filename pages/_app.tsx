@@ -6,6 +6,7 @@ import AppContext from '../client/components/AppContext';
 
 // NavBar
 import NavBar from '../client/components/NavBar/NavBar';
+import NavBar2 from '../client/components/NavBar/NavBar2';
 
 // Media Player
 import Player from '../client/components/Player';
@@ -102,8 +103,15 @@ class MyApp extends App {
             setTopArtists3: this.setTopArtists3,
           }}
         >
+          {['/app'].some(route => router.asPath.includes(route)) &&
+          ['/app/playlist', '/app/artist', '/app/album'].some(route =>
+            router.asPath.includes(route)
+          ) ? (
+            <NavBar2 />
+          ) : (
+            <NavBar />
+          )}
           <Component {...pageProps} />
-          {['/app'].some(route => router.asPath.includes(route)) && <NavBar />}
           <Player />
         </AppContext.Provider>
       </>

@@ -31,6 +31,7 @@
 .MiniTrack {
   display: flex;
   color: $white;
+  margin-bottom: 20px;
 
   .TrackPic {
     min-width: 60px;
@@ -43,12 +44,22 @@
 
   .TrackInfo {
     margin-left: 15px;
+    min-width: 0;
 
-    .TrackName {
-      font-weight: bold;
+    .TrackName,
+    .TrackArtist {
+      cursor: pointer;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
+    }
+
+    .TrackName {
+      font-weight: bold;
+    }
+
+    .TrackLength {
+      color: $gray;
     }
   }
 }

@@ -9,6 +9,7 @@ import {
   getPlaylist,
   getPlaylistTracks,
   setPlaying,
+  getMore,
 } from '../../../client/actions/spotify';
 
 // Components
@@ -26,7 +27,7 @@ const PlaylistPage = () => {
   const { playlistid } = router.query;
   const { spotifyAccess } = useContext(AppContext);
   const [playlistData, setPlaylist] = useState(null);
-  const [playlistTracks, setPlaylistTracks] = useState([]);
+  const [playlistTracks, setPlaylistTracks] = useState(null);
 
   useEffect(() => {
     getPlaylist(spotifyAccess, playlistid).then(res => {
@@ -37,7 +38,7 @@ const PlaylistPage = () => {
 
     getPlaylistTracks(spotifyAccess, playlistid).then(res => {
       if (res) {
-        setPlaylistTracks(res.items);
+        setPlaylistTracks(res);
       }
     });
   }, []);
@@ -69,9 +70,10 @@ const PlaylistPage = () => {
         )}
       </div>
       <div className={classes.Content}>
-        {/* {playlistTracks.map(item => {
-          <MiniTrack key={item.track.id} track={item.track} />;
-        })} */}
+        {playlistTracks &&
+          playlistTracks.map(item => (
+            <MiniTrack key={item.track.id} track={item.track} />
+          ))}
       </div>
       <div className={classes.BottomPadding} />
     </div>
