@@ -15,6 +15,7 @@ const Player = () => {
   const [isPlay, setPlay] = useState<boolean>(false);
   const [isShuffle, setShuffle] = useState<boolean | null>(null);
   const [songData, setSongData] = useState<SongObject | null>(null);
+  const [repeatState, setRepeat] = useState<number | null>(null);
 
   const {
     spotifyAccess,
@@ -23,12 +24,6 @@ const Player = () => {
     playerState,
     setPlayerState,
   } = useContext(AppContext);
-
-  useEffect(() => {
-    if (spotifyAccess === '') {
-      Router.push('/');
-    }
-  }, []);
 
   useEffect(() => {
     if (spotifyAccess !== '') {
@@ -48,9 +43,17 @@ const Player = () => {
   });
 
   useEffect(() => {
+    if (spotifyAccess === '') {
+      Router.push('/');
+    }
+  }, []);
+
+  useEffect(() => {
     if (playerInfo) {
       setSongData(playerInfo.item);
       setPlay(playerInfo.is_playing);
+      setShuffle(playerInfo.shuffle_state);
+      setRepeat(playerInfo.repeat_state);
     }
   }, [playerInfo]);
 
@@ -80,6 +83,8 @@ const Player = () => {
                 setPlay={setPlay}
                 isShuffle={isShuffle}
                 setShuffle={setShuffle}
+                repeatState={repeatState}
+                setRepeat={setRepeat}
                 songData={songData}
                 setSongData={setSongData}
                 playerInfo={playerInfo}

@@ -8,11 +8,9 @@ import {
   faPause,
   faPlay,
   faForward,
-  faHeart,
+  faPlus,
   faPlayCircle,
   faPauseCircle,
-  faRandom,
-  faSyncAlt,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -23,6 +21,7 @@ import {
   pauseTrack,
   playTrack,
   toggleShuffle,
+  toggleRepeat,
 } from '../../actions/spotify';
 
 // Styling
@@ -90,12 +89,15 @@ export const BigPlayer = props => {
     setPlay,
     isShuffle,
     setShuffle,
+    repeatState,
+    setRepeat,
     songData,
   } = props;
 
   useEffect(() => {
     setPlay(isPlay);
     setShuffle(isShuffle);
+    setRepeat(repeatState);
   });
 
   return (
@@ -106,7 +108,7 @@ export const BigPlayer = props => {
           icon={faTimes}
           className={classes.Toggle}
         />
-        <FontAwesomeIcon icon={faHeart} className={classes.Update} />
+        <FontAwesomeIcon icon={faPlus} className={classes.Update} />
       </div>
       <div className={classes.PlayerContent}>
         {songData ? (
@@ -168,15 +170,33 @@ export const BigPlayer = props => {
             />
           </div>
           <div className={classes.Controls2}>
-            <FontAwesomeIcon
+            <h3
               onClick={() => {
                 toggleShuffle(access, !isShuffle);
                 setShuffle(!isShuffle);
               }}
-              icon={faRandom}
-              className={classes.Skip}
-            />
-            <FontAwesomeIcon icon={faSyncAlt} className={classes.Skip} />
+              className={classes.Shuffle}
+            >
+              Shuffle: {isShuffle ? 'On' : 'Off'}
+            </h3>
+            <h3
+              onClick={() => {
+                let newState = '';
+                if (repeatState == 'track') {
+                  newState = 'context';
+                } else if (repeatState == 'context') {
+                  newState = 'off';
+                } else {
+                  newState = 'track';
+                }
+
+                toggleRepeat(access, newState);
+                setRepeat(newState);
+              }}
+              className={classes.Repeat}
+            >
+              Repeat: {repeatState}
+            </h3>
           </div>
         </div>
       </div>

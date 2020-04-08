@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { useDebounce } from 'use-debounce';
 
 // Global Context
 import AppContext from '../../../client/components/AppContext';
@@ -27,6 +28,9 @@ const PlaylistPage = () => {
   const { spotifyAccess } = useContext(AppContext);
   const [playlistData, setPlaylist] = useState(null);
   const [playlistTracks, setPlaylistTracks] = useState(null);
+  const [filteredTracks, setFilteredTracks] = useState(null);
+  const [searchQuery, setQuery] = useState('');
+  const [debouncedQuery] = useDebounce(searchQuery, 1000);
 
   useEffect(() => {
     getPlaylist(spotifyAccess, playlistid).then(res => {
@@ -38,9 +42,37 @@ const PlaylistPage = () => {
     getPlaylistTracks(spotifyAccess, playlistid).then(res => {
       if (res) {
         setPlaylistTracks(res);
+        setFilteredTracks(res);
       }
     });
   }, []);
+
+  useEffect(() => {
+    if (playlistTracks) {
+      const results = playlistTracks.filter(track => {
+        let artistNameFlag = false;
+
+        track.track.artists.forEach(artist => {
+          if (
+            artist.name.toLowerCase().includes(debouncedQuery.toLowerCase())
+          ) {
+            artistNameFlag = true;
+          }
+        });
+
+        return (
+          track.track.name
+            .toLowerCase()
+            .includes(debouncedQuery.toLowerCase()) ||
+          track.track.album.name
+            .toLowerCase()
+            .includes(debouncedQuery.toLowerCase()) ||
+          artistNameFlag
+        );
+      });
+      setFilteredTracks(results);
+    }
+  }, [debouncedQuery]);
 
   return (
     <div className={classes.PlaylistPage}>
@@ -80,8 +112,17 @@ const PlaylistPage = () => {
         )}
       </div>
       <div className={classes.Content}>
-        {playlistTracks &&
-          playlistTracks.map(item => (
+        <input
+          placeholder="Search for a song, artist, or album"
+          type="text"
+          onChange={e => {
+            setQuery(e.target.value);
+          }}
+          className={classes.SearchBar}
+        />
+
+        {filteredTracks &&
+          filteredTracks.map(item => (
             <MiniTrack key={item.track.id} track={item.track} />
           ))}
       </div>

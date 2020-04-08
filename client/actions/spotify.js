@@ -102,7 +102,21 @@ export const pauseTrack = async token => {
 
 export const toggleShuffle = async (token, newState) => {
   await fetch(urls.apiUrl + `/me/player/shuffle?state=${newState}`, {
-    method: 'get',
+    method: 'put',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: 'Bearer ' + token,
+    },
+  })
+    .then(response => response.json())
+    .then(json => {
+      return json;
+    });
+};
+
+export const toggleRepeat = async (token, newState) => {
+  await fetch(urls.apiUrl + `/me/player/repeat?state=${newState}`, {
+    method: 'put',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       Authorization: 'Bearer ' + token,

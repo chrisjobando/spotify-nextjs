@@ -1,7 +1,8 @@
 @import "../colors";
+@import "../fonts";
 
 .PlaylistPage {
-    width: 100%;
+    min-width: 100%;
 
     .Header {
         position: absolute;
@@ -56,10 +57,25 @@
     .Content {
         position: relative;
         margin-top: 170px;
-        max-width: 100%;
+        min-width: 100%;
         box-sizing: border-box;
         padding: 0 30px;
         z-index: 1;
+
+        .SearchBar {
+            width: 100%;
+            height: 36px;
+            border: 2px solid $blue;
+            border-radius: 5px;
+            font-family: $font1;
+            font-weight: bold;
+            color: $blue;
+            font-size: 18px;
+            line-height: 21px;
+            box-sizing: border-box;
+            padding: 0 10px;
+            margin-bottom: 30px;
+        }
     }
 
     .BottomPadding {
