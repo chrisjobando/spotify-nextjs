@@ -9,7 +9,7 @@ import classes from './track.module.scss';
 
 const MiniTrack = props => {
   const { track } = props;
-  const { spotifyAccess } = useContext(AppContext);
+  const { spotifyAccess, playerInfo } = useContext(AppContext);
 
   const millisToMinSec = (millis: number) => {
     let minutes = Math.floor(millis / 60000);
@@ -20,14 +20,21 @@ const MiniTrack = props => {
   return (
     <div className={classes.MiniTrack}>
       {track && track.album && track.album.images[0] ? (
-        <img className={classes.TrackPic} src={track.album.images[0].url} />
+        <img
+          className={classes.TrackPic}
+          src={track.album.images[0].url}
+          style={{ marginRight: '15px' }}
+        />
       ) : (
-        <div className={classes.TrackPic} />
+        <div />
       )}
       <div className={classes.TrackInfo}>
         <h5
           className={classes.TrackName}
           onClick={() => addToQueue(spotifyAccess, [track.uri])}
+          style={{
+            color: playerInfo.item.id === track.id ? '#c29dfd' : 'white',
+          }}
         >
           {track.name}
         </h5>

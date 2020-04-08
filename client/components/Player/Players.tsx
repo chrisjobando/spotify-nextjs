@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Link from 'next/link';
 
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -119,7 +120,14 @@ export const BigPlayer = props => {
         )}
         <div className={classes.Bottom}>
           <div className={classes.SongInfo}>
-            <h1 className={classes.SongName}>{songData.name}</h1>
+            <Link
+              href="/app/album/[albumid]"
+              as={`/app/album/${songData.album.id}`}
+            >
+              <h1 onClick={onClick} className={classes.SongName}>
+                {songData.name}
+              </h1>
+            </Link>
             <h4 className={classes.SongArtist}>{songData.artists[0].name}</h4>
           </div>
           <div className={classes.Controls}>

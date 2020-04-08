@@ -9,7 +9,6 @@ import {
   getPlaylist,
   getPlaylistTracks,
   setPlaying,
-  getMore,
 } from '../../../client/actions/spotify';
 
 // Components
@@ -56,9 +55,20 @@ const PlaylistPage = () => {
         )}
         {playlistData && (
           <div className={classes.PlaylistInfo}>
-            <h3>{playlistData.name}</h3>
-            <h5>{playlistData.tracks.total} Tracks</h5>
-            <h5>{playlistData.followers.total} Followers</h5>
+            <h3 className={classes.PlaylistName}>{playlistData.name}</h3>
+
+            {playlistData.tracks.total === 1 ? (
+              <h5>{playlistData.tracks.total} Track</h5>
+            ) : (
+              <h5>{playlistData.tracks.total} Tracks</h5>
+            )}
+
+            {playlistData.followers.total === 1 ? (
+              <h5>{playlistData.followers.total} Follower</h5>
+            ) : (
+              <h5>{playlistData.followers.total} Followers</h5>
+            )}
+
             <FontAwesomeIcon
               onClick={() => {
                 setPlaying(spotifyAccess, playlistData.uri);

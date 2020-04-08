@@ -1,4 +1,7 @@
 import React, { useContext } from 'react';
+import Link from 'next/link';
+
+// Global Context
 import AppContext from '../AppContext';
 
 // API Calls
@@ -14,7 +17,9 @@ const Track = props => {
   return (
     <div className={classes.Track}>
       {track && track.album && track.album.images[0] ? (
-        <img className={classes.TrackPic} src={track.album.images[0].url} />
+        <Link href="/app/album/[albumid]" as={`/app/album/${track.album.id}`}>
+          <img className={classes.TrackPic} src={track.album.images[0].url} />
+        </Link>
       ) : (
         <div className={classes.TrackPic} />
       )}

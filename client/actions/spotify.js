@@ -293,6 +293,56 @@ export const getPlaylistTracks = async (token, playlistId) => {
     });
 };
 
+export const getAlbum = async (token, albumId) => {
+  return await fetch(urls.apiUrl + `/albums/${albumId}`, {
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: 'Bearer ' + token,
+    },
+  })
+    .then(response => response.json())
+    .then(json => {
+      return json;
+    });
+};
+
+// export const getAlbumTracks = async (token, albumId) => {
+//   return await fetch(urls.apiUrl + `/albums/${albumId}/tracks?limit=100`, {
+//     method: 'get',
+//     headers: {
+//       'Content-Type': 'application/x-www-form-urlencoded',
+//       Authorization: 'Bearer ' + token,
+//     },
+//   })
+//     .then(response => response.json())
+//     .then(json => {
+//       let items = json.items;
+//       let remaining = Math.ceil((json.total - 100) / 100);
+
+//       if (remaining === 0) {
+//         return items;
+//       }
+
+//       const forLoop = async itemArr => {
+//         let next = json.next;
+
+//         for (let i = 0; i < remaining; i++) {
+//           await getMore(token, next).then(res => {
+//             if (res) {
+//               next = res.next;
+//               itemArr.push(...res.items);
+//             }
+//           });
+//         }
+
+//         return itemArr;
+//       };
+
+//       return forLoop(items);
+//     });
+// };
+
 export const getMore = async (token, url) => {
   return await fetch(url, {
     method: 'get',

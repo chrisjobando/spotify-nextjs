@@ -1,6 +1,6 @@
 @import "../colors";
 
-.PlaylistPage {
+.AlbumPage {
     width: 100%;
 
     .Header {
@@ -17,7 +17,7 @@
         display: flex;
         z-index: 2;
 
-        .PlaylistPic {
+        .AlbumPic {
             min-width: 120px;
             height: 120px;
             background: $gray;
@@ -26,13 +26,13 @@
             border-radius: 5px;
         }
 
-        .PlaylistInfo {
+        .AlbumInfo {
             display: flex;
             flex-direction: column;
             width: 100%;
             margin-left: 20px;
 
-            .PlaylistName {
+            .AlbumName {
                 overflow: hidden;
                 text-overflow: ellipsis;
                 display: -webkit-box;
