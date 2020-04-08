@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 // Global Context
 import AppContext from '../../../client/components/AppContext';
@@ -23,12 +24,19 @@ const AlbumPage = () => {
   const { spotifyAccess } = useContext(AppContext);
   const [albumData, setAlbum] = useState(null);
   const [albumTracks, setAlbumTracks] = useState(null);
+  const [albumArtists, setAlbumArtists] = useState('');
 
   useEffect(() => {
     getAlbum(spotifyAccess, albumid).then(res => {
       if (res) {
         setAlbum(res);
         setAlbumTracks(res.tracks.items);
+
+        let artistArr = [];
+        res.artists.forEach(artist => {
+          artistArr.push(artist.name);
+        });
+        setAlbumArtists(artistArr.join(', '));
       }
     });
   }, []);
@@ -44,7 +52,12 @@ const AlbumPage = () => {
         {albumData && (
           <div className={classes.AlbumInfo}>
             <h3 className={classes.AlbumName}>{albumData.name}</h3>
-            <h5>{albumData.artists[0].name}</h5>
+            <Link
+              href="/app/artist/[artistid]"
+              as={`/app/artist/${albumData.artists[0].id}`}
+            >
+              <h5>{albumArtists}</h5>
+            </Link>
             {albumData.tracks.items.length === 1 ? (
               <h6>{albumData.tracks.items.length} Track</h6>
             ) : (

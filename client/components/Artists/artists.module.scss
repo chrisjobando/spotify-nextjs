@@ -16,6 +16,7 @@
       0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 100px;
     object-fit: cover;
+    cursor: pointer;
   }
 
   .ArtistName {
@@ -27,6 +28,5 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    cursor: pointer;
   }
 }

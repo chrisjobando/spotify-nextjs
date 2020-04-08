@@ -14,8 +14,14 @@
         border-radius: 0px 0px 15px 15px;
         box-sizing: border-box;
         padding: 80px 30px 30px 30px;
-        display: flex;
         z-index: 2;
+        display: flex;
+
+        .HeaderContent {
+            min-width: 315px;
+            margin: auto;
+            display: flex;
+        }
 
         .ArtistPic {
             min-width: 120px;

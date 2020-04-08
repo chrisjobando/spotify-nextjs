@@ -1,4 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import Link from 'next/link';
+
+// Global Context
 import AppContext from '../AppContext';
 
 // API Calls
@@ -10,6 +13,15 @@ import classes from './track.module.scss';
 const MiniTrack = props => {
   const { track } = props;
   const { spotifyAccess, playerInfo } = useContext(AppContext);
+  const [trackArtists, setTrackArtists] = useState('');
+
+  useEffect(() => {
+    let artistArr = [];
+    track.artists.forEach(artist => {
+      artistArr.push(artist.name);
+    });
+    setTrackArtists(artistArr.join(', '));
+  }, []);
 
   const millisToMinSec = (millis: number) => {
     let minutes = Math.floor(millis / 60000);
@@ -33,12 +45,20 @@ const MiniTrack = props => {
           className={classes.TrackName}
           onClick={() => addToQueue(spotifyAccess, [track.uri])}
           style={{
-            color: playerInfo.item.id === track.id ? '#c29dfd' : 'white',
+            color:
+              playerInfo && playerInfo.item.id === track.id
+                ? '#c29dfd'
+                : 'white',
           }}
         >
           {track.name}
         </h5>
-        <h5 className={classes.TrackArtist}>{track.artists[0].name}</h5>
+        <Link
+          href="/app/artist/[artistid]"
+          as={`/app/artist/${track.artists[0].id}`}
+        >
+          <h5 className={classes.TrackArtist}>{trackArtists}</h5>
+        </Link>
         <h5 className={classes.TrackLength}>
           {millisToMinSec(track.duration_ms)}
         </h5>

@@ -9,14 +9,15 @@ const ArtistCard = props => {
 
   return (
     <div className={classes.ArtistCard}>
-      {artist && artist.images[0] ? (
-        <img className={classes.ArtistPic} src={artist.images[0].url} />
-      ) : (
-        <div className={classes.ArtistPic} />
-      )}
       <Link href="/app/artist/[artistid]" as={`/app/artist/${artist.id}`}>
-        <h5 className={classes.ArtistName}>{artist.name}</h5>
+        {artist && artist.images[0] ? (
+          <img className={classes.ArtistPic} src={artist.images[0].url} />
+        ) : (
+          <div className={classes.ArtistPic} />
+        )}
       </Link>
+
+      <h5 className={classes.ArtistName}>{artist.name}</h5>
     </div>
   );
 };
