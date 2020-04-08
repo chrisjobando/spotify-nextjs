@@ -14,6 +14,7 @@ export default {
     app: {
       index: '/app',
       stats: '/app/stats',
+      browse: '/app/browse',
       artist: artistId => `/app/artist/${artistId}`,
       playlist: playlistId => `/app/playlist/${playlistId}`,
     },

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -39,11 +40,13 @@ const NavBar2 = () => {
               icon={faBars}
               className={classes.MenuIcon}
             />
-            <FontAwesomeIcon
-              style={{ color: headerColor }}
-              icon={faSearch}
-              className={classes.BrowseIcon}
-            />
+            <Link href="/app/browse">
+              <FontAwesomeIcon
+                style={{ color: headerColor }}
+                icon={faSearch}
+                className={classes.BrowseIcon}
+              />
+            </Link>
           </>
         )}
       </div>

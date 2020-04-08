@@ -435,3 +435,21 @@ export const getMore = async (token, url) => {
       return json;
     });
 };
+
+export const search = async (token, query) => {
+  return await fetch(
+    urls.apiUrl +
+      `/search?q=${query}&type=album,artist,track,playlist&limit=25`,
+    {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Bearer ' + token,
+      },
+    }
+  )
+    .then(response => response.json())
+    .then(json => {
+      return json;
+    });
+};

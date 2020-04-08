@@ -1,5 +1,5 @@
 // Card Component
-import PlaylistCard from '../PlaylistCard';
+import PlaylistCard from '../Playlist';
 
 // Styling
 import classes from './browse.module.scss';

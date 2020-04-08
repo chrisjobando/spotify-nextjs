@@ -32,6 +32,19 @@ const PlaylistPage = () => {
   const [searchQuery, setQuery] = useState('');
   const [debouncedQuery] = useDebounce(searchQuery, 1000);
 
+  const sortByName = (a, b) => {
+    const nameA = a.track.name.toLowerCase();
+    const nameB = b.track.name.toLowerCase();
+
+    let comparison = 0;
+    if (nameA > nameB) {
+      comparison = 1;
+    } else if (nameA < nameB) {
+      comparison = -1;
+    }
+    return comparison;
+  };
+
   useEffect(() => {
     getPlaylist(spotifyAccess, playlistid).then(res => {
       if (res) {
@@ -41,8 +54,10 @@ const PlaylistPage = () => {
 
     getPlaylistTracks(spotifyAccess, playlistid).then(res => {
       if (res) {
-        setPlaylistTracks(res);
-        setFilteredTracks(res);
+        const trackList = res.sort(sortByName);
+
+        setPlaylistTracks(trackList);
+        setFilteredTracks(trackList);
       }
     });
   }, []);

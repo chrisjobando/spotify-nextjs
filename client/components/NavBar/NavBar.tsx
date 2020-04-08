@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,18 +19,22 @@ const NavBar = () => {
       <div className={classes.NavBar}>
         {isOpen ? (
           <FontAwesomeIcon
-            onClick={() => setOpen(!isOpen)}
+            onClick={() => {
+              setOpen(false);
+            }}
             icon={faTimes}
             className={classes.MenuIcon}
           />
         ) : (
           <>
             <FontAwesomeIcon
-              onClick={() => setOpen(!isOpen)}
+              onClick={() => setOpen(true)}
               icon={faBars}
               className={classes.MenuIcon}
             />
-            <FontAwesomeIcon icon={faSearch} className={classes.BrowseIcon} />
+            <Link href="/app/browse">
+              <FontAwesomeIcon icon={faSearch} className={classes.BrowseIcon} />
+            </Link>
           </>
         )}
       </div>

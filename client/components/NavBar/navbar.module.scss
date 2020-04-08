@@ -1,4 +1,5 @@
 @import '../../../public/styles/colors';
+@import '../../../public/styles/fonts';
 
 .NavBar {
   position: fixed;
@@ -10,7 +11,7 @@
   padding: 30px;
   display: flex;
   justify-content: space-between;
-  z-index: 99;
+  z-index: 120;
 
   .MenuIcon,
   .BrowseIcon {
@@ -29,7 +30,7 @@
   padding: 30px;
   display: flex;
   justify-content: space-between;
-  z-index: 99;
+  z-index: 120;
 
   .MenuIcon,
   .BrowseIcon {
@@ -49,5 +50,5 @@
   justify-content: center;
   text-align: center;
   background-color: $white;
-  z-index: 98;
+  z-index: 110;
 }

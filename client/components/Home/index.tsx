@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from 'react';
 
 // Card Components
 import TrackCard from '../Track';
-import PlaylistCard from '../PlaylistCard';
+import PlaylistCard from '../Playlist';
 import ArtistCard from '../Artists';
 
 // Global Context
