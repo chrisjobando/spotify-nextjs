@@ -29,7 +29,12 @@ const Track = props => {
       >
         <span>{track.name}</span>
       </h5>
-      <h5 className={classes.TrackArtist}>{track.artists[0].name}</h5>
+      <Link
+        href="/app/artist/[artistid]"
+        as={`/app/artist/${track.artists[0].id}`}
+      >
+        <h5 className={classes.TrackArtist}>{track.artists[0].name}</h5>
+      </Link>
     </div>
   );
 };

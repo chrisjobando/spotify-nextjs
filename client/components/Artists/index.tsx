@@ -1,3 +1,6 @@
+import React from 'react';
+import Link from 'next/link';
+
 // Styling
 import classes from './artists.module.scss';
 
@@ -11,7 +14,9 @@ const ArtistCard = props => {
       ) : (
         <div className={classes.ArtistPic} />
       )}
-      <h5 className={classes.ArtistName}>{artist.name}</h5>
+      <Link href="/app/artist/[artistid]" as={`/app/artist/${artist.id}`}>
+        <h5 className={classes.ArtistName}>{artist.name}</h5>
+      </Link>
     </div>
   );
 };

@@ -29,7 +29,7 @@ import {
 import classes from './player.module.scss';
 
 export const MiniPlayer = props => {
-  const { onClick, access, isPlay, setPlay, songData, setPlayerInfo } = props;
+  const { onClick, access, isPlay, setPlay, songData } = props;
 
   useEffect(() => {
     setPlay(isPlay);
@@ -91,7 +91,6 @@ export const BigPlayer = props => {
     isShuffle,
     setShuffle,
     songData,
-    setPlayerInfo,
   } = props;
 
   useEffect(() => {
@@ -128,7 +127,14 @@ export const BigPlayer = props => {
                 {songData.name}
               </h1>
             </Link>
-            <h4 className={classes.SongArtist}>{songData.artists[0].name}</h4>
+            <Link
+              href="/app/artist/[artistid]"
+              as={`/app/artist/${songData.artists[0].id}`}
+            >
+              <h4 onClick={onClick} className={classes.SongArtist}>
+                {songData.artists[0].name}
+              </h4>
+            </Link>
           </div>
           <div className={classes.Controls}>
             <FontAwesomeIcon

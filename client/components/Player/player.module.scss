@@ -145,14 +145,15 @@
       margin-top: 40px;
       max-width: 90%;
 
-      .SongArtist {
-        margin-bottom: 16px;
-      }
-
       .SongName {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        cursor: pointer;
+      }
+
+      .SongArtist {
+        margin-bottom: 16px;
         cursor: pointer;
       }
     }

@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
 //Styling
-import classes from '../../../public/styles/pages/Album.module.scss';
+import classes from '../../../public/styles/pages/album.module.scss';
 
 const AlbumPage = () => {
   const router = useRouter();

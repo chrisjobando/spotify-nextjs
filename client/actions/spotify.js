@@ -198,20 +198,6 @@ export const getRecFromArtists = async (token, artists) => {
     });
 };
 
-export const getArtist = async (token, id) => {
-  return await fetch(urls.apiUrl + `/artists/${id}`, {
-    method: 'get',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      Authorization: 'Bearer ' + token,
-    },
-  })
-    .then(response => response.json())
-    .then(json => {
-      return json;
-    });
-};
-
 export const getSeveralArtist = async (token, ids) => {
   return await fetch(urls.apiUrl + `/artists?ids=${ids}`, {
     method: 'get',
@@ -342,6 +328,85 @@ export const getAlbum = async (token, albumId) => {
 //       return forLoop(items);
 //     });
 // };
+
+export const getArtist = async (token, id) => {
+  return await fetch(urls.apiUrl + `/artists/${id}`, {
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: 'Bearer ' + token,
+    },
+  })
+    .then(response => response.json())
+    .then(json => {
+      return json;
+    });
+};
+
+export const getArtistTopTracks = async (token, id) => {
+  return await fetch(
+    urls.apiUrl + `/artists/${id}/top-tracks?country=from_token`,
+    {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Bearer ' + token,
+      },
+    }
+  )
+    .then(response => response.json())
+    .then(json => {
+      return json.tracks;
+    });
+};
+
+export const getArtistAlbums = async (token, id) => {
+  return await fetch(
+    urls.apiUrl + `/artists/${id}/albums?limit=50&include_groups=album`,
+    {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Bearer ' + token,
+      },
+    }
+  )
+    .then(response => response.json())
+    .then(json => {
+      return json.items;
+    });
+};
+
+export const getArtistSingles = async (token, id) => {
+  return await fetch(
+    urls.apiUrl + `/artists/${id}/albums?limit=50&include_groups=single`,
+    {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Bearer ' + token,
+      },
+    }
+  )
+    .then(response => response.json())
+    .then(json => {
+      return json.items;
+    });
+};
+
+export const getArtistSimilar = async (token, id) => {
+  return await fetch(urls.apiUrl + `/artists/${id}/related-artists`, {
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: 'Bearer ' + token,
+    },
+  })
+    .then(response => response.json())
+    .then(json => {
+      return json.artists;
+    });
+};
 
 export const getMore = async (token, url) => {
   return await fetch(url, {
