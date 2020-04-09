@@ -5,8 +5,7 @@ import { setCookie } from 'nookies';
 import { auth, createUser } from '../client/actions/api';
 
 // Spotify Icon
-import SpotifyIcon from '../public/icons/SpotifyIcon';
-
+import { Logo } from '../public/icons/Logo';
 // Styling
 import classes from '../public/styles/pages/login.module.scss';
 
@@ -30,7 +29,9 @@ const Login = props => {
 
   return (
     <div className={classes.Login}>
-      <SpotifyIcon />
+      <Logo />
+      <h1>NextJS Spotify App</h1>
+      <h4>Play music, check out your stats, customize your listening experience.</h4>
       <button type="button" className={classes.Button} onClick={handleLogin}>
         <h2>Sign In</h2>
       </button>
