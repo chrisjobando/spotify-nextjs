@@ -82,11 +82,13 @@ const NavBar2 = () => {
             </div>
 
             <Link href="/app/browse">
-              <FontAwesomeIcon
-                style={{ color: headerColor }}
-                icon={faSearch}
-                className={classes.BrowseIcon}
-              />
+              <>
+                <FontAwesomeIcon
+                  style={{ color: headerColor }}
+                  icon={faSearch}
+                  className={classes.BrowseIcon}
+                />
+              </>
             </Link>
           </>
         )}

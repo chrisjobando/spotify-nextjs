@@ -52,20 +52,49 @@ const PlaylistPage = () => {
     return comparison;
   };
 
-  useEffect(() => {
-    getPlaylist(spotifyAccess, playlistid).then(res => {
-      if (res) {
-        setPlaylist(res);
-      }
-    });
+  const sortByArtist = (a, b) => {
+    if (!b.track || !a.track) return;
 
-    getPlaylistTracks(spotifyAccess, playlistid).then(res => {
-      if (res) {
-        setPlaylistTracks(res);
-        setFilteredTracks(res);
-      }
-    });
+    const nameA = a.track.artists[0].name.toLowerCase();
+    const nameB = b.track.artists[0].name.toLowerCase();
+
+    let comparison = 0;
+    if (nameA > nameB) {
+      comparison = 1;
+    } else if (nameA < nameB) {
+      comparison = -1;
+    }
+    return comparison;
+  };
+
+  useEffect(() => {
+    if (spotifyAccess) {
+      getPlaylist(spotifyAccess, playlistid).then(res => {
+        if (res) {
+          setPlaylist(res);
+        }
+      });
+
+      getPlaylistTracks(spotifyAccess, playlistid).then(res => {
+        if (res) {
+          setPlaylistTracks(res);
+          setFilteredTracks(res.slice()); // Copy by value
+        }
+      });
+    }
   }, []);
+
+  useEffect(() => {
+    if (playlistTracks) {
+      if (sortTerm == '0') {
+        setFilteredTracks(playlistTracks.slice());
+      } else if (sortTerm == '1') {
+        setFilteredTracks(playlistTracks.slice().sort(sortByName));
+      } else {
+        setFilteredTracks(playlistTracks.slice().sort(sortByArtist));
+      }
+    }
+  }, [sortTerm]);
 
   useEffect(() => {
     if (playlistTracks) {
@@ -146,7 +175,6 @@ const PlaylistPage = () => {
           className={classes.SearchBar}
         />
 
-        {/* const trackList = res.sort(sortByName); */}
         <select
           className={classes.Select}
           onChange={event => setSortTerm(event.target.value)}
