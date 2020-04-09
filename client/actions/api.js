@@ -130,6 +130,28 @@ export const getUser = async authorization => {
     });
 };
 
+export const updateClean = async clean => {
+  return await fetch(urls.api.updateClean(), {
+    method: 'post',
+    mode: 'same-origin',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      clean,
+    }),
+  })
+    .then(response => response.json())
+    .then(json => {
+      if (json == null) {
+        throw new Error('Could not connect to API...');
+      }
+
+      return json;
+    });
+};
+
 export const auth = () => {
   fetch(urls.api.auth())
     .then(res => res.json())

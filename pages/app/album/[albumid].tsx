@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Anime from 'react-anime';
+import { toast } from 'react-toastify';
 
 // Global Context
-import AppContext from '../../../client/components/AppContext';
+import { AppContext } from '../../../client/components/AppContext';
 
 // API Call
 import { getAlbum, setPlaying } from '../../../client/actions/spotify';
@@ -26,6 +27,8 @@ const AlbumPage = () => {
   const [albumData, setAlbum] = useState(null);
   const [albumTracks, setAlbumTracks] = useState(null);
   const [albumArtists, setAlbumArtists] = useState('');
+
+  const notifyPlaying = name => toast(name + ' is now playing!');
 
   useEffect(() => {
     getAlbum(spotifyAccess, albumid).then(res => {
@@ -63,12 +66,13 @@ const AlbumPage = () => {
               {albumData.tracks.items.length === 1 ? (
                 <h6>{albumData.tracks.items.length} Track</h6>
               ) : (
-                <h5>{albumData.tracks.items.length} Tracks</h5>
+                <h6>{albumData.tracks.items.length} Tracks</h6>
               )}
-              <h5>{parseInt(albumData.release_date)}</h5>
+              <h6>{parseInt(albumData.release_date)}</h6>
               <FontAwesomeIcon
                 onClick={() => {
                   setPlaying(spotifyAccess, albumData.uri);
+                  notifyPlaying(albumData.name);
                 }}
                 icon={faPlay}
                 className={classes.Play}

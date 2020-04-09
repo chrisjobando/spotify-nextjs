@@ -1,15 +1,18 @@
 import React, { useEffect, useContext } from 'react';
 import { destroyCookie } from 'nookies';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
 
 // Global Context
-import AppContext from '../AppContext';
+import { AppContext } from '../AppContext';
 
 // Styling
 import classes from './navbar.module.scss';
 
 const NavMenu = ({ onClick }) => {
   const { setPlayerState } = useContext(AppContext);
+
+  const notifySignOut = () => toast('Signed Out!');
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -36,6 +39,7 @@ const NavMenu = ({ onClick }) => {
             onClick={() => {
               destroyCookie(null, 'authorization');
               setPlayerState(0);
+              notifySignOut();
             }}
           >
             Sign Out

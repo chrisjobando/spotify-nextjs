@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
 
 // Global Context
-import AppContext from '../AppContext';
+import { AppContext } from '../AppContext';
 
 // API Calls
 import { addToQueue } from '../../actions/spotify';
@@ -14,6 +15,7 @@ const Track = props => {
   const { track } = props;
   const { spotifyAccess } = useContext(AppContext);
   const [trackArtists, setTrackArtists] = useState('');
+  const notifyQueue = name => toast(name + ' added to queue!');
 
   useEffect(() => {
     let artistArr = [];
@@ -34,7 +36,10 @@ const Track = props => {
       )}
       <h5
         className={classes.TrackName}
-        onClick={() => addToQueue(spotifyAccess, [track.uri])}
+        onClick={() => {
+          addToQueue(spotifyAccess, [track.uri]);
+          notifyQueue(track.name);
+        }}
       >
         <span>{track.name}</span>
       </h5>

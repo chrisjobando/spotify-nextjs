@@ -33,7 +33,7 @@
 
     .AlbumPic {
       height: 40px;
-      width: 40px;
+      min-width: 40px;
       background: $gray;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
         0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -94,6 +94,7 @@
   z-index: 200;
 
   .TopControls {
+    position: absolute;
     display: flex;
     height: 80px;
     width: 100%;
@@ -101,7 +102,7 @@
     align-items: center;
     box-sizing: border-box;
     padding: 0 30px;
-    z-index: 11;
+    z-index: 200;
 
     .Toggle,
     .Update {
@@ -113,16 +114,19 @@
   }
 
   .PlayerContent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: calc(100% - 300px);
+    box-sizing: border-box;
+    padding: 30px;
     display: flex;
-    flex-grow: 1;
-    margin: 300px 30px;
-    margin-top: -80px;
 
     .AlbumPic {
       margin: auto;
       z-index: 101;
-      width: 315px;
-      height: 315px;
+      max-height: 100%;
       border-radius: 100%;
       background: $gray;
       animation: cd 25s linear infinite;
@@ -142,6 +146,8 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    box-sizing: border-box;
+    padding: 30px;
 
     .SongInfo {
       margin-top: 40px;
@@ -179,16 +185,27 @@
     }
 
     .Controls2 {
-      margin-top: 40px;
+      margin-top: auto;
       width: 100%;
       display: flex;
       justify-content: space-between;
       box-sizing: border-box;
-      padding: 0 30px;
+
+      .Shuffle,
+      .Repeat {
+        cursor: pointer;
+      }
 
       .Repeat {
         text-transform: capitalize;
       }
+    }
+
+    .Clean {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      cursor: pointer;
     }
   }
 }

@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Router from 'next/router';
-import AppContext from '../AppContext';
+
+// Global Context
+import { AppContext } from '../AppContext';
 
 // Interfaces
 import { SongObject } from '../SpotifyObjectInterfaces';
@@ -9,38 +11,22 @@ import { SongObject } from '../SpotifyObjectInterfaces';
 import { MiniPlayer, BigPlayer } from './Players';
 
 // API Call
-import { getCurrentPlayback } from '../../actions/spotify';
+import { getCurrentPlayback, nextTrack } from '../../actions/spotify';
 
 const Player = () => {
   const [isPlay, setPlay] = useState<boolean>(false);
   const [isShuffle, setShuffle] = useState<boolean | null>(null);
   const [songData, setSongData] = useState<SongObject | null>(null);
   const [repeatState, setRepeat] = useState<number | null>(null);
+  const [isClean, setClean] = useState<boolean>(false);
 
   const {
     spotifyAccess,
     playerInfo,
-    setPlayerInfo,
     playerState,
     setPlayerState,
+    cleanState,
   } = useContext(AppContext);
-
-  useEffect(() => {
-    if (spotifyAccess !== '') {
-      const checkPlayback = setInterval(() => {
-        getCurrentPlayback(spotifyAccess).then(res => {
-          if (res) {
-            if (playerState === 0) {
-              setPlayerState(1);
-            }
-            setPlayerInfo(res);
-          }
-        });
-      }, 3000);
-
-      return () => clearInterval(checkPlayback);
-    }
-  });
 
   useEffect(() => {
     if (spotifyAccess === '') {
@@ -49,13 +35,35 @@ const Player = () => {
   }, []);
 
   useEffect(() => {
-    if (playerInfo) {
-      setSongData(playerInfo.item);
-      setPlay(playerInfo.is_playing);
-      setShuffle(playerInfo.shuffle_state);
-      setRepeat(playerInfo.repeat_state);
+    if (spotifyAccess !== '') {
+      setClean(cleanState);
+
+      const checkPlayback = setInterval(() => {
+        getCurrentPlayback(spotifyAccess).then(res => {
+          if (res) {
+            if (playerState === 0) {
+              setPlayerState(1);
+            }
+
+            setSongData(res.item);
+            setPlay(res.is_playing);
+            setShuffle(res.shuffle_state);
+            setRepeat(res.repeat_state);
+          } else {
+            setPlayerState(0);
+          }
+        });
+      }, 3000);
+
+      return () => clearInterval(checkPlayback);
     }
   }, [playerInfo]);
+
+  useEffect(() => {
+    if (isClean && songData && songData.explicit) {
+      nextTrack(spotifyAccess);
+    }
+  }, [isClean, songData]);
 
   return (
     <>
@@ -69,9 +77,6 @@ const Player = () => {
                 isPlay={isPlay}
                 setPlay={setPlay}
                 songData={songData}
-                setSongData={setSongData}
-                playerInfo={playerInfo}
-                setPlayerInfo={setPlayerInfo}
               />
             );
           case 2:
@@ -86,9 +91,8 @@ const Player = () => {
                 repeatState={repeatState}
                 setRepeat={setRepeat}
                 songData={songData}
-                setSongData={setSongData}
-                playerInfo={playerInfo}
-                setPlayerInfo={setPlayerInfo}
+                isClean={isClean}
+                setClean={setClean}
               />
             );
           default:

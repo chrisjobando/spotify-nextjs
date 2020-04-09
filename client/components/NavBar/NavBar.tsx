@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { destroyCookie } from 'nookies';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
 
 // Global Context
-import AppContext from '../AppContext';
+import { AppContext } from '../AppContext';
 
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,8 +20,11 @@ const NavBar = () => {
   const [isOpen, setOpen] = useState(false);
   const { setPlayerState } = useContext(AppContext);
 
+  const notifySignOut = () => toast('Signed Out!');
+
   return (
     <>
+      <div className={classes.Background} />
       <div className={classes.NavBar}>
         {isOpen ? (
           <FontAwesomeIcon
@@ -56,6 +60,7 @@ const NavBar = () => {
                     onClick={() => {
                       destroyCookie(null, 'authorization');
                       setPlayerState(0);
+                      notifySignOut();
                     }}
                   >
                     Sign Out
@@ -65,7 +70,12 @@ const NavBar = () => {
             </div>
 
             <Link href="/app/browse">
-              <FontAwesomeIcon icon={faSearch} className={classes.BrowseIcon} />
+              <>
+                <FontAwesomeIcon
+                  icon={faSearch}
+                  className={classes.BrowseIcon}
+                />
+              </>
             </Link>
           </>
         )}

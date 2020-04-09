@@ -97,3 +97,23 @@ h6 {
   margin: 30px 0;
   cursor: pointer;
 }
+
+.ToastContainer {
+  background-color: $purple;
+  border-radius: 0px 0px 15px 15px;
+}
+
+.Toast {
+  font-family: $font1;
+  color: $blue;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.Toastify__close-button {
+  display: none;
+}
+
+.Toastify__toast-container--top-center {
+  top: 0;
+}

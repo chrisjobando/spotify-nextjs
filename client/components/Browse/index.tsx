@@ -3,7 +3,7 @@ import Anime from 'react-anime';
 import { useDebounce } from 'use-debounce';
 
 // Global Context
-import AppContext from '../AppContext';
+import { AppContext } from '../AppContext';
 
 // API Call
 import { search } from '../../actions/spotify';

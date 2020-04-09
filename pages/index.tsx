@@ -3,7 +3,7 @@ import Router from 'next/router';
 import { parseCookies } from 'nookies';
 
 // Global Context
-import AppContext from '../client/components/AppContext';
+import { AppContext } from '../client/components/AppContext';
 
 // API
 import { getUser } from '../client/actions/api';
@@ -16,6 +16,7 @@ const Index = props => {
     setPlayerInfo,
     setSpotifyAccess,
     setUserInfo,
+    setClean,
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -39,6 +40,8 @@ const Index = props => {
             setUserInfo(res);
           }
         });
+
+        setClean(res.user.clean);
 
         Router.push('/app');
       });
