@@ -65,7 +65,12 @@ const NavBar = () => {
             </div>
 
             <Link href="/app/browse">
-              <FontAwesomeIcon icon={faSearch} className={classes.BrowseIcon} />
+              <>
+                <FontAwesomeIcon
+                  icon={faSearch}
+                  className={classes.BrowseIcon}
+                />
+              </>
             </Link>
           </>
         )}

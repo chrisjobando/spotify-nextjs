@@ -34,6 +34,8 @@ const PlaylistPage = () => {
   const [debouncedQuery] = useDebounce(searchQuery, 1000);
 
   const sortByName = (a, b) => {
+    if (!b.track || !a.track) return;
+
     const nameA = a.track.name.toLowerCase();
     const nameB = b.track.name.toLowerCase();
 
@@ -145,7 +147,11 @@ const PlaylistPage = () => {
         >
           {filteredTracks &&
             filteredTracks.map(item => (
-              <MiniTrack key={item.track.id} track={item.track} />
+              <>
+                {item.track && (
+                  <MiniTrack key={item.track.id} track={item.track} />
+                )}
+              </>
             ))}
         </Anime>
       </div>

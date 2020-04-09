@@ -26,6 +26,12 @@ const Player = () => {
   } = useContext(AppContext);
 
   useEffect(() => {
+    if (spotifyAccess === '') {
+      Router.push('/');
+    }
+  }, []);
+
+  useEffect(() => {
     if (spotifyAccess !== '') {
       const checkPlayback = setInterval(() => {
         getCurrentPlayback(spotifyAccess).then(res => {
@@ -33,27 +39,15 @@ const Player = () => {
             if (playerState === 0) {
               setPlayerState(1);
             }
-            setPlayerInfo(res);
+            setSongData(res.item);
+            setPlay(res.is_playing);
+            setShuffle(res.shuffle_state);
+            setRepeat(res.repeat_state);
           }
         });
       }, 3000);
 
       return () => clearInterval(checkPlayback);
-    }
-  });
-
-  useEffect(() => {
-    if (spotifyAccess === '') {
-      Router.push('/');
-    }
-  }, []);
-
-  useEffect(() => {
-    if (playerInfo) {
-      setSongData(playerInfo.item);
-      setPlay(playerInfo.is_playing);
-      setShuffle(playerInfo.shuffle_state);
-      setRepeat(playerInfo.repeat_state);
     }
   }, [playerInfo]);
 
@@ -69,9 +63,6 @@ const Player = () => {
                 isPlay={isPlay}
                 setPlay={setPlay}
                 songData={songData}
-                setSongData={setSongData}
-                playerInfo={playerInfo}
-                setPlayerInfo={setPlayerInfo}
               />
             );
           case 2:
@@ -86,9 +77,6 @@ const Player = () => {
                 repeatState={repeatState}
                 setRepeat={setRepeat}
                 songData={songData}
-                setSongData={setSongData}
-                playerInfo={playerInfo}
-                setPlayerInfo={setPlayerInfo}
               />
             );
           default:

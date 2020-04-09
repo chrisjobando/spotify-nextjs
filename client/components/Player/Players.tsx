@@ -30,10 +30,6 @@ import classes from './player.module.scss';
 export const MiniPlayer = props => {
   const { onClick, access, isPlay, setPlay, songData } = props;
 
-  useEffect(() => {
-    setPlay(isPlay);
-  });
-
   return (
     <div className={classes.MiniPlayer}>
       {songData ? (
@@ -93,12 +89,6 @@ export const BigPlayer = props => {
     setRepeat,
     songData,
   } = props;
-
-  useEffect(() => {
-    setPlay(isPlay);
-    setShuffle(isShuffle);
-    setRepeat(repeatState);
-  });
 
   return (
     <div className={classes.BigPlayer}>

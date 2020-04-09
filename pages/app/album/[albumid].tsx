@@ -63,9 +63,9 @@ const AlbumPage = () => {
               {albumData.tracks.items.length === 1 ? (
                 <h6>{albumData.tracks.items.length} Track</h6>
               ) : (
-                <h5>{albumData.tracks.items.length} Tracks</h5>
+                <h6>{albumData.tracks.items.length} Tracks</h6>
               )}
-              <h5>{parseInt(albumData.release_date)}</h5>
+              <h6>{parseInt(albumData.release_date)}</h6>
               <FontAwesomeIcon
                 onClick={() => {
                   setPlaying(spotifyAccess, albumData.uri);
