@@ -23,26 +23,26 @@ const Stats = () => {
     topArtists,
     topArtists2,
     topArtists3,
-    setTopTracks,
+    setTopTracks2,
     setTopTracks3,
-    setTopArtists,
+    setTopArtists2,
     setTopArtists3,
   } = useContext(AppContext);
 
   const [topArt, setTopArt] = useState([]);
   const [topTrac, setTopTrac] = useState([]);
-  const [timeRange, setTimeRange] = useState('medium_term');
+  const [timeRange, setTimeRange] = useState('short_term');
 
   useEffect(() => {
-    getTopTracks(spotifyAccess, 'short_term').then(res => {
+    getTopTracks(spotifyAccess, 'medium_term').then(res => {
       if (res) {
-        setTopTracks(res);
+        setTopTracks2(res);
       }
     });
 
-    getTopArtists(spotifyAccess, 'short_term').then(res => {
+    getTopArtists(spotifyAccess, 'medium_term').then(res => {
       if (res) {
-        setTopArtists(res);
+        setTopArtists2(res);
       }
     });
     getTopTracks(spotifyAccess, 'long_term').then(res => {
@@ -77,8 +77,8 @@ const Stats = () => {
         className={classes.Select}
         onChange={event => setTimeRange(event.target.value)}
       >
-        <option value="medium_term">Past 6 Months</option>
         <option value="short_term">Past Month</option>
+        <option value="medium_term">Past 6 Months</option>
         <option value="long_term">All-Time</option>
       </select>
 

@@ -18,10 +18,12 @@ import classes from './navbar.module.scss';
 const NavBar2 = () => {
   const [isOpen, setOpen] = useState(false);
   const [headerColor, setHeaderColor] = useState('#001A51');
+  const [blurColor, setBlurColor] = useState('#c29dfd');
   const { setPlayerState } = useContext(AppContext);
 
   const listenScrollEvent = () => {
-    window.scrollY > 200 ? setHeaderColor('white') : setHeaderColor('#001A51');
+    window.scrollY > 175 ? setHeaderColor('white') : setHeaderColor('#001A51');
+    window.scrollY > 175 ? setBlurColor('#272B2F') : setBlurColor('#c29dfd');
   };
 
   useEffect(() => {
@@ -30,6 +32,10 @@ const NavBar2 = () => {
 
   return (
     <>
+      <div
+        style={{ backgroundColor: blurColor }}
+        className={classes.Background}
+      />
       <div className={classes.NavBar2}>
         {isOpen ? (
           <FontAwesomeIcon

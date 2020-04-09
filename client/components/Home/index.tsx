@@ -24,9 +24,7 @@ import {
 import classes from './home.module.scss';
 
 const Home = () => {
-  const { spotifyAccess, setTopTracks2, setTopArtists2 } = useContext(
-    AppContext
-  );
+  const { spotifyAccess, setTopTracks, setTopArtists } = useContext(AppContext);
   const [recents, setRecents] = useState([]);
   const [playlists, setPlaylists] = useState([]);
   const [sugArtists, setSugArtists] = useState([]);
@@ -45,9 +43,9 @@ const Home = () => {
       }
     });
 
-    getTopArtists(spotifyAccess, 'medium_term').then(res => {
+    getTopArtists(spotifyAccess, 'short_term').then(res => {
       if (res) {
-        setTopArtists2(res);
+        setTopArtists(res);
         let top5Artists = res.slice(0, 5);
         let artistIds = [];
         top5Artists.forEach(artist => {
@@ -72,9 +70,9 @@ const Home = () => {
       }
     });
 
-    getTopTracks(spotifyAccess, 'medium_term').then(res => {
+    getTopTracks(spotifyAccess, 'short_term').then(res => {
       if (res) {
-        setTopTracks2(res);
+        setTopTracks(res);
         let top5Tracks = res.slice(0, 5);
         let trackIds = [];
         top5Tracks.forEach(track => {
