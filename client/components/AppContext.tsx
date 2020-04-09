@@ -3,7 +3,6 @@ import React, { createContext, useState } from 'react';
 interface AppContextInterface {
   playerState: number;
   playerInfo: any | null;
-  cleanMode: boolean | null;
   userInfo: any | null;
   topTracks: any[] | null;
   topTracks2: any[] | null;
@@ -12,6 +11,7 @@ interface AppContextInterface {
   topArtists2: any[] | null;
   topArtists3: any[] | null;
   spotifyAccess: string;
+  cleanState: boolean;
   setPlayerState: (playerState: number) => void;
   setPlayerInfo: (playerInfo: any | null) => void;
   setUserInfo: (userInfo: any | null) => void;
@@ -22,7 +22,7 @@ interface AppContextInterface {
   setTopArtists: (topArtists: any[]) => void;
   setTopArtists2: (topArtists: any[]) => void;
   setTopArtists3: (topArtists: any[]) => void;
-  setClean: (cleanMode: boolean) => void;
+  setClean: (cleanState: boolean) => void;
 }
 
 export const AppContext = createContext<AppContextInterface | null>(null);
@@ -38,7 +38,7 @@ const AppContextProvider = props => {
   const [topArtists, setTopArtists] = useState(null);
   const [topArtists2, setTopArtists2] = useState(null);
   const [topArtists3, setTopArtists3] = useState(null);
-  const [cleanMode, setClean] = useState(false);
+  const [cleanState, setClean] = useState(false);
 
   return (
     <AppContext.Provider
@@ -63,7 +63,7 @@ const AppContextProvider = props => {
         setTopArtists2,
         topArtists3,
         setTopArtists3,
-        cleanMode,
+        cleanState,
         setClean,
       }}
     >

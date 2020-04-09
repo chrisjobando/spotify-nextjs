@@ -16,6 +16,7 @@ const Index = props => {
     setPlayerInfo,
     setSpotifyAccess,
     setUserInfo,
+    setClean,
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -39,6 +40,8 @@ const Index = props => {
             setUserInfo(res);
           }
         });
+
+        setClean(res.user.clean);
 
         Router.push('/app');
       });

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 
 // Icons
@@ -23,6 +23,7 @@ import {
   toggleShuffle,
   toggleRepeat,
 } from '../../actions/spotify';
+import { updateClean } from '../../actions/api';
 
 // Styling
 import classes from './player.module.scss';
@@ -88,6 +89,9 @@ export const BigPlayer = props => {
     repeatState,
     setRepeat,
     songData,
+    isClean,
+    setClean,
+    authorization,
   } = props;
 
   return (
@@ -169,6 +173,17 @@ export const BigPlayer = props => {
             >
               Shuffle: {isShuffle ? 'On' : 'Off'}
             </h3>
+
+            <h3
+              onClick={() => {
+                setClean(!isClean);
+                updateClean(!isClean);
+              }}
+              className={classes.Shuffle}
+            >
+              Clean: {isClean ? 'On' : 'Off'}
+            </h3>
+
             <h3
               onClick={() => {
                 let newState = '';
