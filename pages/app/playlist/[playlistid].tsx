@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useDebounce } from 'use-debounce';
 import Anime from 'react-anime';
+import { toast } from 'react-toastify';
 
 // Global Context
 import { AppContext } from '../../../client/components/AppContext';
@@ -32,6 +33,8 @@ const PlaylistPage = () => {
   const [filteredTracks, setFilteredTracks] = useState(null);
   const [searchQuery, setQuery] = useState('');
   const [debouncedQuery] = useDebounce(searchQuery, 1000);
+
+  const notifyPlaying = name => toast(name + ' is now playing!');
 
   const sortByName = (a, b) => {
     if (!b.track || !a.track) return;
@@ -123,6 +126,7 @@ const PlaylistPage = () => {
               <FontAwesomeIcon
                 onClick={() => {
                   setPlaying(spotifyAccess, playlistData.uri);
+                  notifyPlaying(playlistData.name);
                 }}
                 icon={faPlay}
                 className={classes.Play}

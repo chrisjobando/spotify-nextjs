@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { destroyCookie } from 'nookies';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
 
 // Global Context
 import { AppContext } from '../AppContext';
@@ -25,6 +26,8 @@ const NavBar2 = () => {
     window.scrollY > 175 ? setHeaderColor('white') : setHeaderColor('#001A51');
     window.scrollY > 175 ? setBlurColor('#272B2F') : setBlurColor('#c29dfd');
   };
+
+  const notifySignOut = () => toast('Signed Out!');
 
   useEffect(() => {
     window.addEventListener('scroll', listenScrollEvent);
@@ -69,6 +72,7 @@ const NavBar2 = () => {
                     onClick={() => {
                       destroyCookie(null, 'authorization');
                       setPlayerState(0);
+                      notifySignOut();
                     }}
                   >
                     Sign Out

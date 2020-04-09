@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { destroyCookie } from 'nookies';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
 
 // Global Context
 import { AppContext } from '../AppContext';
@@ -18,6 +19,8 @@ import classes from './navbar.module.scss';
 const NavBar = () => {
   const [isOpen, setOpen] = useState(false);
   const { setPlayerState } = useContext(AppContext);
+
+  const notifySignOut = () => toast('Signed Out!');
 
   return (
     <>
@@ -57,6 +60,7 @@ const NavBar = () => {
                     onClick={() => {
                       destroyCookie(null, 'authorization');
                       setPlayerState(0);
+                      notifySignOut();
                     }}
                   >
                     Sign Out
