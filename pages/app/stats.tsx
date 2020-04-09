@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import Anime from 'react-anime';
 
 // Global Context
-import AppContext from '../../client/components/AppContext';
+import { AppContext } from '../../client/components/AppContext';
 
 // API Calls
 import { getTopTracks, getTopArtists } from '../../client/actions/spotify';

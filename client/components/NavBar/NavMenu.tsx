@@ -3,7 +3,7 @@ import { destroyCookie } from 'nookies';
 import Link from 'next/link';
 
 // Global Context
-import AppContext from '../AppContext';
+import { AppContext } from '../AppContext';
 
 // Styling
 import classes from './navbar.module.scss';

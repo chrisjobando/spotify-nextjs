@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import Link from 'next/link';
 
 // Global Context
-import AppContext from '../AppContext';
+import { AppContext } from '../AppContext';
 
 // API Calls
 import { addToQueue } from '../../actions/spotify';

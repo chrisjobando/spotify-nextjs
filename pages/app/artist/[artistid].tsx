@@ -9,7 +9,7 @@ import AlbumCard from '../../../client/components/Album';
 import ArtistCard from '../../../client/components/Artists';
 
 // Global Context
-import AppContext from '../../../client/components/AppContext';
+import { AppContext } from '../../../client/components/AppContext';
 
 // API Call
 import {

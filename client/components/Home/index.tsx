@@ -7,7 +7,7 @@ import PlaylistCard from '../Playlist';
 import ArtistCard from '../Artists';
 
 // Global Context
-import AppContext from '../AppContext';
+import { AppContext } from '../AppContext';
 
 // API Calls
 import {

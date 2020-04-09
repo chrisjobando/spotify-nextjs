@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Router from 'next/router';
-import AppContext from '../AppContext';
+import { AppContext } from '../AppContext';
 
 // Interfaces
 import { SongObject } from '../SpotifyObjectInterfaces';

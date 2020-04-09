@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Anime from 'react-anime';
 
 // Global Context
-import AppContext from '../../../client/components/AppContext';
+import { AppContext } from '../../../client/components/AppContext';
 
 // API Call
 import { getAlbum, setPlaying } from '../../../client/actions/spotify';

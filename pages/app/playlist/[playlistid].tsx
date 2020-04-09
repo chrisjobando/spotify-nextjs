@@ -4,7 +4,7 @@ import { useDebounce } from 'use-debounce';
 import Anime from 'react-anime';
 
 // Global Context
-import AppContext from '../../../client/components/AppContext';
+import { AppContext } from '../../../client/components/AppContext';
 
 // API Call
 import {

@@ -3,7 +3,7 @@ import Router from 'next/router';
 import { parseCookies } from 'nookies';
 
 // Global Context
-import AppContext from '../client/components/AppContext';
+import { AppContext } from '../client/components/AppContext';
 
 // API
 import { getUser } from '../client/actions/api';
