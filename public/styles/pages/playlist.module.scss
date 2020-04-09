@@ -67,6 +67,8 @@
         box-sizing: border-box;
         padding: 0 30px;
         z-index: 1;
+        display: flex;
+        flex-direction: column;
 
         .SearchBar {
             width: 100%;
@@ -81,6 +83,31 @@
             box-sizing: border-box;
             padding: 0 10px;
             margin-bottom: 30px;
+        }
+
+        .Select {
+            margin-left: auto;
+            width: 250px;
+            height: 36px;
+            border: 2px solid $blue;
+            border-radius: 5px;
+            font-family: $font1;
+            font-weight: bold;
+            color: $blue;
+            font-size: 20px;
+            line-height: 23px;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: #fff;
+            background-repeat: no-repeat, repeat;
+            background-position: right 10px top 50%, 0 0;
+            padding-left: 6px;
+    
+            background-image: url("data:image/svg+xml;utf8,<svg fill='$blue' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+            &::-ms-expand {
+                display: none;
+            }
         }
     }
 

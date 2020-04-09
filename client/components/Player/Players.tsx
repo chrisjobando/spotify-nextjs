@@ -23,6 +23,7 @@ import {
   toggleShuffle,
   toggleRepeat,
 } from '../../actions/spotify';
+
 import { updateClean } from '../../actions/api';
 
 // Styling
@@ -93,7 +94,6 @@ export const BigPlayer = props => {
     songData,
     isClean,
     setClean,
-    authorization,
   } = props;
 
   return (
@@ -203,7 +203,7 @@ export const BigPlayer = props => {
             }}
             className={classes.Clean}
           >
-            Clean: {isClean ? 'On' : 'Off'}
+            Skip Explicit: {isClean ? 'On' : 'Off'}
           </h3>
         </div>
       </div>

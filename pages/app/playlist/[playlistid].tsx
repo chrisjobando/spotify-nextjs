@@ -27,10 +27,11 @@ import classes from '../../../public/styles/pages/playlist.module.scss';
 const PlaylistPage = () => {
   const router = useRouter();
   const { playlistid } = router.query;
-  const { spotifyAccess } = useContext(AppContext);
+  const { spotifyAccess, playerInfo } = useContext(AppContext);
   const [playlistData, setPlaylist] = useState(null);
   const [playlistTracks, setPlaylistTracks] = useState(null);
   const [filteredTracks, setFilteredTracks] = useState(null);
+  const [sortTerm, setSortTerm] = useState('0');
   const [searchQuery, setQuery] = useState('');
   const [debouncedQuery] = useDebounce(searchQuery, 1000);
 
@@ -60,10 +61,8 @@ const PlaylistPage = () => {
 
     getPlaylistTracks(spotifyAccess, playlistid).then(res => {
       if (res) {
-        const trackList = res.sort(sortByName);
-
-        setPlaylistTracks(trackList);
-        setFilteredTracks(trackList);
+        setPlaylistTracks(res);
+        setFilteredTracks(res);
       }
     });
   }, []);
@@ -125,8 +124,10 @@ const PlaylistPage = () => {
 
               <FontAwesomeIcon
                 onClick={() => {
-                  setPlaying(spotifyAccess, playlistData.uri);
-                  notifyPlaying(playlistData.name);
+                  if (playerInfo) {
+                    setPlaying(spotifyAccess, playlistData.uri);
+                    notifyPlaying(playlistData.name);
+                  }
                 }}
                 icon={faPlay}
                 className={classes.Play}
@@ -144,6 +145,17 @@ const PlaylistPage = () => {
           }}
           className={classes.SearchBar}
         />
+
+        {/* const trackList = res.sort(sortByName); */}
+        <select
+          className={classes.Select}
+          onChange={event => setSortTerm(event.target.value)}
+        >
+          <option value="0">Sort by Date Added</option>
+          <option value="1">Sort by Track Name</option>
+          <option value="2">Sort by Artist Name</option>
+        </select>
+
         <Anime
           opacity={[0, 1]}
           translateX={['1em', 0]}

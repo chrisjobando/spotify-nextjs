@@ -28,6 +28,7 @@ const Index = props => {
         }
 
         setSpotifyAccess(res.user.access);
+
         getCurrentPlayback(res.user.access).then(res => {
           if (res) {
             setPlayerState(1);
@@ -46,6 +47,7 @@ const Index = props => {
         Router.push('/app');
       });
     };
+
     getAuth();
   }, []);
 

@@ -1,7 +1,7 @@
 .Home {
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  overflow-y: hidden;
 
   .Header {
     margin-left: 30px;
@@ -12,6 +12,7 @@
     margin-top: 20px;
     display: flex;
     overflow-x: auto;
+    overflow-y: hidden;
     padding: 0 30px;
     height: 192px;
 

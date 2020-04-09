@@ -13,7 +13,7 @@ import classes from './track.module.scss';
 
 const Track = props => {
   const { track } = props;
-  const { spotifyAccess } = useContext(AppContext);
+  const { spotifyAccess, playerState } = useContext(AppContext);
   const [trackArtists, setTrackArtists] = useState('');
   const notifyQueue = name => toast(name + ' added to queue!');
 
@@ -37,8 +37,10 @@ const Track = props => {
       <h5
         className={classes.TrackName}
         onClick={() => {
-          addToQueue(spotifyAccess, [track.uri]);
-          notifyQueue(track.name);
+          if (playerState !== 0) {
+            notifyQueue(track.name);
+            addToQueue(spotifyAccess, [track.uri]);
+          }
         }}
       >
         <span>{track.name}</span>

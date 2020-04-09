@@ -48,8 +48,10 @@ const MiniTrack = props => {
         <h5
           className={classes.TrackName}
           onClick={() => {
-            addToQueue(spotifyAccess, [track.uri]);
-            notifyQueue(track.name);
+            if (playerInfo) {
+              notifyQueue(track.name);
+              addToQueue(spotifyAccess, [track.uri]);
+            }
           }}
           style={{
             color:

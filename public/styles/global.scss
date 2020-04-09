@@ -100,7 +100,7 @@ h6 {
 
 .ToastContainer {
   background-color: $purple;
-  border-radius: 0px 0px 15px 15px;
+  border-radius: 15px;
 }
 
 .Toast {
@@ -112,8 +112,4 @@ h6 {
 
 .Toastify__close-button {
   display: none;
-}
-
-.Toastify__toast-container--top-center {
-  top: 0;
 }

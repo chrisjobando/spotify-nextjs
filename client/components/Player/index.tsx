@@ -24,8 +24,9 @@ const Player = () => {
     spotifyAccess,
     playerInfo,
     playerState,
-    setPlayerState,
     cleanState,
+    setPlayerState,
+    setPlayerInfo,
   } = useContext(AppContext);
 
   useEffect(() => {

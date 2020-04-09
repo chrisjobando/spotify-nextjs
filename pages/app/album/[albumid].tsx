@@ -23,7 +23,7 @@ import classes from '../../../public/styles/pages/album.module.scss';
 const AlbumPage = () => {
   const router = useRouter();
   const { albumid } = router.query;
-  const { spotifyAccess } = useContext(AppContext);
+  const { spotifyAccess, playerInfo } = useContext(AppContext);
   const [albumData, setAlbum] = useState(null);
   const [albumTracks, setAlbumTracks] = useState(null);
   const [albumArtists, setAlbumArtists] = useState('');
@@ -71,8 +71,10 @@ const AlbumPage = () => {
               <h6>{parseInt(albumData.release_date)}</h6>
               <FontAwesomeIcon
                 onClick={() => {
-                  setPlaying(spotifyAccess, albumData.uri);
-                  notifyPlaying(albumData.name);
+                  if (playerInfo) {
+                    setPlaying(spotifyAccess, albumData.uri);
+                    notifyPlaying(albumData.name);
+                  }
                 }}
                 icon={faPlay}
                 className={classes.Play}
@@ -81,6 +83,7 @@ const AlbumPage = () => {
           )}
         </div>
       </div>
+
       <div className={classes.Content}>
         <Anime
           opacity={[0, 1]}
