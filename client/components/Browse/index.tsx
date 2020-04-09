@@ -78,29 +78,6 @@ const Browse = () => {
         translateY={['1em', 0]}
         delay={(_, i) => i * 100 + 700}
       >
-        {albums && albums.length !== 0 && (
-          <>
-            <h1>Albums</h1>
-            <div className={classes.CardWheel}>
-              <Anime
-                opacity={[0, 1]}
-                translateY={['1em', 0]}
-                delay={(_, i) => i * 100 + 900}
-              >
-                {albums.map(item => (
-                  <AlbumCard key={item.id} album={item} />
-                ))}
-              </Anime>
-            </div>
-          </>
-        )}
-      </Anime>
-
-      <Anime
-        opacity={[0, 1]}
-        translateY={['1em', 0]}
-        delay={(_, i) => i * 100 + 1100}
-      >
         {artists && artists.length !== 0 && (
           <>
             <h1>Artists</h1>
@@ -108,7 +85,7 @@ const Browse = () => {
               <Anime
                 opacity={[0, 1]}
                 translateY={['1em', 0]}
-                delay={(_, i) => i * 100 + 1300}
+                delay={(_, i) => i * 100 + 900}
               >
                 {artists.map(item => (
                   <Artists key={item.id} artist={item} />
@@ -122,7 +99,30 @@ const Browse = () => {
       <Anime
         opacity={[0, 1]}
         translateY={['1em', 0]}
-        delay={(_, i) => i * 100 + 1400}
+        delay={(_, i) => i * 100 + 1100}
+      >
+        {albums && albums.length !== 0 && (
+          <>
+            <h1>Albums</h1>
+            <div className={classes.CardWheel}>
+              <Anime
+                opacity={[0, 1]}
+                translateY={['1em', 0]}
+                delay={(_, i) => i * 100 + 1300}
+              >
+                {albums.map(item => (
+                  <AlbumCard key={item.id} album={item} />
+                ))}
+              </Anime>
+            </div>
+          </>
+        )}
+      </Anime>
+
+      <Anime
+        opacity={[0, 1]}
+        translateY={['1em', 0]}
+        delay={(_, i) => i * 100 + 1500}
       >
         {playlists && playlists.length !== 0 && (
           <>
@@ -131,7 +131,7 @@ const Browse = () => {
               <Anime
                 opacity={[0, 1]}
                 translateY={['1em', 0]}
-                delay={(_, i) => i * 100 + 1600}
+                delay={(_, i) => i * 100 + 1700}
               >
                 {playlists.map(item => (
                   <PlaylistCard key={item.id} playlist={item} />
