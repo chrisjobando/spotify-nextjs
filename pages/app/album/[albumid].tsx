@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Anime from 'react-anime';
 
 // Global Context
 import AppContext from '../../../client/components/AppContext';
@@ -77,8 +78,14 @@ const AlbumPage = () => {
         </div>
       </div>
       <div className={classes.Content}>
-        {albumTracks &&
-          albumTracks.map(item => <MiniTrack key={item.id} track={item} />)}
+        <Anime
+          opacity={[0, 1]}
+          translateX={['1em', 0]}
+          delay={(_, i) => i * 100 + 450}
+        >
+          {albumTracks &&
+            albumTracks.map(item => <MiniTrack key={item.id} track={item} />)}
+        </Anime>
       </div>
       <div className={classes.BottomPadding} />
     </div>

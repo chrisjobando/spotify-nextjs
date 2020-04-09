@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import Anime from 'react-anime';
 
 // Global Context
 import AppContext from '../../client/components/AppContext';
@@ -81,19 +82,43 @@ const Stats = () => {
         <option value="long_term">All-Time</option>
       </select>
 
-      <h1 className={classes.Header}>Favorite Tracks</h1>
-      <div className={classes.CardWheel}>
-        {topTrac.map(item => (
-          <TrackCard key={item.id} track={item} />
-        ))}
-      </div>
+      <Anime
+        opacity={[0, 1]}
+        translateY={['1em', 0]}
+        delay={(_, i) => i * 100 + 300}
+      >
+        <h1 className={classes.Header}>Favorite Tracks</h1>
+        <div className={classes.CardWheel}>
+          <Anime
+            opacity={[0, 1]}
+            translateY={['1em', 0]}
+            delay={(_, i) => i * 100 + 450}
+          >
+            {topTrac.map(item => (
+              <TrackCard key={item.id} track={item} />
+            ))}
+          </Anime>
+        </div>
+      </Anime>
 
-      <h1 className={classes.Header}>Favorite Artists</h1>
-      <div className={classes.CardWheel}>
-        {topArt.map(item => (
-          <ArtistCard key={item.id} artist={item} />
-        ))}
-      </div>
+      <Anime
+        opacity={[0, 1]}
+        translateY={['1em', 0]}
+        delay={(_, i) => i * 100 + 300}
+      >
+        <h1 className={classes.Header}>Favorite Artists</h1>
+        <div className={classes.CardWheel}>
+          <Anime
+            opacity={[0, 1]}
+            translateY={['1em', 0]}
+            delay={(_, i) => i * 100 + 450}
+          >
+            {topArt.map(item => (
+              <ArtistCard key={item.id} artist={item} />
+            ))}
+          </Anime>
+        </div>
+      </Anime>
     </div>
   );
 };

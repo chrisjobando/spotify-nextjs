@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
+import Anime from 'react-anime';
 
 // Components
 // Card Components
@@ -88,47 +89,97 @@ const ArtistPage = () => {
         </div>
       </div>
       <div className={classes.Content}>
-        {popular && popular.length !== 0 && (
-          <>
-            <h1>Popular Tracks</h1>
-            <div className={classes.CardWheel}>
-              {popular.map(item => (
-                <TrackCard key={item.id} track={item} />
-              ))}
-            </div>
-          </>
-        )}
-        {albums && albums.length !== 0 && (
-          <>
-            <h1>Albums</h1>
-            <div className={classes.CardWheel}>
-              {albums.map(item => (
-                <AlbumCard key={item.id} album={item} />
-              ))}
-            </div>
-          </>
-        )}
+        <Anime
+          opacity={[0, 1]}
+          translateY={['1em', 0]}
+          delay={(_, i) => i * 100 + 300}
+        >
+          {popular && popular.length !== 0 && (
+            <>
+              <h1>Popular Tracks</h1>
+              <div className={classes.CardWheel}>
+                <Anime
+                  opacity={[0, 1]}
+                  translateY={['1em', 0]}
+                  delay={(_, i) => i * 100 + 500}
+                >
+                  {popular.map(item => (
+                    <TrackCard key={item.id} track={item} />
+                  ))}
+                </Anime>
+              </div>
+            </>
+          )}
+        </Anime>
 
-        {singles && singles.length !== 0 && (
-          <>
-            <h1>Singles</h1>
-            <div className={classes.CardWheel}>
-              {singles.map(item => (
-                <AlbumCard key={item.id} album={item} />
-              ))}
-            </div>
-          </>
-        )}
-        {sugArtists && sugArtists.length !== 0 && (
-          <>
-            <h1>Similar Artists</h1>
-            <div className={classes.CardWheel}>
-              {sugArtists.map(item => (
-                <ArtistCard key={item.id} artist={item} />
-              ))}
-            </div>
-          </>
-        )}
+        <Anime
+          opacity={[0, 1]}
+          translateY={['1em', 0]}
+          delay={(_, i) => i * 100 + 700}
+        >
+          {albums && albums.length !== 0 && (
+            <>
+              <h1>Albums</h1>
+              <div className={classes.CardWheel}>
+                <Anime
+                  opacity={[0, 1]}
+                  translateY={['1em', 0]}
+                  delay={(_, i) => i * 100 + 900}
+                >
+                  {albums.map(item => (
+                    <AlbumCard key={item.id} album={item} />
+                  ))}
+                </Anime>
+              </div>
+            </>
+          )}
+        </Anime>
+
+        <Anime
+          opacity={[0, 1]}
+          translateY={['1em', 0]}
+          delay={(_, i) => i * 100 + 1100}
+        >
+          {singles && singles.length !== 0 && (
+            <>
+              <h1>Singles</h1>
+              <div className={classes.CardWheel}>
+                <Anime
+                  opacity={[0, 1]}
+                  translateY={['1em', 0]}
+                  delay={(_, i) => i * 100 + 1300}
+                >
+                  {singles.map(item => (
+                    <AlbumCard key={item.id} album={item} />
+                  ))}
+                </Anime>
+              </div>
+            </>
+          )}
+        </Anime>
+
+        <Anime
+          opacity={[0, 1]}
+          translateY={['1em', 0]}
+          delay={(_, i) => i * 100 + 1500}
+        >
+          {sugArtists && sugArtists.length !== 0 && (
+            <>
+              <h1>Similar Artists</h1>
+              <div className={classes.CardWheel}>
+                <Anime
+                  opacity={[0, 1]}
+                  translateY={['1em', 0]}
+                  delay={(_, i) => i * 100 + 1700}
+                >
+                  {sugArtists.map(item => (
+                    <ArtistCard key={item.id} artist={item} />
+                  ))}
+                </Anime>
+              </div>
+            </>
+          )}
+        </Anime>
       </div>
       <div className={classes.BottomPadding} />
     </div>

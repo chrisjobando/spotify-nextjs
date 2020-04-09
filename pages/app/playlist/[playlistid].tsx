@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useDebounce } from 'use-debounce';
+import Anime from 'react-anime';
 
 // Global Context
 import AppContext from '../../../client/components/AppContext';
@@ -137,11 +138,16 @@ const PlaylistPage = () => {
           }}
           className={classes.SearchBar}
         />
-
-        {filteredTracks &&
-          filteredTracks.map(item => (
-            <MiniTrack key={item.track.id} track={item.track} />
-          ))}
+        <Anime
+          opacity={[0, 1]}
+          translateX={['1em', 0]}
+          delay={(_, i) => i * 50 + 250}
+        >
+          {filteredTracks &&
+            filteredTracks.map(item => (
+              <MiniTrack key={item.track.id} track={item.track} />
+            ))}
+        </Anime>
       </div>
       <div className={classes.BottomPadding} />
     </div>

@@ -1,4 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
+import Anime from 'react-anime';
 
 // Card Components
 import TrackCard from '../Track';
@@ -91,35 +92,83 @@ const Home = () => {
 
   return (
     <div className={classes.Home}>
-      <h1 className={classes.Header} style={{ marginTop: '10px' }}>
-        Recently Played
-      </h1>
-      <div className={classes.CardWheel}>
-        {recents.map(item => (
-          <TrackCard key={item.track.id} track={item.track} />
-        ))}
-      </div>
+      <Anime
+        opacity={[0, 1]}
+        translateY={['1em', 0]}
+        delay={(_, i) => i * 100 + 300}
+      >
+        <h1 className={classes.Header} style={{ marginTop: '10px' }}>
+          Recently Played
+        </h1>
+        <div className={classes.CardWheel}>
+          <Anime
+            opacity={[0, 1]}
+            translateY={['1em', 0]}
+            delay={(_, i) => i * 100 + 500}
+          >
+            {recents.map(item => (
+              <TrackCard key={item.track.id} track={item.track} />
+            ))}
+          </Anime>
+        </div>
+      </Anime>
 
-      <h1 className={classes.Header}>Playlists</h1>
-      <div className={classes.CardWheel}>
-        {playlists.map(item => (
-          <PlaylistCard key={item.id} playlist={item} />
-        ))}
-      </div>
+      <Anime
+        opacity={[0, 1]}
+        translateY={['1em', 0]}
+        delay={(_, i) => i * 100 + 700}
+      >
+        <h1 className={classes.Header}>Playlists</h1>
+        <div className={classes.CardWheel}>
+          <Anime
+            opacity={[0, 1]}
+            translateY={['1em', 0]}
+            delay={(_, i) => i * 100 + 900}
+          >
+            {playlists.map(item => (
+              <PlaylistCard key={item.id} playlist={item} />
+            ))}
+          </Anime>
+        </div>
+      </Anime>
 
-      <h1 className={classes.Header}>Suggested Tracks</h1>
-      <div className={classes.CardWheel}>
-        {sugTracks.map(item => (
-          <TrackCard key={item.id} track={item} />
-        ))}
-      </div>
+      <Anime
+        opacity={[0, 1]}
+        translateY={['1em', 0]}
+        delay={(_, i) => i * 100 + 1100}
+      >
+        <h1 className={classes.Header}>Suggested Tracks</h1>
+        <div className={classes.CardWheel}>
+          <Anime
+            opacity={[0, 1]}
+            translateY={['1em', 0]}
+            delay={(_, i) => i * 100 + 1300}
+          >
+            {sugTracks.map(item => (
+              <TrackCard key={item.id} track={item} />
+            ))}
+          </Anime>
+        </div>
+      </Anime>
 
-      <h1 className={classes.Header}>Suggested Artists</h1>
-      <div className={classes.CardWheel}>
-        {sugArtists.map(item => (
-          <ArtistCard key={item.id} artist={item} />
-        ))}
-      </div>
+      <Anime
+        opacity={[0, 1]}
+        translateY={['1em', 0]}
+        delay={(_, i) => i * 100 + 1500}
+      >
+        <h1 className={classes.Header}>Suggested Artists</h1>
+        <div className={classes.CardWheel}>
+          <Anime
+            opacity={[0, 1]}
+            translateY={['1em', 0]}
+            delay={(_, i) => i * 100 + 1700}
+          >
+            {sugArtists.map(item => (
+              <ArtistCard key={item.id} artist={item} />
+            ))}
+          </Anime>
+        </div>
+      </Anime>
     </div>
   );
 };
