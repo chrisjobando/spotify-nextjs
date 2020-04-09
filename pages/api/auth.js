@@ -9,6 +9,8 @@ const handler = (req, res) => {
     'user-read-recently-played',
     'user-read-playback-state',
     'user-modify-playback-state',
+    'playlist-read-private',
+    'playlist-read-collaborative',
   ];
   const authorizeUrl = spotifyApi.createAuthorizeURL(scopesArray);
   res.send({ url: authorizeUrl });
