@@ -32,49 +32,51 @@ export const MiniPlayer = props => {
   const { onClick, access, isPlay, setPlay, songData } = props;
 
   return (
-    <div className={classes.MiniPlayer}>
+    <>
       {songData ? (
-        <div className={classes.PlayerFront}>
-          <img
-            onClick={onClick}
-            className={classes.AlbumPic}
-            src={songData.album.images[0].url}
-          />
-          <div className={classes.SongInfo}>
-            <h5 className={classes.SongName}>{songData.name}</h5>
-            <h6 className={classes.SongArtist}>{songData.artists[0].name}</h6>
+        <div className={classes.MiniPlayer}>
+          <div className={classes.PlayerFront}>
+            <img
+              onClick={onClick}
+              className={classes.AlbumPic}
+              src={songData.album.images[0].url}
+            />
+            <div className={classes.SongInfo}>
+              <h5 className={classes.SongName}>{songData.name}</h5>
+              <h6 className={classes.SongArtist}>{songData.artists[0].name}</h6>
+            </div>
+          </div>
+          <div className={classes.Controls}>
+            {isPlay ? (
+              <FontAwesomeIcon
+                onClick={() => {
+                  pauseTrack(access);
+                  setPlay(!isPlay);
+                }}
+                icon={faPause}
+                className={classes.Play}
+              />
+            ) : (
+              <FontAwesomeIcon
+                onClick={() => {
+                  playTrack(access);
+                  setPlay(!isPlay);
+                }}
+                icon={faPlay}
+                className={classes.Play}
+              />
+            )}
+            <FontAwesomeIcon
+              onClick={() => nextTrack(access)}
+              icon={faForward}
+              className={classes.Skip}
+            />
           </div>
         </div>
       ) : (
         <div />
       )}
-      <div className={classes.Controls}>
-        {isPlay ? (
-          <FontAwesomeIcon
-            onClick={() => {
-              pauseTrack(access);
-              setPlay(!isPlay);
-            }}
-            icon={faPause}
-            className={classes.Play}
-          />
-        ) : (
-          <FontAwesomeIcon
-            onClick={() => {
-              playTrack(access);
-              setPlay(!isPlay);
-            }}
-            icon={faPlay}
-            className={classes.Play}
-          />
-        )}
-        <FontAwesomeIcon
-          onClick={() => nextTrack(access)}
-          icon={faForward}
-          className={classes.Skip}
-        />
-      </div>
-    </div>
+    </>
   );
 };
 
@@ -176,16 +178,6 @@ export const BigPlayer = props => {
 
             <h3
               onClick={() => {
-                setClean(!isClean);
-                updateClean(!isClean);
-              }}
-              className={classes.Shuffle}
-            >
-              Clean: {isClean ? 'On' : 'Off'}
-            </h3>
-
-            <h3
-              onClick={() => {
                 let newState = '';
                 if (repeatState == 'track') {
                   newState = 'context';
@@ -203,6 +195,16 @@ export const BigPlayer = props => {
               Repeat: {repeatState}
             </h3>
           </div>
+
+          <h3
+            onClick={() => {
+              setClean(!isClean);
+              updateClean(!isClean);
+            }}
+            className={classes.Clean}
+          >
+            Clean: {isClean ? 'On' : 'Off'}
+          </h3>
         </div>
       </div>
     </div>
