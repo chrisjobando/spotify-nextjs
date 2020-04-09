@@ -101,13 +101,45 @@ h6 {
 .ToastContainer {
   background-color: $purple;
   border-radius: 15px;
+  box-sizing: border-box;
+  padding: 10px;
+  display: flex;
 }
 
 .Toast {
+  margin: auto;
   font-family: $font1;
   color: $blue;
   font-weight: bold;
   font-size: 18px;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ToastContainer2 {
+  background-color: $black;
+  border-radius: 15px;
+  box-sizing: border-box;
+  padding: 10px;
+  display: flex;
+}
+
+.Toast2 {
+  margin: auto;
+  font-family: $font1;
+  color: $white;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .Toastify__close-button {

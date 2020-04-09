@@ -41,23 +41,25 @@ class MyApp extends App {
             ) ? (
               <NavBar2 />
             ) : (
-              <NavBar />
+              <>
+                <NavBar />
+                <ToastContainer
+                  toastClassName="ToastContainer"
+                  bodyClassName="Toast"
+                  position="top-center"
+                  autoClose={3000}
+                  hideProgressBar
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  draggable
+                  pauseOnHover
+                />
+              </>
             ))}
           <Component {...pageProps} />
           <Player />
         </AppContextProvider>
-        <ToastContainer
-          toastClassName="ToastContainer"
-          bodyClassName="Toast"
-          position="top-center"
-          autoClose={3000}
-          hideProgressBar
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          draggable
-          pauseOnHover
-        />
       </>
     );
   }

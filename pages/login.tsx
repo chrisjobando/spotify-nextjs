@@ -31,7 +31,9 @@ const Login = props => {
     <div className={classes.Login}>
       <Logo />
       <h1>NextJS Spotify App</h1>
-      <h4>Play music, check out your stats, customize your listening experience.</h4>
+      <h4>
+        Play music, check out your stats, customize your listening experience.
+      </h4>
       <button type="button" className={classes.Button} onClick={handleLogin}>
         <h2>Sign In</h2>
       </button>

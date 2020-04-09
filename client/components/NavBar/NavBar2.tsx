@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { destroyCookie } from 'nookies';
 import Link from 'next/link';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 // Global Context
 import { AppContext } from '../AppContext';
@@ -20,11 +20,13 @@ const NavBar2 = () => {
   const [isOpen, setOpen] = useState(false);
   const [headerColor, setHeaderColor] = useState('#001A51');
   const [blurColor, setBlurColor] = useState('#c29dfd');
+  const [toastColor, setToastColor] = useState(0);
   const { setPlayerState } = useContext(AppContext);
 
   const listenScrollEvent = () => {
     window.scrollY > 175 ? setHeaderColor('white') : setHeaderColor('#001A51');
     window.scrollY > 175 ? setBlurColor('#272B2F') : setBlurColor('#c29dfd');
+    window.scrollY > 200 ? setToastColor(1) : setToastColor(0);
   };
 
   const notifySignOut = () => toast('Signed Out!');
@@ -94,6 +96,19 @@ const NavBar2 = () => {
         )}
       </div>
       {isOpen && <NavMenu onClick={() => setOpen(!isOpen)} />}
+
+      <ToastContainer
+        toastClassName={toastColor == 0 ? 'ToastContainer2' : 'ToastContainer'}
+        bodyClassName={toastColor == 0 ? 'Toast2' : 'Toast'}
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        draggable
+        pauseOnHover
+      />
     </>
   );
 };
