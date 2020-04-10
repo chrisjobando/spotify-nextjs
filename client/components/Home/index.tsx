@@ -24,11 +24,26 @@ import {
 import classes from './home.module.scss';
 
 const Home = () => {
-  const { spotifyAccess, setTopTracks, setTopArtists } = useContext(AppContext);
+  const { spotifyAccess, setTopTracks, setTopArtists, userInfo } = useContext(
+    AppContext
+  );
   const [recents, setRecents] = useState([]);
   const [playlists, setPlaylists] = useState([]);
   const [sugArtists, setSugArtists] = useState([]);
   const [sugTracks, setSugTracks] = useState([]);
+
+  const getTime = () => {
+    let today = new Date();
+    let curHr = today.getHours();
+
+    if (curHr < 12) {
+      return 'Good Morning';
+    } else if (curHr < 18) {
+      return 'Good Afternoon';
+    } else {
+      return 'Good Evening';
+    }
+  };
 
   useEffect(() => {
     recentlyPlayed(spotifyAccess).then(res => {
@@ -90,6 +105,18 @@ const Home = () => {
 
   return (
     <div className={classes.Home}>
+      {userInfo && (
+        <Anime
+          opacity={[0, 1]}
+          translateY={['1em', 0]}
+          delay={(_, i) => i * 100}
+        >
+          <h1 className={classes.Name}>
+            {getTime()} {userInfo.display_name.split(' ')[0]}
+          </h1>
+        </Anime>
+      )}
+
       <Anime
         opacity={[0, 1]}
         translateY={['1em', 0]}
@@ -124,7 +151,7 @@ const Home = () => {
         translateY={['1em', 0]}
         delay={(_, i) => i * 100 + 700}
       >
-        <h1 className={classes.Header}>Playlists</h1>
+        <h1 className={classes.Header}>Your Playlists</h1>
         <div className={classes.CardWheel}>
           <Anime
             opacity={[0, 1]}

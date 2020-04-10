@@ -32,6 +32,11 @@
 .MiniTrack {
   display: flex;
   color: $white;
+  box-sizing: border-box;
+  padding: 0 10px;
+  padding-bottom: 10px;
+  border-radius: 3px;
+  border-bottom: 1px solid rgba($gray, 0.5);
   margin-bottom: 20px;
 
   .TrackPic {
