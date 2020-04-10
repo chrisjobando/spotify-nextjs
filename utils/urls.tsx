@@ -16,6 +16,7 @@ export default {
       stats: '/app/stats',
       browse: '/app/browse',
       artist: artistId => `/app/artist/${artistId}`,
+      album: albumId => `/app/album/${albumId}`,
       playlist: playlistId => `/app/playlist/${playlistId}`,
     },
   },

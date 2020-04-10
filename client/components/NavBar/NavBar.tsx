@@ -25,6 +25,7 @@ const NavBar = () => {
   return (
     <>
       <div className={classes.Background} />
+      <div className={classes.Background} />
       <div className={classes.NavBar}>
         {isOpen ? (
           <FontAwesomeIcon

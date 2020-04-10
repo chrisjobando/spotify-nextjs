@@ -33,10 +33,16 @@ const NavBar2 = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', listenScrollEvent);
+
+    return () => window.removeEventListener('scroll', listenScrollEvent);
   }, []);
 
   return (
     <>
+      <div
+        style={{ backgroundColor: blurColor }}
+        className={classes.Background}
+      />
       <div
         style={{ backgroundColor: blurColor }}
         className={classes.Background}
@@ -96,7 +102,6 @@ const NavBar2 = () => {
         )}
       </div>
       {isOpen && <NavMenu onClick={() => setOpen(!isOpen)} />}
-
       <ToastContainer
         toastClassName={toastColor == 0 ? 'ToastContainer2' : 'ToastContainer'}
         bodyClassName={toastColor == 0 ? 'Toast2' : 'Toast'}

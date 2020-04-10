@@ -36,9 +36,8 @@ export const MiniPlayer = props => {
     <>
       {songData ? (
         <div className={classes.MiniPlayer}>
-          <div className={classes.PlayerFront}>
+          <div className={classes.PlayerFront} onClick={onClick}>
             <img
-              onClick={onClick}
               className={classes.AlbumPic}
               src={songData.album.images[0].url}
             />
