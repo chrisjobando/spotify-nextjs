@@ -1,6 +1,7 @@
 import React, { createContext, useState } from 'react';
 
 interface AppContextInterface {
+  userAuth: string;
   playerState: number;
   playerInfo: any | null;
   userInfo: any | null;
@@ -23,11 +24,13 @@ interface AppContextInterface {
   setTopArtists2: (topArtists: any[]) => void;
   setTopArtists3: (topArtists: any[]) => void;
   setClean: (cleanState: boolean) => void;
+  setUserAuth: (userAuth: string) => void;
 }
 
 export const AppContext = createContext<AppContextInterface | null>(null);
 
 const AppContextProvider = props => {
+  const [userAuth, setUserAuth] = useState('');
   const [spotifyAccess, setSpotifyAccess] = useState('');
   const [playerState, setPlayerState] = useState(0);
   const [playerInfo, setPlayerInfo] = useState(null);
@@ -43,6 +46,8 @@ const AppContextProvider = props => {
   return (
     <AppContext.Provider
       value={{
+        userAuth,
+        setUserAuth,
         spotifyAccess,
         setSpotifyAccess,
         playerState,

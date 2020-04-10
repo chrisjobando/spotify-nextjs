@@ -14,7 +14,7 @@ export default {
     app: {
       index: '/app',
       stats: '/app/stats',
-      browse: '/app/browse',
+      search: '/app/search',
       artist: artistId => `/app/artist/${artistId}`,
       album: albumId => `/app/album/${albumId}`,
       playlist: playlistId => `/app/playlist/${playlistId}`,
@@ -24,6 +24,7 @@ export default {
     auth: () => `/api/auth`,
     findUser: () => `/api/find-user`,
     createUser: () => `/api/create-user`,
+    deleteUser: () => `/api/delete-user`,
     updateUser: () => `/api/update-user`,
     updateClean: () => `/api/set-clean`,
   },

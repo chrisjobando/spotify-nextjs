@@ -95,7 +95,15 @@ const Stats = () => {
             delay={(_, i) => i * 100 + 450}
           >
             {topTrac.map(item => (
-              <TrackCard key={item.id} track={item} />
+              <TrackCard
+                key={item.id
+                  .split('')
+                  .sort(function() {
+                    return 0.5 - Math.random();
+                  })
+                  .join('')}
+                track={item}
+              />
             ))}
           </Anime>
         </div>
@@ -114,7 +122,15 @@ const Stats = () => {
             delay={(_, i) => i * 100 + 450}
           >
             {topArt.map(item => (
-              <ArtistCard key={item.id} artist={item} />
+              <ArtistCard
+                key={item.id
+                  .split('')
+                  .sort(function() {
+                    return 0.5 - Math.random();
+                  })
+                  .join('')}
+                artist={item}
+              />
             ))}
           </Anime>
         </div>

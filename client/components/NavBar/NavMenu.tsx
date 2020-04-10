@@ -6,11 +6,14 @@ import { toast } from 'react-toastify';
 // Global Context
 import { AppContext } from '../AppContext';
 
+// API Call
+import { deleteUser } from '../../actions/api';
+
 // Styling
 import classes from './navbar.module.scss';
 
 const NavMenu = ({ onClick }) => {
-  const { setPlayerState } = useContext(AppContext);
+  const { setPlayerState, userAuth } = useContext(AppContext);
 
   const notifySignOut = () => toast('Signed Out!');
 
@@ -37,6 +40,7 @@ const NavMenu = ({ onClick }) => {
         <Link href="/">
           <span
             onClick={() => {
+              deleteUser(userAuth);
               destroyCookie(null, 'authorization');
               setPlayerState(0);
               notifySignOut();

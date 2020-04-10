@@ -104,7 +104,15 @@ const ArtistPage = () => {
                   delay={(_, i) => i * 100 + 500}
                 >
                   {popular.map(item => (
-                    <TrackCard key={item.id} track={item} />
+                    <TrackCard
+                      key={item.id
+                        .split('')
+                        .sort(function() {
+                          return 0.5 - Math.random();
+                        })
+                        .join('')}
+                      track={item}
+                    />
                   ))}
                 </Anime>
               </div>
@@ -127,7 +135,15 @@ const ArtistPage = () => {
                   delay={(_, i) => i * 100 + 900}
                 >
                   {albums.map(item => (
-                    <AlbumCard key={item.id} album={item} />
+                    <AlbumCard
+                      key={item.id
+                        .split('')
+                        .sort(function() {
+                          return 0.5 - Math.random();
+                        })
+                        .join('')}
+                      album={item}
+                    />
                   ))}
                 </Anime>
               </div>
@@ -150,7 +166,15 @@ const ArtistPage = () => {
                   delay={(_, i) => i * 100 + 1300}
                 >
                   {singles.map(item => (
-                    <AlbumCard key={item.id} album={item} />
+                    <AlbumCard
+                      key={item.id
+                        .split('')
+                        .sort(function() {
+                          return 0.5 - Math.random();
+                        })
+                        .join('')}
+                      album={item}
+                    />
                   ))}
                 </Anime>
               </div>
@@ -173,7 +197,15 @@ const ArtistPage = () => {
                   delay={(_, i) => i * 100 + 1700}
                 >
                   {sugArtists.map(item => (
-                    <ArtistCard key={item.id} artist={item} />
+                    <ArtistCard
+                      key={item.id
+                        .split('')
+                        .sort(function() {
+                          return 0.5 - Math.random();
+                        })
+                        .join('')}
+                      artist={item}
+                    />
                   ))}
                 </Anime>
               </div>

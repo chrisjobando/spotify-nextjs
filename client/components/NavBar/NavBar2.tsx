@@ -6,6 +6,9 @@ import { toast, ToastContainer } from 'react-toastify';
 // Global Context
 import { AppContext } from '../AppContext';
 
+// API Call
+import { deleteUser } from '../../actions/api';
+
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes, faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -21,7 +24,7 @@ const NavBar2 = () => {
   const [headerColor, setHeaderColor] = useState('#001A51');
   const [blurColor, setBlurColor] = useState('#c29dfd');
   const [toastColor, setToastColor] = useState(0);
-  const { setPlayerState } = useContext(AppContext);
+  const { setPlayerState, userAuth } = useContext(AppContext);
 
   const listenScrollEvent = () => {
     window.scrollY > 175 ? setHeaderColor('white') : setHeaderColor('#001A51');
@@ -78,6 +81,7 @@ const NavBar2 = () => {
                 <Link href="/">
                   <h2
                     onClick={() => {
+                      deleteUser(userAuth);
                       destroyCookie(null, 'authorization');
                       setPlayerState(0);
                       notifySignOut();

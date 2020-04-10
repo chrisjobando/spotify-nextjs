@@ -6,6 +6,9 @@ import { toast } from 'react-toastify';
 // Global Context
 import { AppContext } from '../AppContext';
 
+// API Call
+import { deleteUser } from '../../actions/api';
+
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes, faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +21,7 @@ import classes from './navbar.module.scss';
 
 const NavBar = () => {
   const [isOpen, setOpen] = useState(false);
-  const { setPlayerState } = useContext(AppContext);
+  const { setPlayerState, userAuth } = useContext(AppContext);
 
   const notifySignOut = () => toast('Signed Out!');
 
@@ -59,6 +62,7 @@ const NavBar = () => {
                 <Link href="/">
                   <h2
                     onClick={() => {
+                      deleteUser(userAuth);
                       destroyCookie(null, 'authorization');
                       setPlayerState(0);
                       notifySignOut();
@@ -70,13 +74,13 @@ const NavBar = () => {
               </div>
             </div>
 
-            <Link href="/app/browse">
-              <>
+            <Link href="/app/search">
+              <div>
                 <FontAwesomeIcon
                   icon={faSearch}
                   className={classes.BrowseIcon}
                 />
-              </>
+              </div>
             </Link>
           </>
         )}

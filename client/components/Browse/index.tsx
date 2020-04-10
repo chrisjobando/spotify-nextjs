@@ -65,7 +65,15 @@ const Browse = () => {
                 delay={(_, i) => i * 100 + 500}
               >
                 {tracks.map(item => (
-                  <TrackCard key={item.id} track={item} />
+                  <TrackCard
+                    key={item.id
+                      .split('')
+                      .sort(function() {
+                        return 0.5 - Math.random();
+                      })
+                      .join('')}
+                    track={item}
+                  />
                 ))}
               </Anime>
             </div>
@@ -88,7 +96,15 @@ const Browse = () => {
                 delay={(_, i) => i * 100 + 900}
               >
                 {artists.map(item => (
-                  <Artists key={item.id} artist={item} />
+                  <Artists
+                    key={item.id
+                      .split('')
+                      .sort(function() {
+                        return 0.5 - Math.random();
+                      })
+                      .join('')}
+                    artist={item}
+                  />
                 ))}
               </Anime>
             </div>
@@ -111,7 +127,15 @@ const Browse = () => {
                 delay={(_, i) => i * 100 + 1300}
               >
                 {albums.map(item => (
-                  <AlbumCard key={item.id} album={item} />
+                  <AlbumCard
+                    key={item.id
+                      .split('')
+                      .sort(function() {
+                        return 0.5 - Math.random();
+                      })
+                      .join('')}
+                    album={item}
+                  />
                 ))}
               </Anime>
             </div>
@@ -134,7 +158,15 @@ const Browse = () => {
                 delay={(_, i) => i * 100 + 1700}
               >
                 {playlists.map(item => (
-                  <PlaylistCard key={item.id} playlist={item} />
+                  <PlaylistCard
+                    key={item.id
+                      .split('')
+                      .sort(function() {
+                        return 0.5 - Math.random();
+                      })
+                      .join('')}
+                    playlist={item}
+                  />
                 ))}
               </Anime>
             </div>

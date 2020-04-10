@@ -193,7 +193,15 @@ const PlaylistPage = () => {
             filteredTracks.map(item => (
               <>
                 {item.track && (
-                  <MiniTrack key={item.track.id} track={item.track} />
+                  <MiniTrack
+                    key={item.track.id
+                      .split('')
+                      .sort(function() {
+                        return 0.5 - Math.random();
+                      })
+                      .join('')}
+                    track={item.track}
+                  />
                 )}
               </>
             ))}

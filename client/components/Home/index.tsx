@@ -105,7 +105,15 @@ const Home = () => {
             delay={(_, i) => i * 100 + 500}
           >
             {recents.map(item => (
-              <TrackCard key={item.track.id} track={item.track} />
+              <TrackCard
+                key={item.track.id
+                  .split('')
+                  .sort(function() {
+                    return 0.5 - Math.random();
+                  })
+                  .join('')}
+                track={item.track}
+              />
             ))}
           </Anime>
         </div>
@@ -124,7 +132,15 @@ const Home = () => {
             delay={(_, i) => i * 100 + 900}
           >
             {playlists.map(item => (
-              <PlaylistCard key={item.id} playlist={item} />
+              <PlaylistCard
+                key={item.id
+                  .split('')
+                  .sort(function() {
+                    return 0.5 - Math.random();
+                  })
+                  .join('')}
+                playlist={item}
+              />
             ))}
           </Anime>
         </div>
@@ -143,7 +159,15 @@ const Home = () => {
             delay={(_, i) => i * 100 + 1300}
           >
             {sugTracks.map(item => (
-              <TrackCard key={item.id} track={item} />
+              <TrackCard
+                key={item.id
+                  .split('')
+                  .sort(function() {
+                    return 0.5 - Math.random();
+                  })
+                  .join('')}
+                track={item}
+              />
             ))}
           </Anime>
         </div>
@@ -162,7 +186,15 @@ const Home = () => {
             delay={(_, i) => i * 100 + 1700}
           >
             {sugArtists.map(item => (
-              <ArtistCard key={item.id} artist={item} />
+              <ArtistCard
+                key={item.id
+                  .split('')
+                  .sort(function() {
+                    return 0.5 - Math.random();
+                  })
+                  .join('')}
+                artist={item}
+              />
             ))}
           </Anime>
         </div>

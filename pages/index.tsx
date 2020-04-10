@@ -17,6 +17,7 @@ const Index = props => {
     setSpotifyAccess,
     setUserInfo,
     setClean,
+    setUserAuth,
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -26,6 +27,8 @@ const Index = props => {
           Router.push('/login');
           return;
         }
+
+        setUserAuth(res.user._id);
 
         setSpotifyAccess(res.user.access);
 

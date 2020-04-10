@@ -11,6 +11,12 @@ export async function createId(tokens) {
   });
 }
 
+export async function deleteId(_id) {
+  await mongoDB();
+
+  return User.findByIdAndRemove({ _id: _id });
+}
+
 export async function findById(_id) {
   await mongoDB();
 

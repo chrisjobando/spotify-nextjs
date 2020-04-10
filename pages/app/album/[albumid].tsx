@@ -91,7 +91,17 @@ const AlbumPage = () => {
           delay={(_, i) => i * 100 + 450}
         >
           {albumTracks &&
-            albumTracks.map(item => <MiniTrack key={item.id} track={item} />)}
+            albumTracks.map(item => (
+              <MiniTrack
+                key={item.id
+                  .split('')
+                  .sort(function() {
+                    return 0.5 - Math.random();
+                  })
+                  .join('')}
+                track={item}
+              />
+            ))}
         </Anime>
       </div>
       <div className={classes.BottomPadding} />

@@ -84,6 +84,29 @@ export const createUser = async code => {
     });
 };
 
+export const deleteUser = async _id => {
+  return await fetch(urls.api.deleteUser(), {
+    method: 'post',
+    mode: 'same-origin',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      _id,
+    }),
+  })
+    .then(response => response.json())
+    .then(json => {
+      if (json == null) {
+        throw new Error('Could not connect to API...');
+      } else if (!json.success) {
+        return {};
+      }
+      return json;
+    });
+};
+
 export const getUser = async authorization => {
   const { refresh } = await fetch(urls.api.findUser(), {
     method: 'post',
