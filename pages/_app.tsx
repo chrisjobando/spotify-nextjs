@@ -1,6 +1,7 @@
 import React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
+import { parseCookies } from 'nookies';
 
 // API Calls
 import { getUser } from 'client/actions/api';
@@ -9,9 +10,7 @@ import { getUser } from 'client/actions/api';
 import { ToastContainer } from 'react-toastify';
 
 // Global Context Provider
-import AppContextProvider, {
-  AppContext,
-} from '../client/components/AppContext';
+import AppContextProvider from '../client/components/AppContext';
 
 // NavBar
 import NavBar from '../client/components/NavBar/NavBar';
@@ -29,7 +28,6 @@ import 'react-toastify/scss/main.scss';
 
 // Styling
 import '../public/styles/global.scss';
-import { parseCookies } from 'nookies';
 
 interface Props {
   user: any;
@@ -38,8 +36,7 @@ interface Props {
 class MyApp extends App<Props> {
   static async getInitialProps(appContext) {
     const appProps = await App.getInitialProps(appContext);
-
-    const cookies = parseCookies();
+    const cookies = parseCookies(appContext.ctx);
 
     return getUser(cookies.authorization)
       .then(user => {

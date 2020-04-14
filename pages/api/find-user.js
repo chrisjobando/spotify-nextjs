@@ -6,7 +6,6 @@ const handler = (req, res) =>
       res.status(200).json({
         success: true,
         refresh: user.refresh,
-        access: user.access,
         clean: user.clean,
       });
     })

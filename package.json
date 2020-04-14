@@ -27,7 +27,6 @@
     "react-anime": "^3.0.3",
     "react-dom": "16.13.0",
     "react-toastify": "^5.5.0",
-    "spotify-web-api-node": "^4.0.0",
     "use-debounce": "^3.4.1"
   },
   "main": "index.tsx",

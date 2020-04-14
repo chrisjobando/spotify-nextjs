@@ -59,10 +59,10 @@ const NavBar = () => {
                 </Link>
               </div>
               <div className={classes.Link2}>
-                <Link href="/">
+                <Link href="/login">
                   <h2
                     onClick={() => {
-                      deleteUser(userAuth);
+                      // deleteUser(userAuth);
                       destroyCookie(null, 'authorization');
                       setPlayerState(0);
                       notifySignOut();

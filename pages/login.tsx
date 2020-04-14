@@ -26,25 +26,42 @@ const Login = () => {
 };
 
 Login.getInitialProps = async ctx => {
-  const code = ctx.query.code;
+  const { query, res } = ctx;
+  const { code } = query;
+  let authCode = '';
+
   const cookies = parseCookies(ctx);
 
-  if (code) {
-    await getTokens(code).then(res => {
-      if (res) {
-        createUser(res.access_token, res.refresh_token).then(res => {
-          if (res) {
-            setCookie(ctx, 'authorization', res.authorization, {
-              maxAge: 30 * 24 * 60 * 60,
-              path: '/',
+  if (cookies.authorization) {
+    res.writeHead(301, { Location: '/app' });
+    res.end();
+  } else {
+    if (code) {
+      await getTokens(code)
+        .then(async tokens => {
+          if (tokens) {
+            await createUser(tokens.refresh_token).then(user => {
+              if (user) {
+                authCode = user.authorization;
+              }
             });
           }
+        })
+        .catch(() => console.log('Error fetching token'));
+
+      if (authCode !== '') {
+        setCookie(ctx, 'authorization', authCode, {
+          sameSite: true,
+          path: '/',
+          maxAge: 30 * 24 * 60 * 60,
         });
+        res.writeHead(301, { Location: '/index' });
+        res.end();
       }
-    });
+    }
   }
 
-  return { cookies };
+  return { code };
 };
 
 export default Login;

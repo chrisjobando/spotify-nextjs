@@ -30,12 +30,6 @@ const Player = () => {
   } = useContext(AppContext);
 
   useEffect(() => {
-    if (spotifyAccess === '') {
-      Router.push('/');
-    }
-  }, []);
-
-  useEffect(() => {
     if (spotifyAccess !== '') {
       setClean(cleanState);
 

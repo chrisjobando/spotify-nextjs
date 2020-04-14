@@ -25,7 +25,6 @@ export default {
     findUser: () => `/api/find-user`,
     createUser: () => `/api/create-user`,
     deleteUser: () => `/api/delete-user`,
-    updateUser: () => `/api/update-user`,
     updateClean: () => `/api/set-clean`,
   },
 };

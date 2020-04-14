@@ -1,42 +1,33 @@
 import User from '../models/User';
 import mongoDB from '../index';
 
-export async function createId(tokens) {
+export async function createId(refresh) {
   await mongoDB();
 
   return User.create({
-    refresh: tokens.refresh_token,
-    access: tokens.access_token,
+    refresh,
     clean: false,
   });
 }
 
-export async function deleteId(_id) {
+export async function deleteId(id) {
   await mongoDB();
 
-  return User.findByIdAndRemove({ _id: _id });
+  return User.findByIdAndRemove(id);
 }
 
-export async function findById(_id) {
+export async function findById(id) {
   await mongoDB();
 
-  if (!_id) {
+  if (!id) {
     return Promise.reject(new Error('No cookies passed'));
   }
 
-  return User.findOne({ _id }).then(user => {
+  return User.findById(id).then(user => {
     if (!user) {
       return Promise.reject(new Error('User does not exist'));
     }
     return user;
-  });
-}
-
-export async function updateToken(authorization, access) {
-  await mongoDB();
-
-  return User.findByIdAndUpdate(authorization, {
-    $set: { access: access },
   });
 }
 

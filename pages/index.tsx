@@ -1,18 +1,27 @@
-import React, { useEffect } from 'react';
-import Router from 'next/router';
+import React from 'react';
 
-const Index = props => {
-  const { user } = props;
+const Index = () => {
+  return <div>Test</div>;
+};
 
-  useEffect(() => {
-    if (!user) {
-      Router.push('/login');
+Index.getInitialProps = async ({ res, req }) => {
+  const cookies = req ? req.headers.cookie : null;
+
+  console.log('Cookies: ', cookies);
+
+  if (res) {
+    if (!cookies) {
+      console.log('No cookies');
+      res.writeHead(301, { Location: '/login' });
+      res.end();
     } else {
-      Router.push('/app');
+      console.log('Cookie found!');
+      res.writeHead(301, { Location: '/app' });
+      res.end();
     }
-  }, [user]);
+  }
 
-  return <div></div>;
+  return res;
 };
 
 export default Index;

@@ -37,10 +37,10 @@ const NavMenu = ({ onClick }) => {
         </Link>
       </div>
       <div onClick={onClick} className="Link">
-        <Link href="/">
+        <Link href="/login">
           <span
             onClick={() => {
-              deleteUser(userAuth);
+              // deleteUser(userAuth);
               destroyCookie(null, 'authorization');
               setPlayerState(0);
               notifySignOut();
