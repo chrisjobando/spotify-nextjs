@@ -20,7 +20,16 @@ export async function deleteId(_id) {
 export async function findById(_id) {
   await mongoDB();
 
-  return User.findOne({ _id });
+  if (!_id) {
+    return Promise.reject(new Error('No cookies passed'));
+  }
+
+  return User.findOne({ _id }).then(user => {
+    if (!user) {
+      return Promise.reject(new Error('User does not exist'));
+    }
+    return user;
+  });
 }
 
 export async function updateToken(authorization, access) {

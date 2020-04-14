@@ -1,6 +1,12 @@
 import fetch from 'isomorphic-unfetch';
 import urls from '../../utils/urls';
 
+export const auth = () => {
+  fetch(urls.api.auth())
+    .then(res => res.json())
+    .then(res => (window.location.href = res.url));
+};
+
 export const getUserProfile = token => {
   return fetch(urls.apiUrl + '/me/', {
     method: 'get',

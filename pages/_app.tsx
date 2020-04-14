@@ -2,11 +2,16 @@ import React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
 
+// API Calls
+import { getUser } from 'client/actions/api';
+
 // Toast Library
 import { ToastContainer } from 'react-toastify';
 
 // Global Context Provider
-import AppContextProvider from '../client/components/AppContext';
+import AppContextProvider, {
+  AppContext,
+} from '../client/components/AppContext';
 
 // NavBar
 import NavBar from '../client/components/NavBar/NavBar';
@@ -24,10 +29,30 @@ import 'react-toastify/scss/main.scss';
 
 // Styling
 import '../public/styles/global.scss';
+import { parseCookies } from 'nookies';
 
-class MyApp extends App {
+interface Props {
+  user: any;
+}
+
+class MyApp extends App<Props> {
+  static async getInitialProps(appContext) {
+    const appProps = await App.getInitialProps(appContext);
+
+    const cookies = parseCookies();
+
+    return getUser(cookies.authorization)
+      .then(user => {
+        return {
+          ...appProps,
+          user,
+        };
+      })
+      .catch(() => appProps);
+  }
+
   render() {
-    const { Component, pageProps, router } = this.props;
+    const { Component, pageProps, router, user } = this.props;
 
     return (
       <>
@@ -57,7 +82,7 @@ class MyApp extends App {
                 />
               </>
             ))}
-          <Component {...pageProps} />
+          <Component {...pageProps} user={user} />
           <Player />
         </AppContextProvider>
       </>

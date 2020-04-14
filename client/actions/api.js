@@ -4,7 +4,57 @@ import urls from '../../utils/urls';
 
 const prod = process.env.NODE_ENV === 'production';
 
-const getTokens = code => {
+export const getUser = async authorization => {
+  return await fetch(urls.baseUrl + urls.api.findUser(), {
+    method: 'post',
+    mode: 'same-origin',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      authorization,
+    }),
+  })
+    .then(response => response.json())
+    .then(json => {
+      if (json == null) {
+        throw new Error('Could not connect to API...');
+      } else if (!json.success) {
+        return null;
+      }
+      return { refresh: json.refresh, access: json.access, clean: json.clean };
+    });
+};
+
+export const createUser = async (access_token, refresh_token) => {
+  return fetch(urls.baseUrl + urls.api.createUser(), {
+    method: 'post',
+    mode: 'same-origin',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      tokens: {
+        access_token,
+        refresh_token,
+      },
+    }),
+  })
+    .then(response => response.json())
+    .then(json => {
+      if (json == null) {
+        throw new Error('Could not connect to API...');
+      } else if (!json.success) {
+        throw new Error(json.message);
+      }
+
+      return json;
+    });
+};
+
+export const getTokens = code => {
   return fetch(urls.tokenUrl, {
     method: 'post',
     headers: {
@@ -29,7 +79,7 @@ const getTokens = code => {
     });
 };
 
-const refreshTokens = token => {
+export const refreshTokens = token => {
   return fetch(urls.tokenUrl, {
     method: 'post',
     headers: {
@@ -50,37 +100,6 @@ const refreshTokens = token => {
     .then(response => response.json())
     .then(json => {
       return json.access_token;
-    });
-};
-
-export const createUser = async code => {
-  const { access_token, refresh_token } = await getTokens(code);
-
-  return fetch(urls.api.createUser(), {
-    method: 'post',
-    mode: 'same-origin',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      tokens: {
-        access_token,
-        refresh_token,
-      },
-    }),
-  })
-    .then(response => response.json())
-    .then(json => {
-      if (json == null) {
-        throw new Error('Could not connect to API...');
-      } else if (!json.success) {
-        throw new Error(json.message);
-      }
-      window.location.href = prod
-        ? 'https://obando-spotify.now.sh'
-        : 'http://localhost:3000';
-      return json.authorization;
     });
 };
 
@@ -107,52 +126,6 @@ export const deleteUser = async _id => {
     });
 };
 
-export const getUser = async authorization => {
-  const { refresh } = await fetch(urls.api.findUser(), {
-    method: 'post',
-    mode: 'same-origin',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      authorization,
-    }),
-  })
-    .then(response => response.json())
-    .then(json => {
-      if (json == null) {
-        throw new Error('Could not connect to API...');
-      } else if (!json.success) {
-        return {};
-      }
-      return { refresh: json.refresh };
-    });
-
-  const access = await refreshTokens(refresh);
-
-  return await fetch(urls.api.updateUser(), {
-    method: 'post',
-    mode: 'same-origin',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      authorization,
-      access,
-    }),
-  })
-    .then(response => response.json())
-    .then(json => {
-      if (json == null) {
-        throw new Error('Could not connect to API...');
-      }
-
-      return json;
-    });
-};
-
 export const updateClean = async clean => {
   return await fetch(urls.api.updateClean(), {
     method: 'post',
@@ -173,10 +146,4 @@ export const updateClean = async clean => {
 
       return json;
     });
-};
-
-export const auth = () => {
-  fetch(urls.api.auth())
-    .then(res => res.json())
-    .then(res => (window.location.href = res.url));
 };
