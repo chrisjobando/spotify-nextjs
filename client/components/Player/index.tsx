@@ -29,30 +29,30 @@ const Player = () => {
     setPlayerInfo,
   } = useContext(AppContext);
 
-  useEffect(() => {
-    if (spotifyAccess !== '') {
-      setClean(cleanState);
+  // useEffect(() => {
+  //   if (spotifyAccess !== '') {
+  //     setClean(cleanState);
 
-      const checkPlayback = setInterval(() => {
-        getCurrentPlayback(spotifyAccess).then(res => {
-          if (res) {
-            if (playerState === 0) {
-              setPlayerState(1);
-            }
+  //     const checkPlayback = setInterval(() => {
+  //       getCurrentPlayback(spotifyAccess).then(res => {
+  //         if (res) {
+  //           if (playerState === 0) {
+  //             setPlayerState(1);
+  //           }
 
-            setSongData(res.item);
-            setPlay(res.is_playing);
-            setShuffle(res.shuffle_state);
-            setRepeat(res.repeat_state);
-          } else {
-            setPlayerState(0);
-          }
-        });
-      }, 3000);
+  //           setSongData(res.item);
+  //           setPlay(res.is_playing);
+  //           setShuffle(res.shuffle_state);
+  //           setRepeat(res.repeat_state);
+  //         } else {
+  //           setPlayerState(0);
+  //         }
+  //       });
+  //     }, 3000);
 
-      return () => clearInterval(checkPlayback);
-    }
-  }, [playerInfo]);
+  //     return () => clearInterval(checkPlayback);
+  //   }
+  // }, [playerInfo]);
 
   useEffect(() => {
     if (isClean && songData && songData.explicit) {

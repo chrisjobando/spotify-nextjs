@@ -33,13 +33,17 @@ interface Props {
   user: any;
 }
 
-class MyApp extends App<Props> {
+class MyApp extends App {
   static async getInitialProps(appContext) {
     const appProps = await App.getInitialProps(appContext);
     const cookies = parseCookies(appContext.ctx);
 
+    console.log('Cookies MyApp: ', cookies);
+
     return getUser(cookies.authorization)
       .then(user => {
+        console.log('User: ', user);
+
         return {
           ...appProps,
           user,
@@ -49,7 +53,7 @@ class MyApp extends App<Props> {
   }
 
   render() {
-    const { Component, pageProps, router, user } = this.props;
+    const { Component, pageProps, router } = this.props;
 
     return (
       <>
@@ -79,7 +83,7 @@ class MyApp extends App<Props> {
                 />
               </>
             ))}
-          <Component {...pageProps} user={user} />
+          <Component {...pageProps} />
           <Player />
         </AppContextProvider>
       </>

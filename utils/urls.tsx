@@ -9,10 +9,10 @@ export default {
     ? 'https://obando-spotify.now.sh/login'
     : 'http://localhost:3000/login',
   pages: {
-    index: '/',
+    index: '/index',
     login: '/login',
     app: {
-      index: '/app',
+      home: '/app',
       stats: '/app/stats',
       search: '/app/search',
       artist: artistId => `/app/artist/${artistId}`,

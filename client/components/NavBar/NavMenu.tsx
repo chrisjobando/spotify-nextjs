@@ -37,7 +37,7 @@ const NavMenu = ({ onClick }) => {
         </Link>
       </div>
       <div onClick={onClick} className="Link">
-        <Link href="/login">
+        <Link href="/">
           <span
             onClick={() => {
               // deleteUser(userAuth);

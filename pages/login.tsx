@@ -29,37 +29,39 @@ Login.getInitialProps = async ctx => {
   const { query, res } = ctx;
   const { code } = query;
   let authCode = '';
+  console.log('Code Login Page: ', code);
 
   const cookies = parseCookies(ctx);
+  console.log('Cookies Login Page: ', cookies);
 
-  if (cookies.authorization) {
-    res.writeHead(301, { Location: '/app' });
-    res.end();
-  } else {
-    if (code) {
-      await getTokens(code)
-        .then(async tokens => {
-          if (tokens) {
-            await createUser(tokens.refresh_token).then(user => {
-              if (user) {
-                authCode = user.authorization;
-              }
-            });
-          }
-        })
-        .catch(() => console.log('Error fetching token'));
+  // if (cookies.authorization) {
+  //   res.writeHead(301, { Location: '/app' });
+  //   res.end();
+  // } else {
+  //   if (code) {
+  //     await getTokens(code)
+  //       .then(async tokens => {
+  //         if (tokens) {
+  //           await createUser(tokens.refresh_token).then(user => {
+  //             if (user) {
+  //               authCode = user.authorization;
+  //             }
+  //           });
+  //         }
+  //       })
+  //       .catch(() => console.log('Error fetching token'));
 
-      if (authCode !== '') {
-        setCookie(ctx, 'authorization', authCode, {
-          sameSite: true,
-          path: '/',
-          maxAge: 30 * 24 * 60 * 60,
-        });
-        res.writeHead(301, { Location: '/index' });
-        res.end();
-      }
-    }
-  }
+  //     if (authCode !== '') {
+  //       setCookie(ctx, 'authorization', authCode, {
+  //         sameSite: true,
+  //         path: '/',
+  //         maxAge: 30 * 24 * 60 * 60,
+  //       });
+  //       res.writeHead(301, { Location: '/index' });
+  //       res.end();
+  //     }
+  //   }
+  // }
 
   return { code };
 };
