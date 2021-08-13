@@ -18,7 +18,7 @@
     "@fortawesome/react-fontawesome": "^0.1.9",
     "isomorphic-unfetch": "^3.0.0",
     "mongoose": "^5.9.7",
-    "next": "^9.3.4",
+    "next": "^11.1.0",
     "next-connect": "^0.6.1",
     "node-sass": "^4.13.1",
     "nookies": "^2.2.2",
